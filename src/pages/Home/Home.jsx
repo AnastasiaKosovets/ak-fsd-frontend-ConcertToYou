@@ -4,7 +4,8 @@ import "./Home.css";
 
 export const Home = () => {
     return(
-        <div className="homeStyle">Hola Home
+        <div className="homeStyle" style={{fontFamily: 'Great Vibes'}}>
+            Hola Home
 
         </div>
     )
