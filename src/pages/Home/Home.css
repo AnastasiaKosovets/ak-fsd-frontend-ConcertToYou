@@ -1,0 +1,10 @@
+.homeStyle {
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-size: 10em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
