@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
+import { Button, Nav, Offcanvas } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Header() {
@@ -12,45 +12,70 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-        const scrollTop = window.scrollY;
-        if ( scrollTop > 0){
-            setIsSticky(true);
-            const opacity = 1 - (scrollTop / window.innerHeight) * 0.2;
-            setScrollOpacity(opacity);
-        } else {
-            setIsSticky(false);
-            setScrollOpacity(1);
-        }
+      const scrollTop = window.scrollY;
+      if (scrollTop > 0) {
+        setIsSticky(true);
+        const opacity = 1 - (scrollTop / window.innerHeight) * 0.2;
+        setScrollOpacity(opacity);
+      } else {
+        setIsSticky(false);
+        setScrollOpacity(1);
+      }
     };
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-        window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <header className={`navbar ${isSticky ? "sticky" : ""}`} style={{ opacity: scrollOpacity }}>
-      <nav>
-      <div className="offCanvasStyle">
-        <Button
-          onClick={handleShow}
-          className="buttonOffCanvasStyle"
-          style={{ backgroundColor: "black" }}
-        >
-          <div className="canvasText">Descubrenós</div>
-        </Button>
+    <header
+      className={`navbar ${isSticky ? "sticky" : ""}`}
+      style={{ opacity: scrollOpacity }}
+    >
+      <nav className="navbar-expand-lg navStyleb">
+        <div className="container d-flex align-items-center ">
+          {/* <Button
+            onClick={handleShow}
+            className="buttonOffCanvasStyle"
+            style={{ backgroundColor: "black" }}
+          >
+            <div className="canvasText">Descubrenos</div>
+          </Button> */}
+          <Nav.Link as={Link} to="#" onClick={handleShow}
+            className="headerText"
+            style={{ backgroundColor: "black" }}>
+            Descubrenos
+          </Nav.Link>
+          <Nav.Link as={Link} to="#" className="headerText d-none d-sm-block">
+            Disfruta de la música
+          </Nav.Link>
+          <Nav.Link as={Link} to="#" className="headerText d-none d-sm-block">
+            Sobre Nosotros
+          </Nav.Link>
+        </div>
         <Offcanvas show={show} onHide={handleClose} className="test">
           <Offcanvas.Header closeButton className="canvasBody">
-            <Offcanvas.Title className="canvasText">ConcertToYou</Offcanvas.Title>
+            <Offcanvas.Title className="canvasTextTitle">
+              ConcertToYou
+            </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="canvasBody">
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
+            <Nav.Link as={Link} to="#" className="headerText mb-3">
+              Conciertos
+            </Nav.Link>
+            <Nav.Link as={Link} to="#" className="headerText mb-3">
+              MusicToYou
+            </Nav.Link>
+            <Nav.Link as={Link} to="#" className="headerText mb-3">
+              Sobre Nosotros
+            </Nav.Link>
+            <Nav.Link as={Link} to="#" className="headerText">
+              Login
+            </Nav.Link>
           </Offcanvas.Body>
         </Offcanvas>
-       
-      </div>
       </nav>
     </header>
   );
