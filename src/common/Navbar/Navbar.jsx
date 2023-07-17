@@ -31,8 +31,10 @@ function Header() {
 
   return (
     <header
-      className={`navbar ${isSticky ? "sticky" : ""}`}
-      style={{ opacity: scrollOpacity }}
+    className={`navbar ${isSticky ? "sticky" : ""} ${
+      show ? "offcanvas-visible" : ""
+    }`}
+    style={{ opacity: scrollOpacity }}
     >
       <nav className="navbar-expand-lg navStyleb">
         <div className="container d-flex align-items-center">
