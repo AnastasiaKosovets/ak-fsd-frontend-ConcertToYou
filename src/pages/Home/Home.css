@@ -3,7 +3,7 @@
   background-color: rgb(17, 17, 17);
   color: white;
   font-size: 5em;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -79,5 +79,41 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    margin: 0;
+  }
+  .homeStyle {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  .text1 {
+    font-size: 2.5rem;
+    align-items: center;
+    top: 200%;
+    left: 27%;
+  }
+
+  .img1Home {
+    height: 5em;
+    width: 3.5em;
+    margin-left: 1.2rem;
+  }
+
+  .img2Home {
+    height: 2.5em;
+    width: 4em;
+  }
+
+  .text2 {
+    font-size: 2.5rem;
+    width: 6em;
+    margin-left: 2em;
+    top: -25%;
   }
 }
