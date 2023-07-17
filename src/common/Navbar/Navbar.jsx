@@ -41,7 +41,6 @@ function Header() {
             to="#"
             onClick={handleShow}
             className="headerText"
-            style={{ backgroundColor: "black" }}
           >
             Descubrenos
           </Nav.Link>

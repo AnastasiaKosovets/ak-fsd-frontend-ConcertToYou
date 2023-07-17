@@ -1,10 +1,50 @@
 .homeStyle {
   height: 100vh;
-  background-color: black;
+  background-color: rgb(17, 17, 17);
   color: white;
   font-size: 5em;
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.text1 {
+  color: rgb(255, 220, 187);
+  font-size: 1em;
+  text-align: center;
+  line-height: 1.2;
+  position: absolute;
+  z-index: 1;
+  top: 38%;
+  left: 50%;
+  transform: translate(-60%, -50%);
+  animation: slide-in 2s forwards;
+  /* animation-delay: 0.5s; */
+}
+
+.img1Home {
+  height: 7em;
+  width: 5em;
+  border-radius: 2em;
+  animation: fade-in 3s forwards;
+}
+
+@keyframes slide-in {
+  0% {
+    left: -100%;
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
