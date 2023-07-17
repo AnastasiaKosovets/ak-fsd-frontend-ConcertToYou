@@ -35,7 +35,7 @@ function Header() {
       style={{ opacity: scrollOpacity }}
     >
       <nav className="navbar-expand-lg navStyleb">
-        <div className="container d-flex align-items-center ">
+        <div className="container d-flex align-items-center">
           <Nav.Link
             as={Link}
             to="#"

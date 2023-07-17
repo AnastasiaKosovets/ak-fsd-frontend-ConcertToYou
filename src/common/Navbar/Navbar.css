@@ -15,17 +15,22 @@
 
 .canvasText:hover, .headerText:hover {
   color: rgb(250, 214, 124);
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   transition: 0.5s;
 }
 
-.navStyleb, .offCanvasStyle, .navbar, .buttonOffCanvasStyle {
+.offCanvasStyle, .buttonOffCanvasStyle {
   background-color: rgb(17, 17, 17);
 }
 
 .navbar {
   display: flex;
+  width: 100%;
+  position: fixed;
+  /* align-items: center; */
   justify-content: space-around;
+  top: 0;
+  z-index: 9999;
   transition: background-color 0.5s ease;
 }
 
@@ -55,6 +60,7 @@
 }
 
 .navbar.sticky {
+  background-color: rgb(21, 21, 21);
   position: fixed;
   top: 0;
   width: 100%;

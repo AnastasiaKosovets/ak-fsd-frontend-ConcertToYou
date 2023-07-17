@@ -1,5 +1,5 @@
 .homeStyle {
-  height: 100vh;
+  height: auto;
   background-color: rgb(17, 17, 17);
   color: white;
   font-size: 5em;
@@ -14,13 +14,12 @@
   font-size: 1em;
   text-align: center;
   line-height: 1.2;
-  position: absolute;
+  position: relative;
   z-index: 1;
-  top: 38%;
+  top: 35%;
   left: 50%;
   transform: translate(-60%, -50%);
   animation: slide-in 2s forwards;
-  /* animation-delay: 0.5s; */
 }
 
 .img1Home {
@@ -28,6 +27,30 @@
   width: 5em;
   border-radius: 2em;
   animation: fade-in 3s forwards;
+  transition: transform 0.3s;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.img2Home {
+  height: 4em;
+  width: 8em;
+  position: relative;
+  border-radius: 1em;
+  animation: fade-in 3s forwards;
+  transition: transform 0.3s;
+}
+
+.text2 {
+  color: rgb(255, 220, 187);
+  font-size: 0.8em;
+  text-align: center;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+  top: 40%;
+  transform: translate(-30%, -30%);
+  animation: slide-in-right 2s forwards;
 }
 
 @keyframes slide-in {
@@ -36,7 +59,17 @@
     transform: translateX(-100%);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-20%);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    left: 100%;
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-30%);
   }
 }
 
