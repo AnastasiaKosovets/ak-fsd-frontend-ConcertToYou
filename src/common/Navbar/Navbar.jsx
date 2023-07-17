@@ -36,16 +36,13 @@ function Header() {
     >
       <nav className="navbar-expand-lg navStyleb">
         <div className="container d-flex align-items-center ">
-          {/* <Button
+          <Nav.Link
+            as={Link}
+            to="#"
             onClick={handleShow}
-            className="buttonOffCanvasStyle"
+            className="headerText"
             style={{ backgroundColor: "black" }}
           >
-            <div className="canvasText">Descubrenos</div>
-          </Button> */}
-          <Nav.Link as={Link} to="#" onClick={handleShow}
-            className="headerText"
-            style={{ backgroundColor: "black" }}>
             Descubrenos
           </Nav.Link>
           <Nav.Link as={Link} to="#" className="headerText d-none d-sm-block">
@@ -59,6 +56,7 @@ function Header() {
           <Offcanvas.Header closeButton className="canvasBody">
             <Offcanvas.Title className="canvasTextTitle">
               ConcertToYou
+              <hr className="canvasLine" />
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="canvasBody">
