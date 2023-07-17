@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Body } from './pages/Body/Body';
 import WebFont from 'webfontloader';
+import Header from './common/Navbar/Navbar';
 
 function App() {
   useEffect(() => {
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+    <Header />
       <Body />
     </>
   );

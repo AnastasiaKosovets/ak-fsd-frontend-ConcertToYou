@@ -1,0 +1,77 @@
+.offCanvasStyle {
+    
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonOffCanvasStyle {
+    border: 0;
+    width: 10em;
+    color: goldenrod;
+    background-color: black;
+    /* box-shadow: 0 0 0.5em 0.2em goldenrod; */
+}
+
+.canvasBody {
+    background-color: rgb(34, 34, 34);
+    color: goldenrod;
+    font-family: 'Great Vibes', cursive;
+}
+
+.canvasText {
+    color: goldenrod;
+    font-size: xx-large;
+    font-family: 'Great Vibes', cursive;
+}
+
+.navbarStyle {
+
+    position: sticky;
+    background-color: rgb(69, 68, 68);
+}
+
+/* ------------------------ */
+.navbar {
+    background-color: black;
+    transition: background-color 0.5s ease;
+  }
+  
+  .navbar.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(196, 101, 101, 0.1);
+  }
+  
+nav {
+    background-color: gray;
+    transition: .3s;
+}
+
+nav.sticky {
+    box-shadow:  0em 0.2em 0.5em gray;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-inner {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    width: 100%;
+    margin: auto;
+}
+
+.logo {
+    color: white
+}
+
+.links a {
+    color: white;
+    margin-right: 3em;
+    cursor: pointer;
+}
