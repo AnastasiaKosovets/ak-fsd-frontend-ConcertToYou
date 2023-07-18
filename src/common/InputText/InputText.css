@@ -1,0 +1,15 @@
+/* Input text design woth error input design */
+.InputText {
+  border-radius: 0.5em;
+  box-shadow: 0rem 0rem 0.3rem rgb(66, 103, 123);
+  height: 1.5em;
+  width: 20em;
+  background-color: rgb(247, 244, 238);
+  color: rgb(66, 103, 123);
+  margin: 0.7em;
+}
+
+.InputTextError {
+  border: 0.2em solid rgb(183, 4, 4);
+  color: rgb(183, 4, 4);
+}
