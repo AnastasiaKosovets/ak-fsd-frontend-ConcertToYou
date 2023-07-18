@@ -61,16 +61,16 @@ function Header() {
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className="canvasBody">
-            <Nav.Link as={Link} to="#" className="headerText mb-3">
+            <Nav.Link as={Link} to="#" className="headerText mb-3" onClick={handleClose}>
               Conciertos
             </Nav.Link>
-            <Nav.Link as={Link} to="#" className="headerText mb-3">
+            <Nav.Link as={Link} to="#" className="headerText mb-3" onClick={handleClose}>
               MusicToYou
             </Nav.Link>
-            <Nav.Link as={Link} to="#" className="headerText mb-3">
+            <Nav.Link as={Link} to="#" className="headerText mb-3" onClick={handleClose}>
               Sobre Nosotros
             </Nav.Link>
-            <Nav.Link as={Link} to="/login" className="headerText">
+            <Nav.Link as={Link} to="/login" className="headerText" onClick={handleClose}>
               Login
             </Nav.Link>
           </Offcanvas.Body>
