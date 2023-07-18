@@ -2,4 +2,33 @@
     height: 100vh;
     background-color: rgb(17, 17, 17);
     color: white;
+    font-family: Georgia, "Times New Roman", Times, serif;
 }
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.loginRow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1em;
+    height: 20em;
+    width: 45em;
+    box-shadow: 0rem 0rem 0.5rem 0.1rem goldenrod;
+    /* width: 40em; */
+}
+
+.loginTxt{
+    margin-top: 2em;
+    font-size: 8vh;
+    text-align: center;
+    color: goldenrod;
+    margin-bottom: 1em;
+}
+

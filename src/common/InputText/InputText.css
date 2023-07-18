@@ -1,9 +1,8 @@
-/* Input text design woth error input design */
 .InputText {
   border: none;
   border-bottom: 1px solid gray;
   background-color: transparent;
-  height: 1.5em;
+  height: 2em;
   width: 20em;
   margin: 0.7em;
 }
