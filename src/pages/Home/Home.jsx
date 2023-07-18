@@ -12,10 +12,10 @@ export const Home = () => {
           <Col xs={10} sm={6} md={6} lg={6}>
             <div className="text1">Disfruta de tu música con nosotros</div>
           </Col>
-          <Col xs={10} sm={6} md={6} lg={6} className="mb-5">
+          <Col xs={10} sm={6} md={6} lg={6} className="mb-2">
             <img src={img2} alt="Sala con piano" className="img1Home" />
           </Col>
-          <Col xs={10} sm={6} md={6} lg={6} className="mb-4">
+          <Col xs={10} sm={6} md={6} lg={6} className="mb-5">
             <img src={img3} alt="Sala con piano" className="img2Home" />
           </Col>
           <Col xs={10} sm={6} md={6} lg={6}>
