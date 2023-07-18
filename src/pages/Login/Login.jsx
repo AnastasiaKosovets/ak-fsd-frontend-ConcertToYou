@@ -4,16 +4,22 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { InputText } from "../../common/InputText/InputText";
 import { logIn } from "../../services/apiCalls";
+import { useDispatch } from 'react-redux';
+import { saveToken } from '../userSlice';
 
 export const Login = () => {
 
+  const dispatch = useDispatch();
     const [userData, setuserData] = useState({});
     const [inputError, setInputError] = useState({});
 
     const login = (e) => {
         e.preventDefault()
         logIn(userData)
-            .then((res)=>console.log(res))
+        .then((res) => {
+          dispatch(saveToken(res.token));
+          console.log(res);
+      })
             .catch((error)=>console.log(error))
     }
     // console.log(userData);

@@ -1,46 +1,18 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-export const userSlice = createSlice({
-  name: 'user',
+export const authSlice = createSlice({
+  name: 'auth',
   initialState: {
-    credentials: {
-      token: "",
-    },
-    data: {
-      name: "",
-      role: "",
-    },
+    token: ''
   },
   reducers: {
-    login: (state, action) => {
-      let { payload } = action;
-      (state.credentials = {
-        token: payload.token,
-      }),
-        (state.data = {
-          name: payload.name,
-          role: payload.role,
-        });
-    },
-    userout: (state) => {
-      return {
-        ...state,
-        credentials: {
-          token: "",
-        },
-        data: {
-          name: "",
-          role: "",
-        },
-      };
-    },
-  },
+    saveToken: (state, action) => {
+      state.token = action.payload;
+    }
+  }
 });
 
-//Export the actions.....
-export const { login, userout } = userSlice.actions;
+export const { saveToken } = authSlice.actions;
 
-export const userData = (state) => state.user;
-
-export default userSlice.reducer;
+export default authSlice.reducer;
