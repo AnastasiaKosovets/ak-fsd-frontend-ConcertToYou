@@ -31,11 +31,23 @@ export const userSlice = createSlice({
       state.data.dateOfBirth = payload.data.dateOfBirth;
       state.data.phoneNumber = payload.data.phoneNumber;
       state.data.role_id = payload.data.role_id;
+    },
+    userout: (state) => {
+      return {
+        ...state,
+        credentials: {
+          token: "",
+        },
+        data: {
+          firstName: "",
+          role_id: ""
+        },
+      };
     }
   }
 });
 
-export const { login } = userSlice.actions;
+export const { login, userout } = userSlice.actions;
 export const userData = (state) => state.user.data;
 
 export default userSlice.reducer;
