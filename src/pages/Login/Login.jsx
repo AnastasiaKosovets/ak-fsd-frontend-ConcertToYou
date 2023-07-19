@@ -72,6 +72,26 @@ export const Login = () => {
               </Link>
           </Col>
         </Row>
+        <Row>
+          <Col md={12} className="loginTxt">
+            Login
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12} className="loginTxt">
+            Login
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12} className="loginTxt">
+            Login
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12} className="loginTxt">
+            Login
+          </Col>
+        </Row>
       </Container>
     </div>
   );
