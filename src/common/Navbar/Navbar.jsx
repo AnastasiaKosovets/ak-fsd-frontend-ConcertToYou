@@ -2,14 +2,21 @@ import { useEffect, useState } from "react";
 import { Button, Nav, Offcanvas } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useDispatch, useSelector } from "react-redux";
+import { userData }  from "../../pages/userSlice";
 
-function Header() {
+export const Header = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [isSticky, setIsSticky] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(1);
 
+  const user = useSelector(userData);
+  const role = user.role_id;
+  const dispatch = useDispatch();
+
+  
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -70,9 +77,16 @@ function Header() {
             <Nav.Link as={Link} to="#" className="headerText mb-3" onClick={handleClose}>
               Sobre Nosotros
             </Nav.Link>
-            <Nav.Link as={Link} to="/login" className="headerText" onClick={handleClose}>
-              Login
-            </Nav.Link>
+            {role === 3 && (
+              <Nav.Link as={Link} to="/profile" className="headerText mb-3" onClick={handleClose}>
+                Perfil
+              </Nav.Link>
+            )}
+            {role !== 3 && (
+              <Nav.Link as={Link} to="/login" className="headerText" onClick={handleClose}>
+                Login
+              </Nav.Link>
+            )}
           </Offcanvas.Body>
         </Offcanvas>
       </nav>
@@ -80,4 +94,4 @@ function Header() {
   );
 }
 
-export default Header;
+// export default Header;
