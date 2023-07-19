@@ -82,6 +82,24 @@
   }
 }
 
+.scrollButton {
+  position: fixed;
+  bottom: 2em;
+  right: 4em;
+  border: none;
+  cursor: pointer;
+}
+
+.up {
+  height: 2em;
+  transition: 1s;
+}
+
+.up:hover {
+  height: 2.5em;
+  transition: 1s;
+}
+
 @media (max-width: 768px) {
   .row {
     margin: 0;
@@ -117,3 +135,4 @@
     top: -25%;
   }
 }
+

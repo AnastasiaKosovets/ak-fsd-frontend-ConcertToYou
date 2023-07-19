@@ -1,10 +1,31 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import img2 from "../../../img/img2.jpg";
 import img3 from "../../../img/img3.jpg";
+import up from "../../../img/up.png";
 
 export const Home = () => {
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if(window.scrollY > 300) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth"});
+  }
   return (
     <div className="homeStyle" style={{ fontFamily: "Great Vibes" }}>
       <Container className="d-flex flex-direction-column justify-content-around align-items-center">
@@ -23,6 +44,11 @@ export const Home = () => {
           </Col>
         </Row>
       </Container>
+      {showScrollButton && (
+        <Button className="scrollButton bg-transparent" onClick={scrollTop}>
+          <img src={up} alt="boton hacía arriba" className="up" />
+        </Button>
+      )}
     </div>
   );
 };
