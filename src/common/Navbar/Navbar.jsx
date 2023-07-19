@@ -65,10 +65,15 @@ export const Header = () => {
         </div>
         <Offcanvas show={show} onHide={handleClose} className="test">
           <Offcanvas.Header closeButton className="canvasBody">
-            <Offcanvas.Title className="canvasTextTitle">
+              <Nav.Link
+              as={Link}
+              to="/home"
+              className="canvasTextTitle"
+              onClick={handleClose}
+            >
               ConcertToYou
               <hr className="canvasLine" />
-            </Offcanvas.Title>
+            </Nav.Link>
           </Offcanvas.Header>
           <Offcanvas.Body className="canvasBody">
             <Nav.Link
