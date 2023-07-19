@@ -5,7 +5,7 @@ import { Button } from "../../common/Button/Button";
 import { InputText } from "../../common/InputText/InputText";
 import { logIn } from "../../services/apiCalls";
 import { useDispatch } from "react-redux";
-import { saveToken } from "../userSlice";
+import { login } from "../userSlice";
 import { useNavigate } from "react-router";
 
 export const Login = () => {
@@ -14,11 +14,11 @@ export const Login = () => {
   const [userData, setuserData] = useState({});
   const [inputError, setInputError] = useState({});
 
-  const login = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     logIn(userData)
       .then((res) => {
-        dispatch(saveToken(res));
+        dispatch(login(res));
         console.log(res);
         setTimeout(() => {
           navigate("/home");
@@ -62,7 +62,7 @@ export const Login = () => {
             <div className="errorInput">{inputError.passwordError}</div>
           </Col>
           <Col xs={8} md={6} lg={5} className="my-3">
-            <Button name={"Login"} onClick={(e) => login(e)}></Button>
+            <Button name={"Login"} onClick={handleLogin}></Button>
           </Col>
         </Row>
       </Container>

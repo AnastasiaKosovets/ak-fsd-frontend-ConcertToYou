@@ -77,16 +77,12 @@ export const Header = () => {
             <Nav.Link as={Link} to="#" className="headerText mb-3" onClick={handleClose}>
               Sobre Nosotros
             </Nav.Link>
-            {role === 3 && (
               <Nav.Link as={Link} to="/profile" className="headerText mb-3" onClick={handleClose}>
                 Perfil
               </Nav.Link>
-            )}
-            {role !== 3 && (
               <Nav.Link as={Link} to="/login" className="headerText" onClick={handleClose}>
                 Login
               </Nav.Link>
-            )}
           </Offcanvas.Body>
         </Offcanvas>
       </nav>
