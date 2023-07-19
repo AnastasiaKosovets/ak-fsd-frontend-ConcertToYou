@@ -7,6 +7,7 @@ import { logIn } from "../../services/apiCalls";
 import { useDispatch } from "react-redux";
 import { login } from "../userSlice";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -32,13 +33,13 @@ export const Login = () => {
   return (
     <div className="genLoginStyle" style={{ fontFamily: "Great Vibes" }}>
       <Container className="mainContainer">
-        <Row className="">
+        <Row>
           <Col md={12} className="loginTxt">
             Login
           </Col>
         </Row>
         <Row className="loginRow">
-          <Col xs={10} md={8} className="colStyle">
+          <Col xs={10} md={8}>
             <InputText
               title={"Email"}
               name={"email"}
@@ -49,7 +50,7 @@ export const Login = () => {
             ></InputText>
             <div className="errorInput">{inputError.emailError}</div>
           </Col>
-          <Col xs={10} md={8} className="my-3 ">
+          <Col xs={10} md={8} className="my-3">
             <InputText
               className="inputStyle"
               title={"Password"}
@@ -61,8 +62,14 @@ export const Login = () => {
             ></InputText>
             <div className="errorInput">{inputError.passwordError}</div>
           </Col>
-          <Col xs={8} md={6} lg={5} className="my-3">
+          <Col xs={10} md={6} lg={5} className="my-3 mb-4">
             <Button name={"Login"} onClick={handleLogin}></Button>
+          </Col>
+          <Col xs={10} md={8} lg={5} className="my-3 styleLinkText">
+              ¿No tienes una cuenta?
+              <Link to="/register" className="registerLink">
+                ¡Regístrate aquí!
+              </Link>
           </Col>
         </Row>
       </Container>

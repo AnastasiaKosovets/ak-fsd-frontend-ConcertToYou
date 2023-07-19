@@ -31,7 +31,7 @@ const onBlurFunction = (e, errorState) => {
 }
 
   return (
-    <Form.Group>
+    <Form.Group className="fStyle">
       <Form.Label>{title}</Form.Label>
       <Form.Control
         className={design}

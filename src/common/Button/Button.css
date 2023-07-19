@@ -1,9 +1,9 @@
 .butStyle {
-  width: 12em;
-  font-size: 1.5em;
+  width: 10em;
+  font-size: 1.7em;
   border-radius: 1em;
   padding: 0.3em;
-  background-color: rgb(162, 123, 24);
+  background-color: rgb(150, 114, 24);
   font-weight: bold;
   text-align: center;
   color: rgb(238, 236, 236);
@@ -11,5 +11,5 @@
 }
 
 .butStyle:hover {
-  background-color: #514711;
+  background-color: #604c11;
 }
