@@ -9,7 +9,12 @@ export const userSlice = createSlice({
     },
     data: {
       firstName: "",
+      lastName: "",
       email: "",
+      address: "",
+      document: "",
+      dateOfBirth: "",
+      phoneNumber: "",
       role_id: ""
 
     },
@@ -19,9 +24,13 @@ export const userSlice = createSlice({
       let { payload } = action;
       state.credentials.token = payload.token;
       state.data.firstName = payload.data.firstName;
-      state.data.role_id = payload.data.role_id;
+      state.data.lastName = payload.data.lastName;
       state.data.email = payload.data.email;
-      // console.log(firstName);
+      state.data.address = payload.data.address;
+      state.data.document = payload.data.document;
+      state.data.dateOfBirth = payload.data.dateOfBirth;
+      state.data.phoneNumber = payload.data.phoneNumber;
+      state.data.role_id = payload.data.role_id;
     }
   }
 });

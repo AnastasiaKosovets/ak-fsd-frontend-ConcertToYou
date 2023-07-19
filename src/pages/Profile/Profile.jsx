@@ -16,6 +16,11 @@ export const Profile = () => {
             <p>Rol: {user.role_id}</p>
             <p>Email: {user.email}</p>
             <p>Nombre: {user.firstName}</p>
+            <p>Apellido: {user.lastName}</p>
+            <p>Dirección: {user.address}</p>
+            <p>DNI: {user.document}</p>
+            <p>Teléfono: {user.dateOfBirth}</p>
+            <p>Nombre: {user.phoneNumber}</p>
         </div>
     );
 }
