@@ -18,8 +18,10 @@ export const userSlice = createSlice({
     login: (state, action) => {
       let { payload } = action;
       state.credentials.token = payload.token;
-      state.data.firstName = payload.firstName;
-      state.data.role_id = payload.role_id;
+      state.data.firstName = payload.data.firstName;
+      state.data.role_id = payload.data.role_id;
+      state.data.email = payload.data.email;
+      // console.log(firstName);
     }
   }
 });
