@@ -33,11 +33,35 @@ export const Profile = () => {
     setEditMode(true);
   };
 
+  const ReadOnlyProductCard = ({ user }) => {
+    return (
+      <ProductCard
+        className="usersCardDesign"
+        firstName={`Nombre: ${user.firstName}`}
+        lastName={`Apellido: ${user.lastName}`}
+        email={`Email: ${user.email}`}
+        address={`Dirección: ${user.address}`}
+        phoneNumber={`Teléfono: ${user.phoneNumber}`}
+        document={`DNI / NIE: ${user.document}`}
+        dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
+      />
+    );
+  };
+
   const handleSaveChanges = () => {
     updateProfile(modifiedData, token)
       .then((res) => {
         console.log(res);
         setEditMode(false);
+
+        setModifiedData({
+            ...modifiedData,
+            address: res.data.address,
+            phoneNumber: res.data.phoneNumber,
+          });
+
+        dispatch(login({ token: token, data: res.data }));
+
       })
       .catch((error) => console.log(error));
   };
@@ -75,25 +99,38 @@ export const Profile = () => {
                         })
                       }
                     />
-                    {/* Repite el mismo patrón para los otros campos */}
+                    <label>Teléfono:</label>
+                    <input
+                      type="text"
+                      value={modifiedData.phoneNumber}
+                      onChange={(e) =>
+                        setModifiedData({
+                          ...modifiedData,
+                          phoneNumber: e.target.value,
+                        })
+                      }
+                    />
                   </form>
                   <button onClick={handleSaveChanges}>Guardar cambios</button>
                 </div>
               ) : (
-                <ProductCard
-                  className="usersCardDesign"
-                  firstName={`Nombre: ${user.firstName}`}
-                  lastName={`Apellido: ${user.lastName}`}
-                  email={`Email: ${user.email}`}
-                  address={`Dirección: ${user.address}`}
-                  document={`DNI / NIE: ${user.document}`}
-                  dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-                  phoneNumberNumber={`Teléfono: ${user.phoneNumber}`}
-                />
+                <ReadOnlyProductCard user={modifiedData} />
+                // <ProductCard
+                //   className="usersCardDesign"
+                //   firstName={`Nombre: ${user.firstName}`}
+                //   lastName={`Apellido: ${user.lastName}`}
+                //   email={`Email: ${user.email}`}
+                //   address={`Dirección: ${user.address}`}
+                //   document={`DNI / NIE: ${user.document}`}
+                //   dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
+                //   phoneNumberNumber={`Teléfono: ${user.phoneNumber}`}
+                // />
               )}
-              <button name={"Modificar"} className="modInfo" onClick={handleEditProfile}>
-                Modificar
-              </button>
+              {!editMode && (
+                <button name={"Modificar"} className="modInfo" onClick={handleEditProfile}>
+                  Modificar
+                </button>
+              )}
             </Col>
           )}
         </Row>
