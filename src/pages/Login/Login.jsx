@@ -41,10 +41,16 @@ export const Login = () => {
         <Row className="loginRowStyle">
           <Col xs={10} md={8}>
             <InputText
+            className="txtLogInput"
               title={"Email"}
               name={"email"}
               type={"email"}
               placeholder={"example@example.com"}
+              placeholderStyle={{ 
+                fontSize: "0.8em",
+                textAlign: "center",
+    fontFamily: "Courier New, Courier, monospace"
+               }}
               state={setUserData}
               errorState={setInputError}
             ></InputText>
@@ -57,6 +63,11 @@ export const Login = () => {
               name={"password"}
               type={"password"}
               placeholder={"********"}
+              placeholderStyle={{ 
+                fontSize: "0.8em",
+                textAlign: "center",
+    fontFamily: "Courier New, Courier, monospace"
+               }}
               state={setUserData}
               errorState={setInputError}
             ></InputText>

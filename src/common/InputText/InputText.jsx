@@ -12,6 +12,7 @@ export const InputText = ({
   errorState,
   title,
   maxLength,
+  placeholderStyle
 }) => {
 
   const inputHandler = (e, state) => {
@@ -40,7 +41,8 @@ const onBlurFunction = (e, errorState) => {
         name={name}
         onChange={(e) => inputHandler(e, state)}
         onBlur={(e) => onBlurFunction(e, errorState)}
-        maxLength={25}/>
+        style={placeholderStyle}
+        maxLength={maxLength}/>
       </Form.Group>
   );
 };

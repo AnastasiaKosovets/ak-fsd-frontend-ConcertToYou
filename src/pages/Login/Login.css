@@ -13,6 +13,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.txtLogInput {
+  font-family: 'Courier New', Courier, monospace;
+}
 /* 
 .loginRow {
   display: flex;
@@ -67,6 +71,11 @@
   color: goldenrod;
 }
 
+.errorInput {
+  color: rgb(249, 149, 149);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+}
 
 @media screen and (max-width: 768px) {
     .genLoginStyle {
