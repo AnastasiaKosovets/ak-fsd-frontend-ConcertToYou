@@ -13,3 +13,9 @@
 .butStyle:hover {
   background-color: #604c11;
 }
+
+@media (max-width: 768px) {
+  .butStyle {
+    width: 8em;
+  }
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import img2 from "../../../img/img2.jpg";
-import img3 from "../../../img/img3.jpg";
+import imsg3 from "../../../img/imsg3.jpg";
 import up from "../../../img/up.png";
 
 export const Home = () => {
@@ -37,7 +37,7 @@ export const Home = () => {
             <img src={img2} alt="Sala con piano" className="img1Home" />
           </Col>
           <Col xs={10} sm={6} md={6} lg={6} className="mb-5">
-            <img src={img3} alt="Sala con piano" className="img2Home" />
+            <img src={imsg3} alt="Sala con piano" className="img2Home" />
           </Col>
           <Col xs={10} sm={6} md={6} lg={6}>
             <div className="text2">Sumérgete en la magia de los conciertos</div>

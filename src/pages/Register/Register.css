@@ -11,7 +11,7 @@
   height: 50em;
   width: 35em;
   margin-bottom: 4em;
-  background: rgba(180, 145, 59, 0.122);
+  background: rgba(163, 142, 83, 0.122);
   color: white;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(0.5em);
@@ -36,6 +36,7 @@
 .customInput {
   height: 2em;
   width: 20em;
+  text-align: center;
   font-family: "Courier New", Courier, monospace;
   font-size: large;
   border: none;
