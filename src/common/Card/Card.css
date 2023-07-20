@@ -1,0 +1,23 @@
+/* General product card design */
+.productCardDesign {
+    background-color: rgb(43, 40, 40);
+    box-shadow: 0rem 0rem 0.3rem rgb(186, 186, 186);
+    border-radius: 1em;
+    margin: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    /* width: 20rem; */
+  }
+  
+  /* Hover */
+  /* .productCardDesign:hover {
+    background-color: #eaebecd2;
+    transition: 0.3s;
+  } */
+  
+  .pictureDesign {
+    margin-top: 1em;
+  }
+  

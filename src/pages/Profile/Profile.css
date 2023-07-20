@@ -1,0 +1,43 @@
+.adminPageStyle {
+  height: 100vh;
+  background-color: rgb(58, 57, 57);
+}
+
+.adminCont {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  color: white;
+  padding-top: 4em;
+}
+
+.admTitle {
+  padding-top: 3em;
+}
+
+.fRowA {
+    height: 25em;
+    width: 8em;
+    display: flex;
+    flex-direction: column;
+}
+.modInfo {
+    text-decoration: none;
+    color: white;
+    background-color: rgb(41, 38, 38);
+    box-shadow: 0rem 0rem 0.3rem rgb(186, 186, 186);
+    height: 2.5em;
+    width: 9em;
+    border-radius: 1em;
+    border: none;
+    margin-left: 5em;
+}
+
+.modInfo:hover {
+    background-color: rgb(62, 61, 58);
+}
+
+.rSecondA {
+    display: flex;
+    align-items: center;
+}
