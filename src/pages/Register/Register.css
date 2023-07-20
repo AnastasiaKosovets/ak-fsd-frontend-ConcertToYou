@@ -1,52 +1,117 @@
 .registerMainStyle {
-    height: auto;
-    background-color: rgb(17, 17, 17);
+  height: auto;
+  background-color: rgb(17, 17, 17);
 }
 
-/* .styleContRegister{
-    display: grid;
-    flex-direction: column;
-} */
-
 .registerRowStyle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1em;
-    height: 50em;
-    width: 35em;
-    margin-bottom: 4em;
-    background: rgba(180, 145, 59, 0.122);
-    color: white;
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(0.5em);
-    border: 1.5px solid rgba(209, 213, 219, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+  height: 50em;
+  width: 35em;
+  margin-bottom: 4em;
+  background: rgba(180, 145, 59, 0.122);
+  color: white;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(0.5em);
+  border: 1.5px solid rgba(209, 213, 219, 0.3);
+}
+
+.formRegisterStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerTxt {
+  padding-top: 1em;
+  font-size: 7vh;
+  align-items: center;
+  text-align: center;
+  color: goldenrod;
+  margin-bottom: 1em;
+}
+
+.customInput {
+  height: 2em;
+  width: 20em;
+  font-family: "Courier New", Courier, monospace;
+  font-size: large;
+  border: none;
+  border-radius: 1em;
+}
+
+.txtReg {
+  font-size: x-large;
+}
+
+.imgCont {
+  position: relative;
+  width: 8em;
+}
+
+.registerImg {
+    border-radius: 2em;
+}
+
+.textRegTitle {
+  color: rgb(255, 220, 187);
+  width: 10em;
+  font-size: 3.5em;
+  position: absolute;
+  top: 2em;
+  animation: slideRight 2s forwards;
+}
+
+@keyframes slideRight {
+    0% {
+        left: 100%;
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(10%);
+      }
   }
 
-  .formRegisterStyle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  @media (max-width: 768px) {
+    .registerRowStyle {
+      display: flex;
+      height: auto; 
+      max-width: none; 
+      margin-bottom: 2em;
+    }
 
-  .registerTxt {
-    padding: 1em;
-    font-size: 7vh;
-    align-items: center;
-    text-align: center;
-    color: goldenrod;
-    margin-bottom: 1em;
-  }
+    .formRegisterStyle {
+        flex-direction: column;
+    }
+  
+    .registerRowStyle {
+        height: 50em;
+        width: 20em;
+    }  
 
-  .customInput  {
-    height: 2em;
-    width: 20em;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: large;
-    border: none;
-    border-radius: 1em;
-  }
+    .registerTxt {
+      font-size: 4vh;
+    }
+  
+    .customInput {
+      width: 100%;
+      max-width: 20em;
+    }
+  
+    .imgCont {
+      max-width: none; 
+    }
 
-  .txtReg {
-    font-size: x-large;
+    .registerImg {
+        height: 30em;
+        width: 20em;
+    }
+  
+    .textRegTitle {
+      animation: none;
+      text-align: center;
+      font-size: 2em; 
+    }
   }

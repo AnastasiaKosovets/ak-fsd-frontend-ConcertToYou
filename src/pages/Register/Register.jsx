@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import "./Register.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-import { InputText } from "../../common/InputText/InputText";
+// import { InputText } from "../../common/InputText/InputText";
 import { useNavigate } from "react-router";
 import { myRegister } from "../../services/apiCalls";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import img14 from "../../../img/img14.jpg";
+import img9 from "../../../img/img9.jpg";
+// import ReactDOM from 'react-dom';
+// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+// import { Carousel } from 'react-responsive-carousel';
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -65,14 +70,14 @@ export const Register = () => {
 
   return (
     <div style={{ fontFamily: "Great Vibes" }} className="registerMainStyle">
-        <div className="registerTxt">Regístrate</div>
+      <div className="registerTxt">Regístrate</div>
       <form onSubmit={handleRegister} className="formRegisterStyle">
         <Container className="formRegisterStyle">
           <Row className="registerRowStyle">
             <Col xs={10} md={8}>
               <Col className="txtReg">Nombre</Col>
-              <input 
-              className="customInput"
+              <input
+                className="customInput"
                 type="text"
                 id="firstName"
                 name="firstName"
@@ -84,7 +89,7 @@ export const Register = () => {
             <Col xs={10} md={8}>
               <Col className="txtReg">Apellido</Col>
               <input
-              className="customInput"
+                className="customInput"
                 type="text"
                 id="lastName"
                 name="lastName"
@@ -96,7 +101,7 @@ export const Register = () => {
             <Col xs={10} md={8}>
               <Col className="txtReg">Email</Col>
               <input
-              className="customInput"
+                className="customInput"
                 type="email"
                 id="email"
                 name="email"
@@ -108,7 +113,7 @@ export const Register = () => {
             <Col xs={10} md={8}>
               <Col className="txtReg">Contraseña</Col>
               <input
-              className="customInput"
+                className="customInput"
                 type="password"
                 id="password"
                 name="password"
@@ -119,7 +124,7 @@ export const Register = () => {
             <Col xs={10} md={8}>
               <Col className="txtReg">Dirección</Col>
               <input
-              className="customInput"
+                className="customInput"
                 type="text"
                 id="address"
                 name="address"
@@ -131,7 +136,7 @@ export const Register = () => {
             <Col xs={10} md={8}>
               <Col className="txtReg">DNI / NIE</Col>
               <input
-              className="customInput"
+                className="customInput"
                 type="text"
                 id="document"
                 name="document"
@@ -143,7 +148,7 @@ export const Register = () => {
             <Col xs={10} md={8}>
               <Col className="txtReg">Fecha de nacimiento</Col>
               <input
-              className="customInput"
+                className="customInput"
                 type="text"
                 id="dateOfBirth"
                 name="dateOfBirth"
@@ -155,7 +160,7 @@ export const Register = () => {
             <Col xs={10} md={8}>
               <Col className="txtReg">Teléfono</Col>
               <input
-              className="customInput"
+                className="customInput"
                 type="text"
                 id="phoneNumber"
                 name="phoneNumber"
@@ -165,17 +170,24 @@ export const Register = () => {
               />
             </Col>
             <Col xs={10} md={6}>
-        <Button type="submit" name={"Registrate"}></Button>
+              <Button type="submit" name={"Registrate"}></Button>
             </Col>
           </Row>
-          <Row className="bg-primary">
-            <Col xs={10} md={8} >
-            Hola
+          <Row>
+            <Col xs={10} sm={6} md={5} lg={2}>
+              <div class="imgCont">
+                <div class="textRegTitle">
+                  Vive la experiencia de los mejores conciertos en nuestra
+                  plataforma
+                </div>
+              </div>
+            </Col>
+            <Col xs={8} sm={6} md={6} lg={6}>
+              <img src={img9} alt="musics" className="registerImg" />
             </Col>
           </Row>
         </Container>
       </form>
     </div>
-    
   );
 };

@@ -1,6 +1,5 @@
 .genLoginStyle {
-  height: auto;
-  /* background-color: rgb(17, 17, 17); */
+  height: 100vh;
   background-image: url("../../../img/backLogin.jpg");
   background-size: cover;
   background-attachment: fixed;
