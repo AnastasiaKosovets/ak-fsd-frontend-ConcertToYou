@@ -26,6 +26,7 @@ export const userSlice = createSlice({
       state.data.firstName = payload.data.firstName;
       state.data.lastName = payload.data.lastName;
       state.data.email = payload.data.email;
+      state.data.password = payload.data.password;
       state.data.address = payload.data.address;
       state.data.document = payload.data.document;
       state.data.dateOfBirth = payload.data.dateOfBirth;

@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 export const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [userData, setuserData] = useState({});
+  const [userData, setUserData] = useState({});
   const [inputError, setInputError] = useState({});
 
   const handleLogin = (e) => {
@@ -38,14 +38,14 @@ export const Login = () => {
             Login
           </Col>
         </Row>
-        <Row className="loginRow">
+        <Row className="loginRowStyle">
           <Col xs={10} md={8}>
             <InputText
               title={"Email"}
               name={"email"}
               type={"email"}
               placeholder={"example@example.com"}
-              state={setuserData}
+              state={setUserData}
               errorState={setInputError}
             ></InputText>
             <div className="errorInput">{inputError.emailError}</div>
@@ -57,7 +57,7 @@ export const Login = () => {
               name={"password"}
               type={"password"}
               placeholder={"********"}
-              state={setuserData}
+              state={setUserData}
               errorState={setInputError}
             ></InputText>
             <div className="errorInput">{inputError.passwordError}</div>
@@ -70,26 +70,6 @@ export const Login = () => {
               <Link to="/register" className="registerLink">
                 ¡Regístrate aquí!
               </Link>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="loginTxt">
-            Login
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="loginTxt">
-            Login
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="loginTxt">
-            Login
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12} className="loginTxt">
-            Login
           </Col>
         </Row>
       </Container>

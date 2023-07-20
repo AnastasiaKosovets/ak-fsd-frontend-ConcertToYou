@@ -11,3 +11,9 @@ export const logOut = async (userData) => {
     let res = await axios.post(`${root}/logout`, userData);
     return res.data;
 }
+
+export const myRegister = async (userData) => {
+    let res = await axios.post(`${root}/register`, userData);
+    return res.data;
+}
+   
