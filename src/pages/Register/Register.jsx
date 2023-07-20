@@ -2,19 +2,14 @@ import React, { useState } from "react";
 import "./Register.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-// import { InputText } from "../../common/InputText/InputText";
+import { checkError } from "../../services/useful";
 import { useNavigate } from "react-router";
 import { myRegister } from "../../services/apiCalls";
-// import { Link } from "react-router-dom";
-import img14 from "../../../img/img14.jpg";
 import img9 from "../../../img/img9.jpg";
-// import ReactDOM from 'react-dom';
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
 
 export const Register = () => {
   const navigate = useNavigate();
-  const [inputError, setInputError] = useState({});
+  const [successPopup, setSuccessPopup] = useState(false);
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -60,9 +55,10 @@ export const Register = () => {
     myRegister(userData)
       .then((res) => {
         console.log(res);
+        setSuccessPopup(true);
         setTimeout(() => {
           navigate("/login");
-        }, 500);
+        }, 1500);
       })
 
       .catch((error) => console.log(error));
@@ -84,7 +80,9 @@ export const Register = () => {
                 placeholder="Nombre"
                 value={userData.firstName}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.firstNameError && <span className="error">{errorData.firstNameError}</span>}</div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Apellido</Col>
@@ -96,7 +94,9 @@ export const Register = () => {
                 placeholder="Apellido"
                 value={userData.lastName}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.lastNameError && <span className="error">{errorData.lastNameError}</span>}</div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Email</Col>
@@ -108,7 +108,9 @@ export const Register = () => {
                 placeholder="Email"
                 value={userData.email}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.emailError && <span className="error">{errorData.emailError}</span>}</div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Contraseña</Col>
@@ -119,7 +121,9 @@ export const Register = () => {
                 name="password"
                 value={userData.password}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.passwordError && <span className="error">{errorData.passwordError}</span>}</div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Dirección</Col>
@@ -131,7 +135,9 @@ export const Register = () => {
                 placeholder="Dirección"
                 value={userData.address}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.addressError && <span className="error">{errorData.addressError}</span>}</div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">DNI / NIE</Col>
@@ -143,7 +149,9 @@ export const Register = () => {
                 placeholder="DNI o NIE"
                 value={userData.document}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.documentError && <span className="error">{errorData.documentError}</span>}</div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Fecha de nacimiento</Col>
@@ -155,7 +163,9 @@ export const Register = () => {
                 placeholder="Fecha de nacimiento"
                 value={userData.dateOfBirth}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.dateOfBirthError && <span className="error">{errorData.dateOfBirthError}</span>}</div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Teléfono</Col>
@@ -167,7 +177,9 @@ export const Register = () => {
                 placeholder="Teléfono"
                 value={userData.phoneNumber}
                 onChange={handleChange}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">{errorData.phoneNumberError && <span className="error">{errorData.phoneNumberError}</span>}</div>
             </Col>
             <Col xs={10} md={6}>
               <Button type="submit" name={"Registrate"}></Button>
@@ -188,6 +200,11 @@ export const Register = () => {
           </Row>
         </Container>
       </form>
+      {successPopup && (
+        <div className="successPopUp">
+          ¡Gracias por registrarte!
+        </div>
+      )}
     </div>
   );
 };
