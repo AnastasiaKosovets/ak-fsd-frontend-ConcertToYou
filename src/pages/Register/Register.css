@@ -3,23 +3,20 @@
     background-color: rgb(17, 17, 17);
 }
 
-.contRegister {
-    display: flex;
+/* .styleContRegister{
+    display: grid;
     flex-direction: column;
-    align-items: center;
-}
+} */
 
-.loginRow {
+.registerRowStyle {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     border-radius: 1em;
     height: 50em;
-    width: 45em;
+    width: 35em;
     margin-bottom: 4em;
-    /* box-shadow: 0rem 0rem 0.5rem 0.1rem rgb(139, 111, 39); */
-    background: rgba(96, 84, 54, 0.122);
+    background: rgba(180, 145, 59, 0.122);
     color: white;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(0.5em);
@@ -28,8 +25,28 @@
 
   .formRegisterStyle {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 4em;
+  }
+
+  .registerTxt {
+    padding: 1em;
+    font-size: 7vh;
+    align-items: center;
+    text-align: center;
+    color: goldenrod;
+    margin-bottom: 1em;
+  }
+
+  .customInput  {
+    height: 2em;
+    width: 20em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    border: none;
+    border-radius: 1em;
+  }
+
+  .txtReg {
+    font-size: x-large;
   }

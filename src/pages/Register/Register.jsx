@@ -5,9 +5,11 @@ import { Button } from "../../common/Button/Button";
 import { InputText } from "../../common/InputText/InputText";
 import { useNavigate } from "react-router";
 import { myRegister } from "../../services/apiCalls";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [inputError, setInputError] = useState({});
   const [userData, setUserData] = useState({
     firstName: "",
     lastName: "",
@@ -19,24 +21,36 @@ export const Register = () => {
     phoneNumber: "",
   });
 
+  const [errorData, setErrorData] = useState({
+    firstNameError: "",
+    lastNameError: "",
+    emailError: "",
+    passwordError: "",
+    addressError: "",
+    documentError: "",
+    dateOfBirthError: "",
+    phoneNumberError: "",
+  });
+
   const handleChange = (e) => {
     setUserData({
-        ...userData,
-        [e.target.name]: e.target.value,
+      ...userData,
+      [e.target.name]: e.target.value,
     });
   };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     try {
-//         await myRegister(userData);
-//         console.log(userData);
-//     } catch (error) {
-//         console.log(error.response.data);
-//     }
-//   };
+  const handleBlur = (e) => {
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value;
+    const errorMessage = checkError(fieldName, fieldValue);
 
-const handleSubmit = (e) => {
+    setErrorData({
+      ...errorData,
+      [fieldName + "Error"]: errorMessage,
+    });
+  };
+
+  const handleRegister = (e) => {
     e.preventDefault();
     myRegister(userData)
       .then((res) => {
@@ -50,173 +64,118 @@ const handleSubmit = (e) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="formRegisterStyle">
-      <div >
-        <label htmlFor="firstName">First Name</label>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          value={userData.firstName}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={userData.lastName}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={userData.email}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={userData.password}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="address">Address</label>
-        <input
-          type="text"
-          id="address"
-          name="address"
-          value={userData.address}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="document">Document</label>
-        <input
-          type="text"
-          id="document"
-          name="document"
-          value={userData.document}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="dateOfBirth">Date of Birth</label>
-        <input
-          type="text"
-          id="dateOfBirth"
-          name="dateOfBirth"
-          value={userData.dateOfBirth}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label htmlFor="phoneNumber">Phone Number</label>
-        <input
-          type="text"
-          id="phoneNumber"
-          name="phoneNumber"
-          value={userData.phoneNumber}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Register</button>
-    </form>
-    // <div className="registerMainStyle" style={{ fontFamily: "Great Vibes" }}>
-    //   <Container className="mainContainer">
-    //     <Row>
-    //       <Col md={12} className="loginTxt">
-    //         Login
-    //       </Col>
-    //     </Row>
-    //     <Row className="loginRow">
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           title={"Nombre"}
-    //           name={"firstName"}
-    //           placeholder={"Nombre"}
-    //           state={setUserData}
-    //         ></InputText>
-    //       </Col>
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           title={"Apellido"}
-    //           name={"lastName"}
-    //           placeholder={"Apellido"}
-    //           state={setUserData}
-    //         ></InputText>
-    //       </Col>
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           title={"Email"}
-    //           name={"email"}
-    //           type={"email"}
-    //           placeholder={"example@example.com"}
-    //           state={setUserData}
-    //           errorState={setInputError}
-    //         ></InputText>
-    //         <div className="errorInput">{inputError.emailError}</div>
-    //       </Col>
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           className="inputStyle"
-    //           title={"Password"}
-    //           name={"password"}
-    //           type={"password"}
-    //           placeholder={"********"}
-    //           state={setUserData}
-    //           errorState={setInputError}
-    //         ></InputText>
-    //         <div className="errorInput">{inputError.passwordError}</div>
-    //       </Col>
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           title={"Dirección"}
-    //           name={"address"}
-    //           placeholder={"Dirección"}
-    //           state={setUserData}
-    //         ></InputText>
-    //       </Col>
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           title={"DNI"}
-    //           name={"document"}
-    //           placeholder={"DNI"}
-    //           state={setUserData}
-    //         ></InputText>
-    //       </Col>
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           title={"Fecha de nacimiento"}
-    //           name={"dateOfBirth"}
-    //           placeholder={"Fecha de nacimiento"}
-    //           state={setUserData}
-    //         ></InputText>
-    //       </Col>
-    //       <Col xs={10} md={8}>
-    //         <InputText
-    //           title={"Teléfono"}
-    //           name={"phoneNumber"}
-    //           placeholder={"Teléfono"}
-    //           state={setUserData}
-    //         ></InputText>
-    //       </Col>
-    //       <Col xs={10} md={6} lg={5} className="my-3 mb-4">
-    //         <Button name={"Register"} onClick={() => registerOn()}></Button>
-    //       </Col>
-    //     </Row>
-    //   </Container>
-    // </div>
+    <div style={{ fontFamily: "Great Vibes" }} className="registerMainStyle">
+        <div className="registerTxt">Regístrate</div>
+      <form onSubmit={handleRegister} className="formRegisterStyle">
+        <Container className="formRegisterStyle">
+          <Row className="registerRowStyle">
+            <Col xs={10} md={8}>
+              <Col className="txtReg">Nombre</Col>
+              <input 
+              className="customInput"
+                type="text"
+                id="firstName"
+                name="firstName"
+                placeholder="Nombre"
+                value={userData.firstName}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={8}>
+              <Col className="txtReg">Apellido</Col>
+              <input
+              className="customInput"
+                type="text"
+                id="lastName"
+                name="lastName"
+                placeholder="Apellido"
+                value={userData.lastName}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={8}>
+              <Col className="txtReg">Email</Col>
+              <input
+              className="customInput"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+                value={userData.email}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={8}>
+              <Col className="txtReg">Contraseña</Col>
+              <input
+              className="customInput"
+                type="password"
+                id="password"
+                name="password"
+                value={userData.password}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={8}>
+              <Col className="txtReg">Dirección</Col>
+              <input
+              className="customInput"
+                type="text"
+                id="address"
+                name="address"
+                placeholder="Dirección"
+                value={userData.address}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={8}>
+              <Col className="txtReg">DNI / NIE</Col>
+              <input
+              className="customInput"
+                type="text"
+                id="document"
+                name="document"
+                placeholder="DNI o NIE"
+                value={userData.document}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={8}>
+              <Col className="txtReg">Fecha de nacimiento</Col>
+              <input
+              className="customInput"
+                type="text"
+                id="dateOfBirth"
+                name="dateOfBirth"
+                placeholder="Fecha de nacimiento"
+                value={userData.dateOfBirth}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={8}>
+              <Col className="txtReg">Teléfono</Col>
+              <input
+              className="customInput"
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                placeholder="Teléfono"
+                value={userData.phoneNumber}
+                onChange={handleChange}
+              />
+            </Col>
+            <Col xs={10} md={6}>
+        <Button type="submit" name={"Registrate"}></Button>
+            </Col>
+          </Row>
+          <Row className="bg-primary">
+            <Col xs={10} md={8} >
+            Hola
+            </Col>
+          </Row>
+        </Container>
+      </form>
+    </div>
+    
   );
 };
