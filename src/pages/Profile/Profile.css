@@ -1,5 +1,6 @@
 .adminPageStyle {
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   background-color: rgb(58, 57, 57);
 }
 
@@ -40,4 +41,8 @@
 .rSecondA {
     display: flex;
     align-items: center;
+}
+
+.thisCard {
+    color: white;
 }

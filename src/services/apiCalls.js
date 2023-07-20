@@ -26,3 +26,13 @@ export const updateProfile = async (userData, token) => {
     let res = await axios.put(`${root}/users`, userData, access);
     return res.data;
   };
+
+export const getUsers = async ( token) => {
+    let access = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    let res = await axios.get(`${root}/users`, access)
+    return res.data;
+}

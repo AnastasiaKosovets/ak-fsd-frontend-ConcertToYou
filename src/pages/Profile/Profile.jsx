@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Nav, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { Link } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
-import { updateProfile } from "../../services/apiCalls";
+import { getUsers, updateProfile } from "../../services/apiCalls";
 
 export const Profile = () => {
   const user = useSelector(userData);
@@ -23,7 +23,26 @@ export const Profile = () => {
     dateOfBirth: user.dateOfBirth,
     phoneNumber: user.phoneNumber,
   });
-  console.log(user);
+  const [infoUser, setInfoUser] = useState([]);
+  const [showUserInfo, setShowUSerInfo] = useState(false);
+//   console.log(user);
+
+  useEffect(() => {
+    if (showUserInfo) {
+      getUsers(token)
+        .then((res) => {
+          setInfoUser(res.data);
+        })
+        .catch((error) => {
+          console.log("Error getting users:", error);
+        //   setShowUSerInfo(false);
+        });
+    }
+  }, [showUserInfo, token]);
+
+  const handleShowUsers = () => {
+    setShowUSerInfo((prevShowUserInfo) => !prevShowUserInfo);
+  };
 
   const handleShowProfileData = () => {
     setShowProfileData(!showProfileData);
@@ -55,13 +74,11 @@ export const Profile = () => {
         setEditMode(false);
 
         setModifiedData({
-            ...modifiedData,
-            address: res.data.address,
-            phoneNumber: res.data.phoneNumber,
-          });
-
+          ...modifiedData,
+          address: res.data.address,
+          phoneNumber: res.data.phoneNumber,
+        });
         dispatch(login({ token: token, data: res.data }));
-
       })
       .catch((error) => console.log(error));
   };
@@ -74,16 +91,41 @@ export const Profile = () => {
             <Button name={"Mis Datos"} onClick={handleShowProfileData} />
           </Col>
           <Col xs={6} md={2}>
-            <div> Usuarios </div>
+            <Button name={"Usuarios"} onClick={handleShowUsers} />
           </Col>
           <Col xs={6} md={2}>
             <div> Grupos </div>
           </Col>
         </Row>
         <Row className="rSecondA">
+        {showUserInfo ? (
+        <div>
+          {infoUser.length > 0 ? (
+            <div className="thisCard">
+              {infoUser.map((user) => {
+                return (
+                  <div key={user.id}>
+                    <ProductCard
+                      className="usersCardDesign"
+                      firstName={`Nombre: ${user.firstName}`}
+                      lastName={`Apellido: ${user.lastName}`}
+                      email={`Email: ${user.email}`}
+                      address={`Dirección: ${user.address}`}
+                      phoneNumber={`Teléfono: ${user.phoneNumber}`}
+                      document={`DNI / NIE: ${user.document}`}
+                      dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div>CARGANDO...</div>
+          )}
+        </div>
+      ) : null}
           {showProfileData && (
             <Col xs={6} md={6}>
-              <div> DATOS </div>
               {editMode ? (
                 <div>
                   <h3>Modificar datos:</h3>
@@ -112,22 +154,17 @@ export const Profile = () => {
                     />
                   </form>
                   <button onClick={handleSaveChanges}>Guardar cambios</button>
+                  <button onClick={() => setEditMode(false)}>Cancelar</button>
                 </div>
               ) : (
                 <ReadOnlyProductCard user={modifiedData} />
-                // <ProductCard
-                //   className="usersCardDesign"
-                //   firstName={`Nombre: ${user.firstName}`}
-                //   lastName={`Apellido: ${user.lastName}`}
-                //   email={`Email: ${user.email}`}
-                //   address={`Dirección: ${user.address}`}
-                //   document={`DNI / NIE: ${user.document}`}
-                //   dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-                //   phoneNumberNumber={`Teléfono: ${user.phoneNumber}`}
-                // />
               )}
               {!editMode && (
-                <button name={"Modificar"} className="modInfo" onClick={handleEditProfile}>
+                <button
+                  name={"Modificar"}
+                  className="modInfo"
+                  onClick={handleEditProfile}
+                >
                   Modificar
                 </button>
               )}
