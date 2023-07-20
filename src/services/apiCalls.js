@@ -17,12 +17,12 @@ export const myRegister = async (userData) => {
     return res.data;
 }
    
-export const updateProfile = async (body, token) => {
+export const updateProfile = async (userData, token) => {
     let access = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-    let res = await axios.put(`${root}/users`, body, access);
+    let res = await axios.put(`${root}/users`, userData, access);
     return res.data;
   };
