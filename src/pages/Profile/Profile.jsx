@@ -7,7 +7,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
-import { getUsers, restoreUser, updateProfile } from "../../services/apiCalls";
+import { getUsers, updateProfile } from "../../services/apiCalls";
 
 export const Profile = () => {
   const user = useSelector(userData);
@@ -32,7 +32,7 @@ export const Profile = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if(window.scrollY > 300) {
+      if (window.scrollY > 300) {
         setShowScrollButton(true);
       } else {
         setShowScrollButton(false);
@@ -42,13 +42,12 @@ export const Profile = () => {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-    }
+    };
   }, []);
 
   const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth"});
-  }
-
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (showUserInfo) {
@@ -104,19 +103,18 @@ export const Profile = () => {
       .catch((error) => console.log(error));
   };
 
-  
   return (
     <div className="adminPageStyle">
       <Container className="adminCont">
         <Row className="fRowA">
-          <Col xs={6} md={2}>
+          <Col xs={6} md={2} className="mb-4 my-4">
             <Button name={"Mis Datos"} onClick={handleShowProfileData} />
           </Col>
-          <Col xs={6} md={2}>
+          <Col xs={6} md={2} className="mb-4">
             <Button name={"Usuarios"} onClick={handleShowUsers} />
           </Col>
           <Col xs={6} md={2}>
-            <div> Grupos </div>
+            <Button name={"Grupos"} onClick={handleShowUsers} />
           </Col>
         </Row>
         <Row className="rSecondA">
@@ -139,7 +137,6 @@ export const Profile = () => {
                           document={`DNI / NIE: ${user.document}`}
                           dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
                         />
-                        
                       </div>
                     );
                   })}
@@ -152,11 +149,12 @@ export const Profile = () => {
           {showProfileData && (
             <Col xs={6} md={6}>
               {editMode ? (
-                <div>
+                <div className="centralInfo">
                   <h3>Modificar datos:</h3>
-                  <form>
+                  <form className="formStyleAdmin">
                     <label>Dirección:</label>
                     <input
+                    className="inputTxtAdminChange"
                       type="text"
                       value={modifiedData.address}
                       onChange={(e) =>
@@ -168,6 +166,7 @@ export const Profile = () => {
                     />
                     <label>Teléfono:</label>
                     <input
+                    className="inputTxtAdminChange"
                       type="text"
                       value={modifiedData.phoneNumber}
                       onChange={(e) =>
@@ -178,17 +177,17 @@ export const Profile = () => {
                       }
                     />
                   </form>
-                  <button onClick={handleSaveChanges}>Guardar cambios</button>
-                  <button onClick={() => setEditMode(false)}>Cancelar</button>
+                  <button className="btnAdminClickA" onClick={handleSaveChanges}>Guardar cambios</button>
+                  <button className="btnAdminClickB" onClick={() => setEditMode(false)}>Cancelar</button>
                 </div>
               ) : (
                 <ReadOnlyProductCard user={modifiedData} />
               )}
               {!editMode && (
                 <button
-                name={"Modificar"}
-                className="modInfo"
-                onClick={handleEditProfile}
+                  name={"Modificar"}
+                  className="modInfo"
+                  onClick={handleEditProfile}
                 >
                   Modificar
                 </button>
@@ -196,11 +195,11 @@ export const Profile = () => {
             </Col>
           )}
         </Row>
-          {showScrollButton && (
-            <button className="scrollButton bg-transparent" onClick={scrollTop}>
-              <img src={up} alt="boton hacía arriba" className="up" />
-            </button>
-          )}
+        {showScrollButton && (
+          <button className="scrollButton bg-transparent" onClick={scrollTop}>
+            <img src={up} alt="boton hacía arriba" className="up" />
+          </button>
+        )}
       </Container>
     </div>
   );

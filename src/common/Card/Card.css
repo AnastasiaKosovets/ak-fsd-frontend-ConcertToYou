@@ -8,15 +8,12 @@
     transition: 0.3s;
     display: flex;
     justify-content: center;
-    /* width: 20rem; */
   }
   
-  /* Hover */
-  /* .productCardDesign:hover {
-    background-color: #eaebecd2;
-    transition: 0.3s;
-  } */
-  
+  .buttonContainer {
+    display: flex;
+  }
+
   .pictureDesign {
     margin-top: 1em;
   }
