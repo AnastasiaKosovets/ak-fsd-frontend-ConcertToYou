@@ -7,7 +7,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
-import { getUsers, updateProfile } from "../../services/apiCalls";
+import { getUsers, restoreUser, updateProfile } from "../../services/apiCalls";
 
 export const Profile = () => {
   const user = useSelector(userData);
@@ -103,6 +103,7 @@ export const Profile = () => {
       .catch((error) => console.log(error));
   };
 
+  
   return (
     <div className="adminPageStyle">
       <Container className="adminCont">
@@ -137,12 +138,7 @@ export const Profile = () => {
                           document={`DNI / NIE: ${user.document}`}
                           dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
                         />
-                        <button
-                          onClick={() => setEditMode(false)}
-                          className="btnAdmin"
-                        >
-                          Restaurar
-                        </button>
+                        
                       </div>
                     );
                   })}

@@ -20,7 +20,9 @@ export const myRegister = async (userData) => {
     return res.data;
 }
 
-// UPDATE PROFILE ADMIN
+// ADMIN PART :
+
+// UPDATE PROFILE
 export const updateProfile = async (userData, token) => {
     let access = {
       headers: {
@@ -30,8 +32,7 @@ export const updateProfile = async (userData, token) => {
     let res = await axios.put(`${root}/users`, userData, access);
     return res.data;
   };
-
-//   GET ALL USERS
+//   GET ALL USERS 
 export const getUsers = async ( token) => {
     let access = {
         headers: {
@@ -41,7 +42,7 @@ export const getUsers = async ( token) => {
     let res = await axios.get(`${root}/users`, access)
     return res.data;
 }
-
+// DELETE  USER
 export const deleteUser = async (token, id) => {
     let access = {
         headers: {
@@ -49,5 +50,15 @@ export const deleteUser = async (token, id) => {
         },
       };
       let res = await axios.delete(`${root}/user/delete/${id}`, access);
+      return res.data;
+}
+// RESTORE USER
+export const restoreUser = async (token, id) => {
+    let access = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      let res = await axios.post(`${root}/users/restore/${id}`, access);
       return res.data;
 }

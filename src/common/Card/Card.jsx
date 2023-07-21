@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Card.css";
 import Card from "react-bootstrap/Card";
-import { deleteUser } from "../../services/apiCalls";
+import { deleteUser, restoreUser } from "../../services/apiCalls";
 import { Link } from "react-router-dom";
 
 export const ProductCard = ({
@@ -15,16 +15,29 @@ export const ProductCard = ({
   phoneNumber,
   role_id,
   date,
-  token
+  token,
 }) => {
+
+
   const handleDeleteUser = async () => {
     try {
       const response = await deleteUser(token, id);
       console.log(response);
     } catch (error) {
-      console.error('Error eliminando usuario:', error);
+      console.error("Error eliminando usuario:", error);
     }
-  }
+  };
+
+  
+  const handleRestoreUser = async () => {
+    try {
+      const res = await restoreUser(token, id);
+      console.log(res);
+    } catch (error) {
+      console.error("Error recuperando perfil:", error);
+    }
+  };
+
   useEffect(() => {}, []);
 
   return (
@@ -46,6 +59,9 @@ export const ProductCard = ({
         <div className="buttonContainer">
           <button button onClick={handleDeleteUser} className="btnAdmin">
             Eliminar Perfil
+          </button>
+          <button onClick={handleRestoreUser} className="btnAdmin">
+            Restaurar
           </button>
         </div>
       </Card>
