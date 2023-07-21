@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
 import { getUsers, updateProfile } from "../../services/apiCalls";
 
@@ -27,7 +27,6 @@ export const Profile = () => {
   });
   const [infoUser, setInfoUser] = useState([]);
   const [showUserInfo, setShowUSerInfo] = useState(false);
-
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
@@ -60,6 +59,7 @@ export const Profile = () => {
         });
     }
   }, [showUserInfo, token]);
+
 
   const handleShowUsers = () => {
     setShowUSerInfo((prevShowUserInfo) => !prevShowUserInfo);
@@ -114,7 +114,9 @@ export const Profile = () => {
             <Button name={"Usuarios"} onClick={handleShowUsers} />
           </Col>
           <Col xs={6} md={2}>
-            <Button name={"Grupos"} onClick={handleShowUsers} />
+          <Link to="/admingroups">
+        <Button name={"Grupos"}></Button>
+      </Link>
           </Col>
         </Row>
         <Row className="rSecondA">

@@ -16,6 +16,10 @@ export const ProductCard = ({
   role_id,
   date,
   token,
+  groupName,
+  genre,
+  description,
+  musicsNumber
 }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
@@ -80,6 +84,10 @@ export const ProductCard = ({
           <Card.Text className="cardText">{phoneNumber}</Card.Text>
           <Card.Text className="cardText">{role_id}</Card.Text>
           <Card.Text className="cardText">{date}</Card.Text>
+          <Card.Text className="cardText">{groupName}</Card.Text>
+          <Card.Text className="cardText">{genre}</Card.Text>
+          <Card.Text className="cardText">{description}</Card.Text>
+          <Card.Text className="cardText">{musicsNumber}</Card.Text>
         </Card.Body>
         <div className="buttonContainer">
           <button

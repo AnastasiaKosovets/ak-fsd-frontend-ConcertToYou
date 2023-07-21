@@ -62,3 +62,13 @@ export const restoreUser = async (token, id) => {
       let res = await axios.post(`${root}/users/restore/${id}`, access);
       return res.data;
 }
+// GET ALL GROUPS
+export const getGroups = async ( token) => {
+  let access = {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  };
+  let res = await axios.get(`${root}/groups`, access)
+  return res.data;
+}
