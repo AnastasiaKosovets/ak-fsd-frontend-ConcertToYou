@@ -70,7 +70,7 @@ export const ProductCard = ({
       <Card className="productCardDesign" style={{ width: "18rem" }}>
         <Card.Body>
           <Card.Text className="cardText">{id}</Card.Text>
-          <Card.Text className="cardText">{token}</Card.Text>
+          {/* <Card.Text className="cardText">{token}</Card.Text> */}
           <Card.Text className="cardText">{email}</Card.Text>
           <Card.Text className="cardText">{firstName}</Card.Text>
           <Card.Text className="cardText">{lastName}</Card.Text>

@@ -119,3 +119,15 @@
   height: 2.5em;
   transition: 1s;
 }
+
+@media (max-width: 768px) {
+  .adminCont {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fRowA {
+    align-items: center;
+  }
+
+}
