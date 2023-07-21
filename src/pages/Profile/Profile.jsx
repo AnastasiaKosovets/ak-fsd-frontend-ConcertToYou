@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
+import up from "../../../img/up.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
-import { Col, Container, Nav, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
-import { getUsers, updateProfile, deleteUser } from "../../services/apiCalls";
+import { getUsers, updateProfile } from "../../services/apiCalls";
 
 export const Profile = () => {
-
   const user = useSelector(userData);
   const navigate = useNavigate();
   const token = useSelector((state) => state.user.credentials.token);
@@ -27,7 +27,27 @@ export const Profile = () => {
   });
   const [infoUser, setInfoUser] = useState([]);
   const [showUserInfo, setShowUSerInfo] = useState(false);
-//   console.log(user);
+
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if(window.scrollY > 300) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth"});
+  }
 
   useEffect(() => {
     if (showUserInfo) {
@@ -71,7 +91,6 @@ export const Profile = () => {
   const handleSaveChanges = () => {
     updateProfile(modifiedData, token)
       .then((res) => {
-        // console.log(res);
         setEditMode(false);
 
         setModifiedData({
@@ -99,36 +118,40 @@ export const Profile = () => {
           </Col>
         </Row>
         <Row className="rSecondA">
-        {showUserInfo ? (
-        <div>
-          {infoUser.length > 0 ? (
-            <div className="thisCard">
-              {infoUser.map((user) => {
-                return (
-                  <div key={user.id} className="userCard">
-                    <ProductCard
-                      className="usersCardDesign"
-                      id={user.id}
-                      token={token}
-                      firstName={`Nombre: ${user.firstName}`}
-                      lastName={`Apellido: ${user.lastName}`}
-                      email={`Email: ${user.email}`}
-                      address={`Dirección: ${user.address}`}
-                      phoneNumber={`Teléfono: ${user.phoneNumber}`}
-                      document={`DNI / NIE: ${user.document}`}
-                      dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-                    />
-                    {/* <button onClick={() => { handleDeleteUser(user.id, token) }} className="btnAdmin">Eliminar Perfil</button> */}
-                  <button onClick={() => setEditMode(false)} className="btnAdmin">Restaurar</button>
-                  </div>
-                );
-              })}
+          {showUserInfo ? (
+            <div>
+              {infoUser.length > 0 ? (
+                <div className="thisCard">
+                  {infoUser.map((user) => {
+                    return (
+                      <div key={user.id} className="userCard">
+                        <ProductCard
+                          className="usersCardDesign"
+                          id={user.id}
+                          token={token}
+                          firstName={`Nombre: ${user.firstName}`}
+                          lastName={`Apellido: ${user.lastName}`}
+                          email={`Email: ${user.email}`}
+                          address={`Dirección: ${user.address}`}
+                          phoneNumber={`Teléfono: ${user.phoneNumber}`}
+                          document={`DNI / NIE: ${user.document}`}
+                          dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
+                        />
+                        <button
+                          onClick={() => setEditMode(false)}
+                          className="btnAdmin"
+                        >
+                          Restaurar
+                        </button>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div>CARGANDO...</div>
+              )}
             </div>
-          ) : (
-            <div>CARGANDO...</div>
-          )}
-        </div>
-      ) : null}
+          ) : null}
           {showProfileData && (
             <Col xs={6} md={6}>
               {editMode ? (
@@ -166,9 +189,9 @@ export const Profile = () => {
               )}
               {!editMode && (
                 <button
-                  name={"Modificar"}
-                  className="modInfo"
-                  onClick={handleEditProfile}
+                name={"Modificar"}
+                className="modInfo"
+                onClick={handleEditProfile}
                 >
                   Modificar
                 </button>
@@ -176,6 +199,11 @@ export const Profile = () => {
             </Col>
           )}
         </Row>
+          {showScrollButton && (
+            <button className="scrollButton bg-transparent" onClick={scrollTop}>
+              <img src={up} alt="boton hacía arriba" className="up" />
+            </button>
+          )}
       </Container>
     </div>
   );

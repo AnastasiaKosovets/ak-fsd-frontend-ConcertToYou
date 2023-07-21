@@ -66,3 +66,13 @@
 .btnAdmin:hover {
   background-color: rgba(129, 114, 90, 0.884);
 }
+
+.up {
+  width: 2em;
+  transition: 1s;
+}
+
+.up:hover {
+  height: 2.5em;
+  transition: 1s;
+}
