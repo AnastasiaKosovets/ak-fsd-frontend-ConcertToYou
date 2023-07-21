@@ -49,6 +49,7 @@ export const Profile = () => {
     window.scrollTo({ top: 0, behavior: "smooth"});
   }
 
+
   useEffect(() => {
     if (showUserInfo) {
       getUsers(token)

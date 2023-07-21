@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Card.css";
 import Card from "react-bootstrap/Card";
 import { deleteUser, restoreUser } from "../../services/apiCalls";
-import { Link } from "react-router-dom";
+import { GenModal } from "../GenModal/GenModal";
 
 export const ProductCard = ({
   id,
@@ -17,27 +17,52 @@ export const ProductCard = ({
   date,
   token,
 }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalTitle, setModalTitle] = useState("");
+  const [onConfirmText, setOnConfirmText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
 
-
-  const handleDeleteUser = async () => {
-    try {
-      const response = await deleteUser(token, id);
-      console.log(response);
-    } catch (error) {
-      console.error("Error eliminando usuario:", error);
+  const handleDeleteUser = () => {
+    setModalTitle("Eliminar Usuario");
+    setOnConfirmText("Eliminar");
+    setShowModal(true);
+  };
+  const handleRestoreUser = () => {
+    setModalTitle("Restaurar Usuario");
+    setOnConfirmText("Restaurar");
+    setShowModal(true);
+  };
+  const handleConfirmAction = async () => {
+    if (onConfirmText === "Eliminar") {
+      try {
+        setIsDeleting(true);
+        console.log("Eliminando usuario...");
+        // Lógica para eliminar el usuario
+        const response = await deleteUser(token, id);
+        console.log(response);
+        setIsDeleting(false);
+        setShowModal(false);
+      } catch (error) {
+        console.error("Error eliminando usuario:", error);
+        setIsDeleting(false);
+        setShowModal(false);
+      }
+    } else if (onConfirmText === "Restaurar") {
+      try {
+        setIsDeleting(true);
+        console.log("Restaurando usuario...");
+        // Lógica para restaurar el usuario
+        const res = await restoreUser(token, id);
+        console.log(res);
+        setIsDeleting(false);
+        setShowModal(false);
+      } catch (error) {
+        console.error("Error restaurando usuario:", error);
+        setIsDeleting(false);
+        setShowModal(false);
+      }
     }
   };
-
-  
-  const handleRestoreUser = async () => {
-    try {
-      const res = await restoreUser(token, id);
-      console.log(res);
-    } catch (error) {
-      console.error("Error recuperando perfil:", error);
-    }
-  };
-
   useEffect(() => {}, []);
 
   return (
@@ -57,7 +82,11 @@ export const ProductCard = ({
           <Card.Text className="cardText">{date}</Card.Text>
         </Card.Body>
         <div className="buttonContainer">
-          <button button onClick={handleDeleteUser} className="btnAdmin">
+          <button
+            onClick={handleDeleteUser}
+            className="btnAdmin"
+            disabled={isDeleting}
+          >
             Eliminar Perfil
           </button>
           <button onClick={handleRestoreUser} className="btnAdmin">
@@ -65,6 +94,14 @@ export const ProductCard = ({
           </button>
         </div>
       </Card>
+      <GenModal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        onConfirm={handleConfirmAction}
+        title={modalTitle}
+        onConfirmText={onConfirmText}
+        isProcessing={isDeleting} 
+      />
     </div>
   );
 };
