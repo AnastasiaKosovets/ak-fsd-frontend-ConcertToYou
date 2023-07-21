@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
 import { Col, Container, Nav, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
-import { getUsers, updateProfile } from "../../services/apiCalls";
+import { getUsers, updateProfile, deleteUser } from "../../services/apiCalls";
 
 export const Profile = () => {
+
   const user = useSelector(userData);
+  const navigate = useNavigate();
   const token = useSelector((state) => state.user.credentials.token);
   const dispatch = useDispatch();
   const [showProfileData, setShowProfileData] = useState(false);
@@ -35,7 +37,6 @@ export const Profile = () => {
         })
         .catch((error) => {
           console.log("Error getting users:", error);
-        //   setShowUSerInfo(false);
         });
     }
   }, [showUserInfo, token]);
@@ -70,7 +71,7 @@ export const Profile = () => {
   const handleSaveChanges = () => {
     updateProfile(modifiedData, token)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setEditMode(false);
 
         setModifiedData({
@@ -104,9 +105,11 @@ export const Profile = () => {
             <div className="thisCard">
               {infoUser.map((user) => {
                 return (
-                  <div key={user.id}>
+                  <div key={user.id} className="userCard">
                     <ProductCard
                       className="usersCardDesign"
+                      id={user.id}
+                      token={token}
                       firstName={`Nombre: ${user.firstName}`}
                       lastName={`Apellido: ${user.lastName}`}
                       email={`Email: ${user.email}`}
@@ -115,6 +118,8 @@ export const Profile = () => {
                       document={`DNI / NIE: ${user.document}`}
                       dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
                     />
+                    {/* <button onClick={() => { handleDeleteUser(user.id, token) }} className="btnAdmin">Eliminar Perfil</button> */}
+                  <button onClick={() => setEditMode(false)} className="btnAdmin">Restaurar</button>
                   </div>
                 );
               })}

@@ -15,6 +15,7 @@ export const userSlice = createSlice({
       document: "",
       dateOfBirth: "",
       phoneNumber: "",
+      user_id: "",
       role_id: ""
 
     },
@@ -23,6 +24,7 @@ export const userSlice = createSlice({
     login: (state, action) => {
       let { payload } = action;
       state.credentials.token = payload.token;
+      state.credentials.user_id =payload.user_id;
       state.data.firstName = payload.data.firstName;
       state.data.lastName = payload.data.lastName;
       state.data.email = payload.data.email;
@@ -41,7 +43,8 @@ export const userSlice = createSlice({
         },
         data: {
           firstName: "",
-          role_id: ""
+          role_id: "",
+          user_id: ""
         },
       };
     }

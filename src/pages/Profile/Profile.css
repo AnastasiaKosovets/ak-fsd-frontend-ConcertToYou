@@ -46,3 +46,23 @@
 .thisCard {
     color: white;
 }
+
+.userCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btnAdmin {
+  height: 3em;
+  width: 8em;
+  border: none;
+  border-radius: 1em;
+  margin:  1em;
+  color: white;
+  background-color: rgba(167, 146, 114, 0.884);
+}
+
+.btnAdmin:hover {
+  background-color: rgba(129, 114, 90, 0.884);
+}
