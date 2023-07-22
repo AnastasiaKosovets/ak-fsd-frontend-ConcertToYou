@@ -3,10 +3,10 @@ import { Col, Container, Row } from "react-bootstrap";
 import "./AdminGroups.css";
 import up from "../../../img/up.png";
 import { GroupCard } from "../../common/GroupCard/GroupCard";
-import { userData } from "../../pages/userSlice";
+// import { userData } from "../../pages/userSlice";
 import { Button } from "../../common/Button/Button";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteGroupAdmin, getGroups } from "../../services/apiCalls";
+// import { useDispatch, useSelector } from "react-redux";
+import { getGroups } from "../../services/apiCalls";
 
 export const AdminGroups = () => {
   const [groups, setGroups] = useState([]);
@@ -18,6 +18,7 @@ export const AdminGroups = () => {
     if (!sincronized) {
       getGroups()
       .then((res) => {
+        console.log(res.data)
         setGroups(res.data);
         setSincronized(true);
       })

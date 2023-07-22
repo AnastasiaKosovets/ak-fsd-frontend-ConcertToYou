@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { ProductCard } from "../../common/Card/Card";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { updateMyProfile } from "../../services/apiCalls";
+import { getUsers, updateMyProfile } from "../../services/apiCalls";
 import im2 from "../../../img/im2.jpg";
 import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export const UserProfile = () => {
   const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [showProfileData, setShowProfileData] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [modifiedData, setModifiedData] = useState({
@@ -51,6 +51,7 @@ export const UserProfile = () => {
   useEffect(() => {
     if (showUserInfo) {
       getUsers(token)
+      // console.log(res.data)
         .then((res) => {
           setInfoUser(res.data);
         })
@@ -89,7 +90,7 @@ export const UserProfile = () => {
           address: res.data.address,
           phoneNumber: res.data.phoneNumber,
         });
-        dispatch(login({ token: token, data: res.data }));
+        // dispatch(login({ token: token, data: res.data }));
       })
       .catch((error) => console.log(error));
   };
