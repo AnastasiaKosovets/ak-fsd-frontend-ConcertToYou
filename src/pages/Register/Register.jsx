@@ -6,6 +6,7 @@ import { checkError } from "../../services/useful";
 import { useNavigate } from "react-router";
 import { myRegister } from "../../services/apiCalls";
 import img9 from "../../../img/img9.jpg";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -184,6 +185,12 @@ export const Register = () => {
             <Col xs={10} md={6}>
               <Button type="submit" name={"Registrate"}></Button>
             </Col>
+            <Col xs={10} md={8} lg={5} className="my-3 styleLinkText">
+              ¿Ya tienes una cuenta?
+              <Link to="/login" className="registerLink">
+                Inicia tu sesión!
+              </Link>
+          </Col>
           </Row>
           <Row>
             <Col xs={10} sm={6} md={5} lg={2}>
@@ -197,6 +204,7 @@ export const Register = () => {
             <Col xs={8} sm={6} md={6} lg={6}>
               <img src={img9} alt="musics" className="registerImg" />
             </Col>
+            
           </Row>
         </Container>
       </form>

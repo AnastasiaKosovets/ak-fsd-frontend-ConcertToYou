@@ -62,27 +62,31 @@
 }
 
 @media screen and (max-width: 768px) {
-    .genLoginStyle {
-      height: 100vh; 
-      background-size: 100% 100%;
-      font-size: 16px;
-    }
-  
-    .loginRow {
-      width: 100%; 
-      /* height: auto;  */
-      /* margin-bottom: 2em;  */
-      box-shadow: none; 
-    }
-  
-    .loginTxt {
-      font-size: 7vh; 
-    }
-  
-    .styleLinkText {
-      width: 100%; 
-      font-size: 1.2em;
-      text-align: center;
-    }
+  .genLoginStyle {
+    height: 100vh;
+    background-size: 100% 100%;
+    font-size: 16px;
+    /* padding: 2em;  */
   }
+
+  .loginRowStyle {
+    width: 100%;
+    height: auto; 
+    margin-bottom: 2em;
+    box-shadow: none;
+    background: none; 
+    border: none; 
+  }
+
+  .loginTxt {
+    font-size: 7vh;
+  }
+
+  .styleLinkText {
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 1em; 
+  }
+}
   
