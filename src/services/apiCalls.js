@@ -78,29 +78,14 @@ export const deleteGroupAdmin = async (token, group_id) => {
     return res.data;
 }
 
-// export const deleteGroupAdmin = async (token, id) => {
-//   try {
-//     let access = {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     };
-//     const response = await axios.delete(`${root}/group/delete/${id}`, access);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error deleting group:', error);
-//     throw error;
-//   }
-// };
-
 // RESTORE GROUP
-export const restoreGroup = async (token, id) => {
+export const restoreGroup = async (token, group_id) => {
   let access = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
-    let res = await axios.post(`${root}/users/restore/${id}`, access);
+    let res = await axios.post(`${root}/group/restore/${group_id}`, access);
     return res.data;
 }
 
@@ -116,3 +101,15 @@ export const updateMyProfile = async (userData, token) => {
     let res = await axios.put(`${root}/user/profile`, userData, access);
     return res.data;
   };
+
+// MY TICKETS
+export const getMyTickets = async (userData, token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    params: userData, // Pasa los parámetros de consulta aquí
+  };
+  let res = await axios.get(`${root}/my-tickets`, access);
+  return res.data;
+}

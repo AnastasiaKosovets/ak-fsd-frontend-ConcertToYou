@@ -8,6 +8,7 @@ import { updateMyProfile } from "../../services/apiCalls";
 import im2 from "../../../img/im2.jpg";
 import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
+import { Link } from "react-router-dom";
 
 export const UserProfile = () => {
   const user = useSelector(userData);
@@ -161,7 +162,9 @@ export const UserProfile = () => {
          </div>
           </Col>
           <Col xs={6} md={2} className="mb-4 my-2 classBtn">
-            <Button name={"Ver reservas"} />
+          <Link to="/myTickets">
+        <Button name={"Ver reservas"} />
+      </Link>
           </Col>
         </Row>
       </Container>

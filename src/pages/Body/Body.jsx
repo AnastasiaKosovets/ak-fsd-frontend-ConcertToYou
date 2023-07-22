@@ -6,6 +6,7 @@ import { Profile } from "../Profile/Profile";
 import { Register } from "../Register/Register";
 import { AdminGroups } from "../AdminGroups/AdminGroups";
 import { UserProfile } from "../UserProfile/UserProfile";
+import { MyTickets } from "../MyTickets/MyTickets";
 
 export const Body = () => {
   return (
@@ -18,6 +19,7 @@ export const Body = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/admingroups" element={<AdminGroups />} />
         <Route path="/UserProfilee" element={<UserProfile />} />
+        <Route path="/myTickets" element={<MyTickets />} />
       </Routes>
     </>
   );

@@ -3,131 +3,128 @@ import "./GroupCard.css";
 import { deleteGroupAdmin, restoreGroup } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { Card } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
-export const GroupCard = ({
-  id,
-  token,
-  image,
-  groupName,
-  genre,
-  description,
-  musicsNumber,
-  handleDeleteGroup,
-  role_id,
-}) => {
-    // console.log("token de admin en grouCard", token);
+export const GroupCard = ({ group, handleDataChanged }) => {
+  const token = useSelector((state) => state.user.credentials.token);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  // const [isDeleting, setIsDeleting] = useState(false);
+  const [isRestore, setIsRestore] = useState(null);
+
+
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleDelete = async () => {
-    try {
-      setIsDeleting(true);
-      console.log("Eliminando grupo...");
-      // Llama a la función deleteGroupAdmin para eliminar el grupo
-      const response = await deleteGroupAdmin(token, id);
-      console.log(response);
-      setIsDeleting(false);
-      // Aquí puedes realizar alguna acción adicional después de eliminar el grupo, por ejemplo, actualizar la lista de grupos.
-    } catch (error) {
-      console.error("Error eliminando grupo:", error);
-      setIsDeleting(false);
-    }
+  const handleDeleteGroup = () => {
+    setModalTitle("Eliminar Usuario");
+    setOnConfirmText("Eliminar");
+    setShowModal(true);
   };
-
-    const handleConfirmAction = async () => {
+  const handleRestoreGroup = () => {
+    setModalTitle("Restaurar Usuario");
+    setOnConfirmText("Restaurar");
+    setShowModal(true);
+  };
+  const handleConfirmA = async () => {
     if (onConfirmText === "Eliminar") {
       try {
         setIsDeleting(true);
-        console.log("Eliminando grupo...");
-        // Lógica para eliminar el grupo
-        const response = await deleteGroupAdmin(token, id);
+        console.log("Eliminando usuario...");
+        const response = await deleteGroupAdmin(token, group.id);
         console.log(response);
         setIsDeleting(false);
         setShowModal(false);
-        // Aquí puedes actualizar la lista de grupos después de eliminar uno
+        // handleDataChanged();
       } catch (error) {
-        console.error("Error eliminando grupo:", error);
+        console.error("Error eliminando usuario:", error);
         setIsDeleting(false);
+        setShowModal(false);
+      }
+    } else if (onConfirmText === "Restaurar") {
+      try {
+        setIsRestore(true);
+        console.log("Restaurando usuario...");
+        const res = await restoreGroup(token, group.id);
+        console.log(res);
+        setIsDeleting(false);
+        setShowModal(false);
+        // handleDataChanged();
+      } catch (error) {
+        console.error("Error restaurando usuario:", error);
+        setIsRestore(false);
         setShowModal(false);
       }
     }
   };
+  // const handleDeleteGroup = async () => {
+  //   try {
+  //     setIsDeleting(true);
+  //     await deleteGroupAdmin(token, group.id);
+  //     setShowDeleteModal(false);
+  //     setIsDeleting(false);
+  //     // handleDataChanged();
+  //   } catch (error) {
+  //     console.error("Error deleting group:", error);
+  //     setShowDeleteModal(false);
+  //     setIsDeleting(false);
+  //   }
+  // };
 
-  const handleRestoreGroup = () => {
-    setModalTitle("Restaurar Grupo");
-    setOnConfirmText("Restaurar");
-    setShowModal(true);
-  };
-
-//   const handleConfirmAction = async () => {
-//     if (onConfirmText === "Eliminar") {
-//       try {
-//         setIsDeleting(true);
-//         console.log("Eliminando grupo...");
-//         // Lógica para eliminar el grupo
-//         const response = await deleteGroup(token, id);
-//         console.log(response);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//       } catch (error) {
-//         console.error("Error eliminando grupo:", error);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//       }
-//     } else if (onConfirmText === "Restaurar") {
-//       try {
-//         setIsDeleting(true);
-//         console.log("Restaurando grupo...");
-//         // Lógica para restaurar el grupo
-//         const res = await restoreGroup(token, id);
-//         console.log(res);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//       } catch (error) {
-//         console.error("Error restaurando grupo:", error);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//       }
-//     }
-//   };
-
-
-  useEffect(() => {}, []);
+  // const handleRestoreGroup = async () => {
+  //   console.log("que pasaaaa")
+  //   try {
+  //     setIsRestore(true);
+  //     await restoreGroup(token, group.id);
+  //     // console.log(res)
+  //     // handleDataChanged();
+  //     setIsRestore(false);
+  //   } catch (error) {
+  //     console.error("Error restoring group:", error);
+  //     setIsRestore(false);
+  //   }
+  // };
 
   return (
     <div className="cardPrD">
       <Card className="productCardDesign" style={{ width: "18rem" }}>
         <Card.Body>
-          <Card.Text className="cardText">{id}</Card.Text>
-          <Card.Text className="cardText"><img src={image} alt={groupName} /></Card.Text>
-          <Card.Text className="cardText">{groupName}</Card.Text>
-          <Card.Text className="cardText">{genre}</Card.Text>
-          <Card.Text className="cardText">{description}</Card.Text>
-          <Card.Text className="cardText">{musicsNumber}</Card.Text>
-          <Card.Text className="cardText">{role_id}</Card.Text>
+          <Card.Text className="cardText">ID: {group.id}</Card.Text>
+          <Card.Text className="cardText">
+            <img src={group.image} alt={group.groupName} />
+          </Card.Text>
+          <Card.Text className="cardText">Nombre: {group.groupName}</Card.Text>
+          <Card.Text className="cardText">Género: {group.genre}</Card.Text>
+          <Card.Text className="cardText">
+            Descripción: {group.description}
+          </Card.Text>
+          <Card.Text className="cardText">
+            Número de músicos: {group.musicsNumber}
+          </Card.Text>
         </Card.Body>
         <div className="buttonContainer">
           <button
-            onClick={() => handleDeleteGroup(id)}
-            className="btnAdmin"
+            onClick={handleDeleteGroup}
             disabled={isDeleting}
+            className="btnAdmin"
           >
             Eliminar Perfil
           </button>
-          {/* <button onClick={handleRestoreGroup} className="btnAdmin">
+          <button 
+          onClick={handleRestoreGroup} 
+          disabled={isRestore}
+          className="btnAdmin">
             Restaurar
-          </button> */}
+          </button>
         </div>
       </Card>
       <GenModal
         show={showModal}
         onClose={() => setShowModal(false)}
-        onConfirm={handleConfirmAction}
-        title={modalTitle}
-        onConfirmText={onConfirmText}
-        isProcessing={isDeleting} 
+        onConfirm={handleConfirmA}
+        title="Eliminar Grupo"
+        onConfirmText="Eliminar"
       />
     </div>
   );
