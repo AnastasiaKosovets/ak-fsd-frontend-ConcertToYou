@@ -1,54 +1,52 @@
 import React, { useEffect, useState } from "react";
-import "./MyTickets.css"
+import "./MyTickets.css";
 import { getMyTickets } from "../../services/apiCalls";
+import { useSelector } from "react-redux";
+import { userData } from "../userSlice";
 
 export const MyTickets = () => {
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const user = useSelector(userData);
+  const token = useSelector((state) => state.user.credentials.token);
 
-    const [tickets, setTickets] = useState([]);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      const fetchMyTickets = async () => {
-        try {
-          // Aquí obtienes el token de autenticación (puedes obtenerlo del estado o props)
-          const token = 'TU_TOKEN_DE_AUTENTICACION';
-          
-          // Llama a la función para obtener los tickets
-          const userData = {}; // Asegúrate de pasar los datos necesarios para la solicitud (si es necesario)
-          const response = await getMyTickets(userData, token);
-  
-          // Verifica si la solicitud fue exitosa y guarda los datos en el estado
-          if (response.success) {
-            setTickets(response.data);
-          } else {
-            console.error(response.message);
-          }
-        } catch (error) {
-          console.error('Error al obtener los tickets:', error);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchMyTickets();
-    }, []);
-  
-    // Renderiza la lista de tickets
-    return (
-      <div>
-        <h1>Mis Tickets</h1>
-        {loading ? (
-          <p>Cargando...</p>
-        ) : (
-          <ul>
-            {tickets.map((ticket) => (
-              <li key={ticket.id}>
-                {/* Aquí muestras la información de cada ticket */}
-                {/* Por ejemplo: ticket.title, ticket.date, ticket.groupName, etc. */}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
-}
+  useEffect(() => {
+    const fetchBookings = async () => {
+      try {
+        const bookingsData = await getMyTickets(token);
+        setBookings(bookingsData);
+      } catch (error) {
+        console.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBookings();
+  }, [token]);
+
+  return (
+    <div>
+      <h1>Mis Tickets</h1>
+      {loading ? (
+        <p>Cargando...</p>
+      ) : (
+        <ul>
+          {bookings.map((booking) => (
+            <li key={booking.id}>
+              <p>ID del concierto: {booking.concert_id}</p>
+              <p>Título del concierto: {booking.concert.title}</p>
+              <p>Fecha del concierto: {booking.concert.date}</p>
+              <p>Nombre del grupo: {booking.concert.groupName}</p>
+              <p>
+                Nombre del usuario: {booking.user.firstName}{" "}
+                {booking.user.lastName}
+              </p>
+              <p>Código de reserva: {booking.reservation_code}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};

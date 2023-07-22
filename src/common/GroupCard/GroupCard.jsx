@@ -8,10 +8,7 @@ import { useSelector } from "react-redux";
 export const GroupCard = ({ group, handleDataChanged }) => {
   const token = useSelector((state) => state.user.credentials.token);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  // const [isDeleting, setIsDeleting] = useState(false);
   const [isRestore, setIsRestore] = useState(null);
-
-
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");

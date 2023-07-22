@@ -23,7 +23,7 @@ export const Login = () => {
         console.log(res);
         setTimeout(() => {
           navigate("/home");
-        }, 1000);
+        }, 500);
       })
 
       .catch((error) => console.log(error));

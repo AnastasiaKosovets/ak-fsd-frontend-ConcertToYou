@@ -103,13 +103,12 @@ export const updateMyProfile = async (userData, token) => {
   };
 
 // MY TICKETS
-export const getMyTickets = async (userData, token) => {
+export const getMyTickets = async (token) => {
   let access = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    params: userData, // Pasa los parámetros de consulta aquí
   };
   let res = await axios.get(`${root}/my-tickets`, access);
-  return res.data;
+  return res.data.data;
 }

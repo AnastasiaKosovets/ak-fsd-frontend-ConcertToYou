@@ -163,7 +163,7 @@ export const UserProfile = () => {
          </div>
           </Col>
           <Col xs={6} md={2} className="mb-4 my-2 classBtn">
-          <Link to="/myTickets">
+          <Link to={`/myTickets?token=${token}`}>
         <Button name={"Ver reservas"} />
       </Link>
           </Col>

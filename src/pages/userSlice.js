@@ -24,7 +24,7 @@ export const userSlice = createSlice({
     login: (state, action) => {
       let { payload } = action;
       state.credentials.token = payload.token;
-      state.credentials.user_id=payload.user_id;
+      state.credentials.user_id = payload.user_id;
       state.data.firstName = payload.data.firstName;
       state.data.lastName = payload.data.lastName;
       state.data.email = payload.data.email;
@@ -35,6 +35,7 @@ export const userSlice = createSlice({
       state.data.phoneNumber = payload.data.phoneNumber;
       state.data.role_id = payload.data.role_id;
       state.data.group_id = payload.data.group_id;
+      state.data.book_id = payload.data.book_id;
     },
     userout: (state) => {
       return {
