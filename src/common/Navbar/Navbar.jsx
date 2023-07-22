@@ -65,7 +65,7 @@ export const Header = () => {
         </div>
         <Offcanvas show={show} onHide={handleClose} className="test">
           <Offcanvas.Header closeButton className="canvasBody">
-              <Nav.Link
+            <Nav.Link
               as={Link}
               to="/home"
               className="canvasTextTitle"
@@ -86,7 +86,7 @@ export const Header = () => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="#"
+              to="UserProfilee"
               className="headerText mb-3"
               onClick={handleClose}
             >
@@ -100,7 +100,35 @@ export const Header = () => {
             >
               Sobre Nosotros
             </Nav.Link>
-
+            <Nav.Link
+              as={Link}
+              to="#"
+              className="headerText mb-3"
+              onClick={handleClose}
+            >
+              Contacto
+            </Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="#"
+              className="headerText mb-3"
+              onClick={handleClose}
+            >
+              Colaboraciónes
+            </Nav.Link>
+            {role === 1 && (
+              <>
+              <Nav.Link
+                as={Link}
+                to="/UserProfilee"
+                className="headerText mb-3"
+                onClick={handleClose}
+              >
+                Mi Perfil
+              </Nav.Link>
+              </>
+              
+            )}
             {role === 3 ? (
               <>
                 <Nav.Link
@@ -109,7 +137,7 @@ export const Header = () => {
                   className="headerText mb-3"
                   onClick={handleClose}
                 >
-                  Perfil
+                  Admin Access
                 </Nav.Link>
                 <Nav.Link
                   as={Link}

@@ -63,12 +63,37 @@ export const restoreUser = async (token, id) => {
       return res.data;
 }
 // GET ALL GROUPS
-export const getGroups = async ( token) => {
-  let access = {
-      headers: {
-          Authorization: `Bearer ${token}`,
-      },
-  };
-  let res = await axios.get(`${root}/groups`, access)
+export const getGroups = async () => {
+  // let access = {
+  //     headers: {
+  //         Authorization: `Bearer ${token}`,
+  //     },
+  // };
+  let res = await axios.get(`${root}/groups`)
   return res.data;
 }
+// DELETE GROUP
+export const deleteGroupAdmin = async (token, group_id) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.delete(`${root}/group/delete/${group_id}`, access);
+    return res.data;
+}
+
+// export const deleteGroupAdmin = async (token, id) => {
+//   try {
+//     let access = {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     };
+//     const response = await axios.delete(`${root}/group/delete/${id}`, access);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error deleting group:', error);
+//     throw error;
+//   }
+// };
