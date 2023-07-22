@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 import { Col, Container, Row } from "react-bootstrap";
-import { ProductCard } from "../../common/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { getUsers, updateMyProfile } from "../../services/apiCalls";
+import { deleteProfile, getUsers, updateMyProfile } from "../../services/apiCalls";
 import im2 from "../../../img/im2.jpg";
 import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
 import { Link } from "react-router-dom";
+import { UserCard } from "../../common/UserCard/UserCard";
 
 export const UserProfile = () => {
   const user = useSelector(userData);
@@ -65,9 +65,19 @@ export const UserProfile = () => {
     setEditMode(true);
   };
 
+  // const handleDeleteAccount = async () => {
+  //   try {
+  //     const res = await deleteProfile(token);
+  //     console.log(res.message);
+  //   } catch (error) {
+  //     console.error("Error deleting account:", error);
+  //   }
+  // };
+
   const ReadOnlyProductCard = ({ user }) => {
     return (
-      <ProductCard
+      <>
+      <UserCard
         className="usersCardDesign"
         firstName={`Nombre: ${user.firstName}`}
         lastName={`Apellido: ${user.lastName}`}
@@ -76,7 +86,12 @@ export const UserProfile = () => {
         phoneNumber={`Teléfono: ${user.phoneNumber}`}
         document={`DNI / NIE: ${user.document}`}
         dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
+        token={token}
       />
+      {/* <button onClick={handleDeleteAccount}>Eliminar cuenta</button> */}
+      </>
+      
+      
     );
   };
 
@@ -90,7 +105,6 @@ export const UserProfile = () => {
           address: res.data.address,
           phoneNumber: res.data.phoneNumber,
         });
-        // dispatch(login({ token: token, data: res.data }));
       })
       .catch((error) => console.log(error));
   };

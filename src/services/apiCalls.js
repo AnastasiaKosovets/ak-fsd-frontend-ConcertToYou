@@ -112,3 +112,25 @@ export const getMyTickets = async (token) => {
   let res = await axios.get(`${root}/my-tickets`, access);
   return res.data.data;
 }
+
+// DELETE PROFILE
+export const deleteProfile = async (token) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.delete(`${root}/users/delete`, access);
+    return res.data;
+}
+
+// RESTORE PROFILE
+export const restoreProfile = async (token) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.post(`${root}/users/restore/${id}`, access);
+    return res.data;
+}
