@@ -65,7 +65,6 @@ export const AdminGroups = () => {
       const response = await deleteGroupAdmin(token, group_id);
       console.log(response);
       setIsDeleting(false);
-      // Aquí puedes realizar alguna acción adicional después de eliminar el grupo, por ejemplo, actualizar la lista de grupos.
     } catch (error) {
       console.error("Error eliminando grupo:", error);
       setIsDeleting(false);
@@ -88,14 +87,6 @@ export const AdminGroups = () => {
             {infoGroup.length > 0 ? (
               <div className="thisCard">
                 {infoGroup.map((user) => (
-                  // console.log(user.image),
-                //   <div key={user.id}>
-                //   <img src={user.image} alt={user.groupName} />
-                //   <h2>{user.groupName}</h2>
-                //   <p>{user.genre}</p>
-                //   <p>{user.description}</p>
-                //   <p>{user.musicsNumber} canciones</p>
-                // </div>
                   <div key={user.id} className="userCard">
                     <GroupCard
                       className="usersCardDesign"

@@ -64,11 +64,6 @@ export const restoreUser = async (token, id) => {
 }
 // GET ALL GROUPS
 export const getGroups = async () => {
-  // let access = {
-  //     headers: {
-  //         Authorization: `Bearer ${token}`,
-  //     },
-  // };
   let res = await axios.get(`${root}/groups`)
   return res.data;
 }
@@ -97,3 +92,27 @@ export const deleteGroupAdmin = async (token, group_id) => {
 //     throw error;
 //   }
 // };
+
+// RESTORE GROUP
+export const restoreGroup = async (token, id) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.post(`${root}/users/restore/${id}`, access);
+    return res.data;
+}
+
+// USERS
+
+// UPDATE PROFILE
+export const updateMyProfile = async (userData, token) => {
+    let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.put(`${root}/user/profile`, userData, access);
+    return res.data;
+  };

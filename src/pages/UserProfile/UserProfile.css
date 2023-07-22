@@ -1,0 +1,79 @@
+.userProfileStyle {
+  height: auto;
+  min-height: 100vh;
+  background-color: rgb(58, 57, 57);
+}
+
+.mainUserProfileStyle {
+    padding-top: 5em;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    color: goldenrod;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: medium;
+    /* margin: 0; */
+}
+
+.bookStyle {
+    width: 8em;
+    font-size: xx-large;
+    color: goldenrod;
+    margin-left: 1em;
+}
+
+.bookCol {
+    /* margin-left: 10em; */
+}
+
+.img2Home {
+    height: 15em;
+    width: 30em;
+}
+
+.bookRow2 {
+    display: flex;
+    flex-direction: column;
+}
+
+.classBtn {
+    margin-left: 5em;
+}
+
+.upButn {
+    border: none;
+}
+
+.up {
+    height: 2em;
+    transition: 1s;
+  }
+  
+.up:hover {
+    height: 2.5em;
+    transition: 1s;
+}
+
+@media (max-width: 768px) {
+    .mainUserProfileStyle {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .userProfileStyle {
+        display: flex;
+        flex-direction: column; 
+        justify-content: flex-end;
+        align-items: end; 
+      }
+
+    .img2Home {
+        height: 10em;
+        width: 20em;
+    }
+
+    .classBtn {
+        margin-left: 3em;
+    }
+  }
+  

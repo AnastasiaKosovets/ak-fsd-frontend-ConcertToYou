@@ -116,7 +116,7 @@ export const Header = () => {
             >
               Colaboraciónes
             </Nav.Link>
-            {role === 1 && (
+            {role === 1 ? (
               <>
               <Nav.Link
                 as={Link}
@@ -126,10 +126,19 @@ export const Header = () => {
               >
                 Mi Perfil
               </Nav.Link>
+              <Nav.Link
+                  as={Link}
+                  to="/login"
+                  className="headerText"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Nav.Link>
+    
               </>
               
-            )}
-            {role === 3 ? (
+            ) : 
+            role === 3 ? (
               <>
                 <Nav.Link
                   as={Link}

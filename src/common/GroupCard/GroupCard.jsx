@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./GroupCard.css";
-import { deleteGroupAdmin, restoreUser } from "../../services/apiCalls";
+import { deleteGroupAdmin, restoreGroup } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { Card } from "react-bootstrap";
 
@@ -55,11 +55,11 @@ export const GroupCard = ({
     }
   };
 
-//   const handleRestoreGroup = () => {
-//     setModalTitle("Restaurar Grupo");
-//     setOnConfirmText("Restaurar");
-//     setShowModal(true);
-//   };
+  const handleRestoreGroup = () => {
+    setModalTitle("Restaurar Grupo");
+    setOnConfirmText("Restaurar");
+    setShowModal(true);
+  };
 
 //   const handleConfirmAction = async () => {
 //     if (onConfirmText === "Eliminar") {
