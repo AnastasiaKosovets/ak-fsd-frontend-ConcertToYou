@@ -1,0 +1,37 @@
+.generalConcertView {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 5em;
+  background-image: url("../../../img/opera.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+}
+
+.contConc {
+  margin: 0;
+  padding: 0;
+}
+
+.productCardDesign {
+  display: flex;
+}
+
+.upC {
+  transition: 1s;
+}
+
+.upC:hover {
+  transition: 1s;
+}
+
+.scrollButtonC {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  border: none;
+  cursor: pointer;
+}
