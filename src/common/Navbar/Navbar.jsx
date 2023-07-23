@@ -56,7 +56,7 @@ export const Header = () => {
           >
             Descubrenos
           </Nav.Link>
-          <Nav.Link as={Link} to="#" className="headerText d-none d-sm-block">
+          <Nav.Link as={Link} to="/concerts" className="headerText d-none d-sm-block">
             Disfruta de la música
           </Nav.Link>
           <Nav.Link as={Link} to="#" className="headerText d-none d-sm-block">
@@ -78,7 +78,7 @@ export const Header = () => {
           <Offcanvas.Body className="canvasBody">
             <Nav.Link
               as={Link}
-              to="#"
+              to="/concerts"
               className="headerText mb-3"
               onClick={handleClose}
             >

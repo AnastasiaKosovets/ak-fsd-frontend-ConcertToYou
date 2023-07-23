@@ -1,6 +1,7 @@
 .concertCardContainer {
   margin: 0;
   padding: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .txtConcert {
@@ -18,6 +19,17 @@
   border: 1.5px solid rgba(209, 213, 219, 0.3);
 }
 
+.cardTxt {
+  color: goldenrod;
+  font-size: 1em;
+}
+
+.cardTlt {
+  /* font-size: 2rem; */
+  color: rgb(191, 145, 30);
+  font-family:Georgia, 'Times New Roman', Times, serif ;
+}
+
 .cardBody {
   display: flex;
   justify-content: space-between;
@@ -25,7 +37,30 @@
 }
 
 @media (max-width: 768px) {
+
   .cardBody {
     flex-direction: column;
+  }
+
+  .cardCP {
+    width: 4em;
+  }
+
+  .cardBody{
+    align-items: start;
+  }
+
+  .imgConcerts {
+    height: 5.5em;
+    width: 3.3em;
+  }
+
+  .cardTxt {
+    margin-top: 1em;
+    font-size: 2rem;
+  }
+
+  .cardTlt {
+    font-size: medium;
   }
 }

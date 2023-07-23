@@ -8,8 +8,8 @@ export const GenConcertCard = ({ concert }) => {
   const token = useSelector((state) => state.user.credentials.token);
 
   return (
-    <div className="concertCardContainer my-5">
-      <Card style={{ height: "7em", width: "10em" }} className="cardCP">
+    <div className="concertCardContainer my-5" style={{ fontFamily: "Great Vibes" }}>
+      <Card  className="cardCP">
         <Card.Body>
           <Row className="cardBody">
             <Col xs={4}>
@@ -19,12 +19,12 @@ export const GenConcertCard = ({ concert }) => {
                 className="imgConcerts"
               />
             </Col>
-            <Col xs={6}>
-              <Card.Title>{concert.title}</Card.Title>
-              <Card.Title>{concert.date}</Card.Title>
-              <Card.Title>{concert.groupName}</Card.Title>
-              <Card.Title>{concert.description}</Card.Title>
-              <Card.Title>{concert.programm}</Card.Title>
+            <Col xs={10} md={8}>
+              <Card.Text className="cardTxt">{concert.title}</Card.Text>
+              <Card.Title className="cardTlt">{concert.date}</Card.Title>
+              <Card.Title className="cardTlt">{concert.groupName}</Card.Title>
+              <Card.Title className="cardTlt">{concert.description}</Card.Title>
+              <Card.Title className="cardTlt">{concert.programm}</Card.Title>
             </Col>
           </Row>
         </Card.Body>

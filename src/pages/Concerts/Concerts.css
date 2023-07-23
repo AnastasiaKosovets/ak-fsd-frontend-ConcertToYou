@@ -35,3 +35,11 @@
   border: none;
   cursor: pointer;
 }
+
+
+@media (max-width: 768px) {
+  .fRow {
+    width: 10em;
+  }
+ 
+}
