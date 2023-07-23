@@ -89,6 +89,28 @@ export const restoreGroup = async (token, group_id) => {
     return res.data;
 }
 
+// DELETE CONCERT
+export const deleteConcert = async (token, concert_id) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.delete(`${root}/concert/delete/${concert_id}`, access);
+    return res.data;
+}
+
+// RESTORE CONCERT
+export const restoreConcert = async (token, concert_id) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.post(`${root}/concert/restore/${concert_id}`, access);
+    return res.data;
+}
+
 // USER PART
 
 // UPDATE PROFILE

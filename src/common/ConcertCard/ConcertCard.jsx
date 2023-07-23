@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ConcertCard.css";
-// import { deleteGroupAdmin, restoreGroup } from "../../services/apiCalls";
+import { deleteConcert, restoreConcert } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -27,49 +27,49 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
   //   }
   // }, [showModal, onConfirmText, shouldChangeButtonText]);
 
-//   const handleDeleteGroup = () => {
-//     setModalTitle("Eliminar Usuario");
-//     setOnConfirmText("Eliminar");
-//     setShowModal(true);
-//   };
+  const handleDeleteConcert = () => {
+    setModalTitle("Eliminar Concierto");
+    setOnConfirmText("Eliminar");
+    setShowModal(true);
+  };
   
-//   const handleRestoreGroup = () => {
-//     setModalTitle("Restaurar Usuario");
-//     setOnConfirmText("Restaurar");
-//     setShowModal(true);
-//   };
+  const handleRestoreConcert = () => {
+    setModalTitle("Restaurar Concierto");
+    setOnConfirmText("Restaurar");
+    setShowModal(true);
+  };
 
-//   const handleConfirmA = async () => {
-//     if (onConfirmText === "Eliminar") {
-//       try {
-//         setIsDeleting(true);
-//         console.log("Eliminando usuario...");
-//         const response = await deleteGroupAdmin(token, group.id);
-//         console.log(response);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//         // handleDataChanged();
-//       } catch (error) {
-//         console.error("Error eliminando usuario:", error);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//       }
-//     } else if (onConfirmText === "Restaurar") {
-//       try {
-//         setIsDeleting(true);
-//         console.log("Restaurando grupo...");
-//         const res = await restoreGroup(token, group.id);
-//         console.log(res);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//         // handleDataChanged();
-//       } catch (error) {
-//         console.error("Error restaurando grupo:", error);
-//         setIsDeleting(false);
-//         setShowModal(false);
-//       }
-//     }
-//   };
+  const handleConfirm = async () => {
+    if (onConfirmText === "Eliminar") {
+      try {
+        setIsDeleting(true);
+        console.log("Eliminando concierto...");
+        const response = await deleteConcert(token, concert.id);
+        console.log(response);
+        setIsDeleting(false);
+        setShowModal(false);
+        // handleDataChanged();
+      } catch (error) {
+        console.error("Error eliminando concierto:", error);
+        setIsDeleting(false);
+        setShowModal(false);
+      }
+    } else if (onConfirmText === "Restaurar") {
+      try {
+        setIsDeleting(true);
+        console.log("Restaurando concierto...");
+        const res = await restoreConcert(token, concert.id);
+        console.log(res);
+        setIsDeleting(false);
+        setShowModal(false);
+        // handleDataChanged();
+      } catch (error) {
+        console.error("Error restaurando concierto:", error);
+        setIsDeleting(false);
+        setShowModal(false);
+      }
+    }
+  };
 
 
   return (
@@ -91,28 +91,28 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
           </Card.Text>
         </Card.Body>
         <div className="buttonContainer">
-          {/* <button
-            onClick={handleDeleteGroup}
+          <button
+            onClick={handleDeleteConcert}
             disabled={isDeleting}
             className="btnAdmin"
           >
-            Eliminar Perfil
+            Eliminar Concierto
           </button>
           <button 
-          onClick={handleRestoreGroup} 
+          onClick={handleRestoreConcert} 
           disabled={isDeleting}
           className="btnAdmin">
             Restaurar
-          </button> */}
+          </button> 
         </div>
       </Card>
-      {/* <GenModal
+       <GenModal
         show={showModal}
         onClose={() => setShowModal(false)}
-        onConfirm={handleConfirmA}
-        title="Eliminar Grupo"
+        onConfirm={handleConfirm}
+        title="Eliminar Concierto"
         onConfirmText="Eliminar"
-      /> */}
+      />
     </div>
   );
 };
