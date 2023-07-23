@@ -46,7 +46,6 @@ export const UserCard = ({
       try {
         setIsDeleting(true);
         console.log("Eliminando usuario...");
-        // Lógica para eliminar el usuario
         await handleDeleteAccount();
         setIsDeleting(false);
         setShowModal(false);
@@ -55,7 +54,7 @@ export const UserCard = ({
         setIsDeleting(false);
         setShowModal(false);
       }
-    } 
+    }
   };
 
   return (
@@ -89,7 +88,7 @@ export const UserCard = ({
         onConfirm={handleConfirmAction}
         title={modalTitle}
         onConfirmText={onConfirmText}
-        isProcessing={isDeleting} 
+        isProcessing={isDeleting}
       />
     </div>
   );

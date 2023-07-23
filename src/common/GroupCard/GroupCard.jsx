@@ -7,23 +7,38 @@ import { useSelector } from "react-redux";
 
 export const GroupCard = ({ group, handleDataChanged }) => {
   const token = useSelector((state) => state.user.credentials.token);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [isRestore, setIsRestore] = useState(null);
+  // const [isRestoring, setIsRestoring] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  // const [shouldChangeButtonText, setShouldChangeButtonText] = useState(false);
+
+  // useEffect(() => {
+  //   if (showModal && shouldChangeButtonText) {
+  //     if (onConfirmText === "Eliminar") {
+  //       setModalTitle("Restaurar Grupo");
+  //       setOnConfirmText("Restaurar");
+  //     } else if (onConfirmText === "Restaurar") {
+  //       setModalTitle("Eliminar Grupo");
+  //       setOnConfirmText("Eliminar");
+  //     }
+  //     setShouldChangeButtonText(false);
+  //   }
+  // }, [showModal, onConfirmText, shouldChangeButtonText]);
 
   const handleDeleteGroup = () => {
     setModalTitle("Eliminar Usuario");
     setOnConfirmText("Eliminar");
     setShowModal(true);
   };
+  
   const handleRestoreGroup = () => {
     setModalTitle("Restaurar Usuario");
     setOnConfirmText("Restaurar");
     setShowModal(true);
   };
+
   const handleConfirmA = async () => {
     if (onConfirmText === "Eliminar") {
       try {
@@ -41,33 +56,20 @@ export const GroupCard = ({ group, handleDataChanged }) => {
       }
     } else if (onConfirmText === "Restaurar") {
       try {
-        setIsRestore(true);
-        console.log("Restaurando usuario...");
+        setIsDeleting(true);
+        console.log("Restaurando grupo...");
         const res = await restoreGroup(token, group.id);
         console.log(res);
         setIsDeleting(false);
         setShowModal(false);
         // handleDataChanged();
       } catch (error) {
-        console.error("Error restaurando usuario:", error);
-        setIsRestore(false);
+        console.error("Error restaurando grupo:", error);
+        setIsDeleting(false);
         setShowModal(false);
       }
     }
   };
-  // const handleDeleteGroup = async () => {
-  //   try {
-  //     setIsDeleting(true);
-  //     await deleteGroupAdmin(token, group.id);
-  //     setShowDeleteModal(false);
-  //     setIsDeleting(false);
-  //     // handleDataChanged();
-  //   } catch (error) {
-  //     console.error("Error deleting group:", error);
-  //     setShowDeleteModal(false);
-  //     setIsDeleting(false);
-  //   }
-  // };
 
   // const handleRestoreGroup = async () => {
   //   console.log("que pasaaaa")
@@ -110,7 +112,7 @@ export const GroupCard = ({ group, handleDataChanged }) => {
           </button>
           <button 
           onClick={handleRestoreGroup} 
-          disabled={isRestore}
+          disabled={isDeleting}
           className="btnAdmin">
             Restaurar
           </button>

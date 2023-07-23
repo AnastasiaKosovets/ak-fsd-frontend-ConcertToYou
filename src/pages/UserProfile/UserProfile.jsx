@@ -3,7 +3,7 @@ import "./UserProfile.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { deleteProfile, getUsers, updateMyProfile } from "../../services/apiCalls";
+import { getUsers, updateMyProfile } from "../../services/apiCalls";
 import im2 from "../../../img/im2.jpg";
 import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
@@ -13,8 +13,8 @@ import { UserCard } from "../../common/UserCard/UserCard";
 export const UserProfile = () => {
   const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
-  const dispatch = useDispatch();
-  const [showProfileData, setShowProfileData] = useState(false);
+  // const dispatch = useDispatch();
+  // const [showProfileData, setShowProfileData] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [modifiedData, setModifiedData] = useState({
     firstName: user.firstName,

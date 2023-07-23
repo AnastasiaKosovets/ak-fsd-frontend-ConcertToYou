@@ -89,7 +89,7 @@ export const restoreGroup = async (token, group_id) => {
     return res.data;
 }
 
-// USERS
+// USER PART
 
 // UPDATE PROFILE
 export const updateMyProfile = async (userData, token) => {
@@ -133,4 +133,9 @@ export const restoreProfile = async (token) => {
     };
     let res = await axios.post(`${root}/users/restore/${id}`, access);
     return res.data;
+}
+
+export const getConcerts = async () => {
+  let res = await axios.get(`${root}/concerts`)
+  return res.data;
 }

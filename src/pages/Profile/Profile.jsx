@@ -115,7 +115,7 @@ export const Profile = () => {
           </Col>
           <Col xs={6} md={2}>
           <Link to="/admingroups">
-        <Button name={"Grupos"}></Button>
+        <Button name={"Grupos y Conciertos"}></Button>
       </Link>
           </Col>
         </Row>

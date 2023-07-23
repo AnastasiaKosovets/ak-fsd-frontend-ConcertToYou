@@ -35,6 +35,7 @@ export const userSlice = createSlice({
       state.data.phoneNumber = payload.data.phoneNumber;
       state.data.role_id = payload.data.role_id;
       state.data.group_id = payload.data.group_id;
+      state.data.concert_id = payload.data.concert_id_id;
       state.data.book_id = payload.data.book_id;
     },
     userout: (state) => {
