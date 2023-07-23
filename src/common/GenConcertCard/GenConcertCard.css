@@ -25,7 +25,6 @@
 }
 
 .cardTlt {
-  /* font-size: 2rem; */
   color: rgb(191, 145, 30);
   font-family:Georgia, 'Times New Roman', Times, serif ;
 }
@@ -34,6 +33,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
+}
+
+.BtnConcrt {
+  height: 3rem;
+  width: 10em;
+  font-size: xx-large;
+  color: white;
+  border: none;
+  border-radius: 1em;
+  background-color: rgb(131, 99, 19);
+}
+
+.BtnConcrt:hover {
+  background-color: goldenrod;
 }
 
 @media (max-width: 768px) {
@@ -62,5 +76,9 @@
 
   .cardTlt {
     font-size: medium;
+  }
+
+  .BtnConcrt {
+    width: 8em;
   }
 }

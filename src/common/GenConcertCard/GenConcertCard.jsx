@@ -3,6 +3,7 @@ import "./GenConcertCard.css";
 import { GenModal } from "../GenModal/GenModal";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { Button } from "../Button/Button";
 
 export const GenConcertCard = ({ concert }) => {
   const token = useSelector((state) => state.user.credentials.token);
@@ -19,12 +20,13 @@ export const GenConcertCard = ({ concert }) => {
                 className="imgConcerts"
               />
             </Col>
-            <Col xs={10} md={8}>
+            <Col xs={10} md={7}>
               <Card.Text className="cardTxt">{concert.title}</Card.Text>
               <Card.Title className="cardTlt">{concert.date}</Card.Title>
               <Card.Title className="cardTlt">{concert.groupName}</Card.Title>
               <Card.Title className="cardTlt">{concert.description}</Card.Title>
               <Card.Title className="cardTlt">{concert.programm}</Card.Title>
+              <button className="BtnConcrt">Reservar entrada</button>
             </Col>
           </Row>
         </Card.Body>
