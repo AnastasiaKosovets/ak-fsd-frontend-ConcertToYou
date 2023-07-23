@@ -21,7 +21,11 @@
 }
 
 .upC {
+  height: 3rem;
   transition: 1s;
+  position: fixed;
+  bottom: 0.5em;
+  right: 2em;
 }
 
 .upC:hover {
@@ -29,9 +33,6 @@
 }
 
 .scrollButtonC {
-  position: fixed;
-  bottom: 2em;
-  right: 2em;
   border: none;
   cursor: pointer;
 }
@@ -42,4 +43,8 @@
     width: 10em;
   }
  
+  .upC {
+    height: 3rem;
+    right: 0.5em;
+  }
 }
