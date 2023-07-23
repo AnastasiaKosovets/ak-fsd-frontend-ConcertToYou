@@ -11,10 +11,12 @@ export const MyTickets = () => {
   const token = useSelector((state) => state.user.credentials.token);
 
   useEffect(() => {
+    // console.log("-----", token)
     const fetchBookings = async () => {
       try {
         const bookingsData = await getMyTickets(token);
-        setBookings(bookingsData);
+        console.log(bookingsData)
+        setBookings(bookingsData.data);
       } catch (error) {
         console.error(error.message);
       } finally {

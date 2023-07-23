@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-import "./UserProfile.css";
+import "./MusicProfile.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { getUsers, updateMyProfile } from "../../services/apiCalls";
-import im2 from "../../../img/im2.jpg";
+import {
+  getOneGroup,
+  updateMyProfile,
+} from "../../services/apiCalls";
 import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
-import { Link } from "react-router-dom";
 import { UserCard } from "../../common/UserCard/UserCard";
 
-export const UserProfile = () => {
+export const MusicProfile = ({ group }) => {
   const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
-  const dispatch = useDispatch();
-  const [showProfileData, setShowProfileData] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [modifiedData, setModifiedData] = useState({
     firstName: user.firstName,
@@ -25,8 +24,9 @@ export const UserProfile = () => {
     dateOfBirth: user.dateOfBirth,
     phoneNumber: user.phoneNumber,
   });
-  const [infoUser, setInfoUser] = useState([]);
-  const [showUserInfo, setShowUSerInfo] = useState(false);
+  const [showGroupInfo, setShowGroupInfo] = useState(false);
+  const [groupData, setGroupData] = useState(null);
+  const [sincronized, setSincronized] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
@@ -48,51 +48,46 @@ export const UserProfile = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  useEffect(() => {
-    if (showUserInfo) {
-      getUsers(token)
-      // console.log(res.data)
-        .then((res) => {
-          setInfoUser(res.data);
-        })
-        .catch((error) => {
-          console.log("Error getting users:", error);
-        });
-    }
-  }, [showUserInfo, token]);
-
   const handleEditProfile = () => {
     setEditMode(true);
   };
 
-  // const handleDeleteAccount = async () => {
-  //   try {
-  //     const res = await deleteProfile(token);
-  //     console.log(res.message);
-  //   } catch (error) {
-  //     console.error("Error deleting account:", error);
-  //   }
-  // };
+  useEffect(() => {
+    if(showGroupInfo){
+        getOneGroup(token)
+        .then((res) => {
+            setGroupData(res.data);
+        })
+        .catch((error) => {
+            console.log("Error getting users:", error);
+          });
+    }
+  }, [showGroupInfo, token]);
+
+  const handleMyGroupButtonClick = () => {
+    setShowGroupInfo((prevShowGroupInfo) => !prevShowGroupInfo);
+  };
 
   const ReadOnlyProductCard = ({ user }) => {
     return (
       <>
-      <UserCard
-        className="usersCardDesign"
-        firstName={`Nombre: ${user.firstName}`}
-        lastName={`Apellido: ${user.lastName}`}
-        email={`Email: ${user.email}`}
-        address={`Dirección: ${user.address}`}
-        phoneNumber={`Teléfono: ${user.phoneNumber}`}
-        document={`DNI / NIE: ${user.document}`}
-        dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-        token={token}
-      />
-      {/* <button onClick={handleDeleteAccount}>Eliminar cuenta</button> */}
+        <UserCard
+          className="usersCardDesign"
+          firstName={`Nombre: ${user.firstName}`}
+          lastName={`Apellido: ${user.lastName}`}
+          email={`Email: ${user.email}`}
+          address={`Dirección: ${user.address}`}
+          phoneNumber={`Teléfono: ${user.phoneNumber}`}
+          document={`DNI / NIE: ${user.document}`}
+          dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
+          token={token}
+        />
       </>
-      
-      
     );
+  };
+
+  const handleDataChanged = () => {
+    setSincronized(false);
   };
 
   const handleSaveChanges = () => {
@@ -114,7 +109,7 @@ export const UserProfile = () => {
       <Container className="mainUserProfileStyle">
         <Row className="rowBook">
           <Col xs={6} md={4}>
-          <div className="bookStyle"> Mis datos</div>
+            <div className="bookStyle"> Mis datos</div>
             <div key={user.id} className="userCard"></div>
             {editMode ? (
               <div className="centralInfo">
@@ -167,21 +162,29 @@ export const UserProfile = () => {
                 Modificar
               </button>
             )}
+            {showGroupInfo && group ? (
+              <div key={group.id}>
+                <h2>Información del grupo</h2>
+                <p>ID del grupo: {group.id}</p>
+                <p>Nombre: {group.groupName}</p>
+                <p>Género: {group.genre}</p>
+                <p>Descripción: {group.description}</p>
+                <p>Número de músicos: {group.musicsNumber}</p>
+              </div>
+            ) : ( null
+              
+            )}
           </Col>
         </Row>
-        <Row className="bookRow2">
-        <Col xs={6} md={6} className="bookCol">
-         <div className="bookStyle">Mis Reservas</div>
-         <div>
-         <img src={im2} alt="Sala con piano" className="img2Home" />
-         </div>
-          </Col>
-          <Col xs={6} md={2} className="mb-4 my-2 classBtn">
-          <Link to={"/myTickets"}>
-        <Button name={"Ver reservas"} />
-      </Link>
-          </Col>
-        </Row>
+        <Col xs={6} md={2} className="mb-4 my-4">
+          <Button name={"Publicar Concierto"} />
+        </Col>
+        <Col xs={6} md={2} className="mb-4">
+          <Button name={"Mis Conciertos"} />
+        </Col>
+        <Col xs={6} md={2} className="mb-4">
+          <Button name={"Mi grupo"} onClick={handleMyGroupButtonClick} />
+        </Col>
       </Container>
       {showScrollButton && (
         <button className="upButn bg-transparent" onClick={scrollTop}>

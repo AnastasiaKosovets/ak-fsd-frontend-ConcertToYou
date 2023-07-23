@@ -34,6 +34,7 @@ export const GroupCard = ({ group, handleDataChanged }) => {
   };
   
   const handleRestoreGroup = () => {
+    console.log("ID del grupo a restaurar:", group.id);
     setModalTitle("Restaurar Usuario");
     setOnConfirmText("Restaurar");
     setShowModal(true);

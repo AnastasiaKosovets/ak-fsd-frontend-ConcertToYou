@@ -118,15 +118,15 @@ export const Header = () => {
             </Nav.Link>
             {role === 1 ? (
               <>
-              <Nav.Link
-                as={Link}
-                to="/UserProfilee"
-                className="headerText mb-3"
-                onClick={handleClose}
-              >
-                Mi Perfil
-              </Nav.Link>
-              <Nav.Link
+                <Nav.Link
+                  as={Link}
+                  to="/UserProfilee"
+                  className="headerText mb-3"
+                  onClick={handleClose}
+                >
+                  Mi Perfil
+                </Nav.Link>
+                <Nav.Link
                   as={Link}
                   to="/login"
                   className="headerText"
@@ -134,11 +134,8 @@ export const Header = () => {
                 >
                   Logout
                 </Nav.Link>
-    
               </>
-              
-            ) : 
-            role === 3 ? (
+            ) : role === 3 ? (
               <>
                 <Nav.Link
                   as={Link}
@@ -147,6 +144,25 @@ export const Header = () => {
                   onClick={handleClose}
                 >
                   Admin Access
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  to="/login"
+                  className="headerText"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Nav.Link>
+              </>
+            ) : role === 2 ? (
+              <>
+                <Nav.Link
+                  as={Link}
+                  to="/musicProfile"
+                  className="headerText mb-3"
+                  onClick={handleClose}
+                >
+                  Mi Perfil
                 </Nav.Link>
                 <Nav.Link
                   as={Link}

@@ -71,7 +71,6 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
     }
   };
 
-
   return (
     <div className="cardPrD">
       <Card className="productCardDesign" style={{ width: "18rem" }}>

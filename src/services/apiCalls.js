@@ -132,7 +132,7 @@ export const getMyTickets = async (token) => {
     },
   };
   let res = await axios.get(`${root}/my-tickets`, access);
-  return res.data.data;
+  return res.data;
 }
 
 // DELETE PROFILE
@@ -143,7 +143,7 @@ export const deleteProfile = async (token) => {
       },
     };
     let res = await axios.delete(`${root}/users/delete`, access);
-    return res.data;
+    return res.data.data;
 }
 
 // RESTORE PROFILE
@@ -160,4 +160,26 @@ export const restoreProfile = async (token) => {
 export const getConcerts = async () => {
   let res = await axios.get(`${root}/concerts`)
   return res.data;
+}
+
+// CONCERT PART
+export const createConcert = async (token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios.delete(`${root}/createConcert`, access);
+  return res.data;
+}
+
+// GET MY GROUP
+export const getOneGroup = async (token) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.get(`${root}/groups/myGroup`, access);
+    return res.data;
 }
