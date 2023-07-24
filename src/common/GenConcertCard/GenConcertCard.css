@@ -26,7 +26,7 @@
 
 .cardTlt {
   color: rgb(191, 145, 30);
-  font-family:Georgia, 'Times New Roman', Times, serif ;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .cardBody {
@@ -84,8 +84,25 @@
   background-color: rgb(216, 163, 28);
 }
 
+.successPop {
+  position: fixed;
+  height: 8em;
+  width: 15em;
+  text-align: center;
+  font-size: xx-large;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3c3c3ba1;
+  padding-top: 2em;
+  border-radius: 0.5em;
+  z-index: 9999;
+  color: white;
+  -webkit-backdrop-filter: blur(1em);
+  backdrop-filter: blur(0.5em);
+  border: 1.5px solid rgba(236, 238, 241, 0.3);
+}
 @media (max-width: 768px) {
-
   .cardBody {
     flex-direction: column;
   }
@@ -94,7 +111,7 @@
     width: 4em;
   }
 
-  .cardBody{
+  .cardBody {
     align-items: start;
   }
 

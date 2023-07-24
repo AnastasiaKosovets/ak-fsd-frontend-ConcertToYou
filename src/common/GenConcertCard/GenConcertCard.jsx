@@ -11,30 +11,22 @@ export const GenConcertCard = ({ concert }) => {
   const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
   const [showTokenModal, setShowTokenModal] = useState(false);
-
-  // const handleBookTicket = () => {
-  //     confirmTicket(concert.id, token)
-  //     // console.log(res.data)
-  //     .then(() => {
-  //       // console.log("estoy aqui", concert.id)
-  //       // console.log("Ticket booked:", res.data);
-  //   })
-  //   .catch((error) => {
-  //       console.error("Error booking ticket", error);
-  //   });
-  // }
+  const [successBookTicket, setSuccessBookTicket] = useState(false);
 
   const handleBookTicket = () => {
     if (token) {
       confirmTicket(concert.id, token)
         .then(() => {
+          setSuccessBookTicket(true);
           console.log("ticket reservado", concert.id);
+          setTimeout(() => {
+            setSuccessBookTicket(false);
+          }, 2500);
         })
         .catch((error) => {
           console.error("Error booking ticket", error);
         });
     } else {
-      // alert("Debes estar logueado");
       setShowTokenModal(true);
     }
   };
@@ -63,24 +55,42 @@ export const GenConcertCard = ({ concert }) => {
               <button className="BtnConcrt" onClick={handleBookTicket}>
                 Reservar entrada
               </button>
-              <Modal className="genModalStyleConcert" show={showTokenModal} onHide={() => setShowTokenModal}>
-                <Modal.Header className="genModalStyleConcert" >
-                  <Modal.Title className="modalConcertStyleTitle">Atención</Modal.Title>
+              <Modal
+                className="genModalStyleConcert"
+                show={showTokenModal}
+                onHide={() => setShowTokenModal(false)}
+              >
+                <Modal.Header className="genModalStyleConcert">
+                  <Modal.Title className="modalConcertStyleTitle">
+                    Atención
+                  </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <p>¡Necesitas estar logueado para reservar una entrada!</p>
                 </Modal.Body>
                 <Modal.Footer className="modalFooterCenter">
                   <Link to="/login" className="linkStyleOff">
-                    <button name={"Login"} className="modalConcertBook">Login</button>
+                    <button name={"Login"} className="modalConcertBook">
+                      Login
+                    </button>
                   </Link>
                   <button
-          className="modalConcertBook"
+                    className="modalConcertBook"
                     variant="secondary"
                     onClick={() => setShowTokenModal(false)}
-                  >Cerrar</button>
+                  >
+                    Cerrar
+                  </button>
                 </Modal.Footer>
               </Modal>
+              {successBookTicket && (
+                <div className="successPop">
+                  ¡Reserva realizada con éxito!{" "}
+                  <p>
+                    Revisa tu área personal para ver el código de la reserva
+                  </p>
+                </div>
+              )}
             </Col>
           </Row>
         </Card.Body>
