@@ -183,3 +183,14 @@ export const getOneGroup = async (token) => {
     let res = await axios.get(`${root}/groups/myGroup`, access);
     return res.data;
 }
+
+// BOOK TICKET
+export const confirmTicket = async (concert_id, token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios.post(`${root}/confirm-ticket`, concert_id, access);
+  return res.data;
+}

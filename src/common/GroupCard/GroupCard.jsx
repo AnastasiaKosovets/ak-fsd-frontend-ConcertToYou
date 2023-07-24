@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./GroupCard.css";
+import { Card } from "react-bootstrap";
 import { deleteGroupAdmin, restoreGroup } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
-import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-export const GroupCard = ({ group, handleDataChanged }) => {
+export const GroupCard = ({ group, handleDataChanged, token }) => {
   const token = useSelector((state) => state.user.credentials.token);
   // const [isRestoring, setIsRestoring] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -35,7 +35,7 @@ export const GroupCard = ({ group, handleDataChanged }) => {
   
   const handleRestoreGroup = () => {
     console.log("ID del grupo a restaurar:", group.id);
-    setModalTitle("Restaurar Usuario");
+    setModalTitle("Restaurar Grupo");
     setOnConfirmText("Restaurar");
     setShowModal(true);
   };
@@ -123,8 +123,9 @@ export const GroupCard = ({ group, handleDataChanged }) => {
         show={showModal}
         onClose={() => setShowModal(false)}
         onConfirm={handleConfirmA}
-        title="Eliminar Grupo"
-        onConfirmText="Eliminar"
+        title={modalTitle}
+        onConfirmText={onConfirmText}
+        isProcessing={isDeleting} 
       />
     </div>
   );

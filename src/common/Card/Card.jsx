@@ -36,6 +36,7 @@ export const ProductCard = ({
     setOnConfirmText("Restaurar");
     setShowModal(true);
   };
+  
   const handleConfirmAction = async () => {
     if (onConfirmText === "Eliminar") {
       try {
