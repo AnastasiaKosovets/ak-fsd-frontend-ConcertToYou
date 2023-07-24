@@ -5,7 +5,7 @@ import { deleteGroupAdmin, restoreGroup } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { useSelector } from "react-redux";
 
-export const GroupCard = ({ group, handleDataChanged, token }) => {
+export const GroupCard = ({ group, handleDataChanged }) => {
   const token = useSelector((state) => state.user.credentials.token);
   // const [isRestoring, setIsRestoring] = useState(false);
   const [showModal, setShowModal] = useState(false);

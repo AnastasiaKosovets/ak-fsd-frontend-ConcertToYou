@@ -16,13 +16,13 @@ export const Concerts = () => {
     if (!sincronized) {
       getConcerts()
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setConcerts(res.data);
           setSincronized(true);
           setShowConcertInfo(true);
         })
         .catch((error) => {
-          console.log("error getting groups:", error);
+          // console.log("error getting groups:", error);
           setSincronized(true);
         });
     }

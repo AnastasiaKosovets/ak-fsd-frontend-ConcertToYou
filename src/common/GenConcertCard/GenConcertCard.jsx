@@ -8,12 +8,12 @@ import { confirmTicket } from "../../services/apiCalls";
 import { userData } from "../../pages/userSlice";
 
 export const GenConcertCard = ({ concert }) => {
-    const user = useSelector(userData);
+  const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
 
   const handleBookTicket = () => {
-      confirmTicket(token)
-      console.log(res.data)
+      confirmTicket(concert.id, token)
+      // console.log(res.data)
       .then(() => {
         // console.log("estoy aqui", concert.id)
         // console.log("Ticket booked:", res.data);

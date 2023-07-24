@@ -59,7 +59,7 @@ export const restoreUser = async (token, id) => {
           Authorization: `Bearer ${token}`,
         },
       };
-      let res = await axios.post(`${root}/users/restore/${id}`, access);
+      let res = await axios.post(`${root}/users/restore/${id}`, null,  access);
       return res.data;
 }
 // GET ALL GROUPS
@@ -85,7 +85,7 @@ export const restoreGroup = async (token, group_id) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    let res = await axios.post(`${root}/group/restore/${group_id}`, access);
+    let res = await axios.post(`${root}/group/restore/${group_id}`, null, access);
     return res.data;
 }
 
@@ -107,7 +107,7 @@ export const restoreConcert = async (token, concert_id) => {
         Authorization: `Bearer ${token}`,
       },
     };
-    let res = await axios.post(`${root}/concert/restore/${concert_id}`, access);
+    let res = await axios.post(`${root}/concert/restore/${concert_id}`, null, access );
     return res.data;
 }
 
@@ -174,7 +174,8 @@ export const createConcert = async (token) => {
 }
 
 // GET MY GROUP
-export const getOneGroup = async (token) => {
+export const getMyGroup = async (token) => {
+  console.log("api info", token)
   let access = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -191,6 +192,7 @@ export const confirmTicket = async (concert_id, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.post(`${root}/confirm-ticket`, concert_id, access);
+  const payload = {"concert_id": concert_id};
+  let res = await axios.post(`${root}/confirm-ticket`, payload,  access);
   return res.data;
 }

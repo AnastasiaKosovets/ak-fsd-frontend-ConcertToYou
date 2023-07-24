@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import {
-  getOneGroup,
+  getMyGroup,
   updateMyProfile,
 } from "../../services/apiCalls";
 import up from "../../../img/up.png";
@@ -54,9 +54,12 @@ export const MusicProfile = ({ group }) => {
 
   useEffect(() => {
     if(showGroupInfo){
-        getOneGroup(token)
+      console.log("get info")
+        getMyGroup(token)
         .then((res) => {
+          console.log(res.data)
             setGroupData(res.data);
+
         })
         .catch((error) => {
             console.log("Error getting users:", error);
@@ -65,7 +68,7 @@ export const MusicProfile = ({ group }) => {
   }, [showGroupInfo, token]);
 
   const handleMyGroupButtonClick = () => {
-    setShowGroupInfo((prevShowGroupInfo) => !prevShowGroupInfo);
+    setShowGroupInfo(true);
   };
 
   const ReadOnlyProductCard = ({ user }) => {
@@ -162,14 +165,14 @@ export const MusicProfile = ({ group }) => {
                 Modificar
               </button>
             )}
-            {showGroupInfo && group ? (
-              <div key={group.id}>
+            {groupData ? (
+              <div key={groupData.id}>
                 <h2>Información del grupo</h2>
-                <p>ID del grupo: {group.id}</p>
-                <p>Nombre: {group.groupName}</p>
-                <p>Género: {group.genre}</p>
-                <p>Descripción: {group.description}</p>
-                <p>Número de músicos: {group.musicsNumber}</p>
+                <p>ID del grupo: {groupData.id}</p>
+                <p>Nombre: {groupData.groupName}</p>
+                <p>Género: {groupData.genre}</p>
+                <p>Descripción: {groupData.description}</p>
+                <p>Número de músicos: {groupData.musicsNumber}</p>
               </div>
             ) : ( null
               
