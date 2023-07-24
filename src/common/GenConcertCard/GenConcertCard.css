@@ -50,6 +50,40 @@
   background-color: goldenrod;
 }
 
+.genModalStyleConcert {
+  padding-top: 2em;
+}
+
+.modalConcertStyleTitle {
+  color: rgb(235, 15, 15);
+  font-size: xx-large;
+}
+
+.modalConcertBook {
+  display: flex;
+  justify-content: center;
+  height: 2em;
+  width: 8em;
+  border: none;
+  border-radius: 1em;
+  font-size: large;
+  color: white;
+  background-color: rgb(149, 149, 149);
+}
+
+.modalFooterCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.linkStyleOff {
+  text-decoration: none;
+}
+
+.modalConcertBook:hover {
+  background-color: rgb(216, 163, 28);
+}
+
 @media (max-width: 768px) {
 
   .cardBody {
