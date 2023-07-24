@@ -59,13 +59,41 @@ export const checkError = (name, value) => {
             }
             return "";
 
-        // case "groupName":
-        //     if (value.length < 2) {
-        //         return "El nombre del grupo muy corto";
-        //     }
-        //     return "";
+        case "groupName":
+            if (value.length < 2) {
+                return "El nombre del grupo muy corto";
+            }
+            return "";
 
-        
+        case "genre":
+
+            if (value.length < 3) {
+                return "Formato incorrecto"
+            }
+            return "";
+
+        case "description":
+
+            if (value.length < 20) {
+                return "La descripción tiene que ser más larga"
+            }
+            return "";
+
+        case "musicsNumber":
+
+            const checkNumber = parseInt(value, 10);
+            if (isNaN(checkNumber) || checkNumber < 2 || checkNumber > 100) {
+                return "Tiene que ser mínimo dos músicos, no se admite texto"
+            }
+            return "";
+
+        case "image":
+            const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
+
+            if (!urlPattern.test(value)) {
+                return "Por favor, ingresa una URL válida para la imagen";
+            }
+            return "";
 
         default:
             console.log("Formato desconocido");

@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import "./GroupRegister.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-import { checkError } from "../../services/useful";
 import { useNavigate } from "react-router";
 import { registerGroup } from "../../services/apiCalls";
-import img9 from "../../../img/img9.jpg";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { checkError } from "../../services/useful";
 
 export const GroupRegister = () => {
   const navigate = useNavigate();
@@ -21,9 +19,13 @@ export const GroupRegister = () => {
     image: "",
   });
 
-  // const [errorData, setErrorData] = useState({
-  //   groupNameError: "",
-  // });
+  const [errorData, setErrorData] = useState({
+    groupNameError: "",
+    genreError: "",
+    descriptionError: "",
+    musicsNumberError: "",
+    imageError: "",
+  });
 
   const handleChange = (e) => {
     setUserData({
@@ -32,16 +34,16 @@ export const GroupRegister = () => {
     });
   };
 
-  // const handleBlur = (e) => {
-  //   const fieldName = e.target.name;
-  //   const fieldValue = e.target.value;
-  //   const errorMessage = checkError(fieldName, fieldValue);
+  const handleBlur = (e) => {
+    const fieldName = e.target.name;
+    const fieldValue = e.target.value;
+    const errorMessage = checkError(fieldName, fieldValue);
 
-  //   setErrorData({
-  //     ...errorData,
-  //     [fieldName + "Error"]: errorMessage,
-  //   });
-  // };
+    setErrorData({
+      ...errorData,
+      [fieldName + "Error"]: errorMessage,
+    });
+  };
 
   const handleRegisterGroup = (e) => {
     e.preventDefault();
@@ -60,7 +62,7 @@ export const GroupRegister = () => {
           console.log("-----", userData);
           setSuccessPopup(true);
           setTimeout(() => {
-            navigate("/login");
+            navigate("/musicProfile");
           }, 1500);
         },
         [token]
@@ -83,13 +85,13 @@ export const GroupRegister = () => {
                 placeholder="Nombre del grupo"
                 value={userData.groupName}
                 onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
               />
-              {/* <div className="errorTxtReg">
+              <div className="errorTxtReg">
                 {errorData.groupNameError && (
                   <span className="error">{errorData.groupNameError}</span>
                 )}
-              </div> */}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Género</Col>
@@ -100,8 +102,13 @@ export const GroupRegister = () => {
                 placeholder="Género"
                 value={userData.genre}
                 onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">
+                {errorData.genreError && (
+                  <span className="error">{errorData.genreError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Descripción</Col>
@@ -112,8 +119,13 @@ export const GroupRegister = () => {
                 placeholder="Descripción"
                 value={userData.description}
                 onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">
+                {errorData.descriptionError && (
+                  <span className="error">{errorData.descriptionError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Número de músicos</Col>
@@ -124,8 +136,13 @@ export const GroupRegister = () => {
                 placeholder="Ej. 2"
                 value={userData.musicsNumber}
                 onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">
+                {errorData.musicsNumberError && (
+                  <span className="error">{errorData.musicsNumberError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Imagen</Col>
@@ -136,8 +153,13 @@ export const GroupRegister = () => {
                 placeholder="URL de la imágen"
                 value={userData.image}
                 onChange={handleChange}
-                // onBlur={handleBlur}
+                onBlur={handleBlur}
               />
+              <div className="errorTxtReg">
+                {errorData.imageError && (
+                  <span className="error">{errorData.imageError}</span>
+                )}
+              </div>
             </Col>
             {/*  */}
             <Col xs={10} md={6}>
