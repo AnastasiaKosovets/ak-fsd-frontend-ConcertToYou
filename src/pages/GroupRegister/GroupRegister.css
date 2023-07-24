@@ -18,9 +18,11 @@
   }
   
   .formRegisterStyle {
-    display: flex;
+    margin: 0;
+    padding: 0;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
   }
   
   .registerTxt {
@@ -52,10 +54,10 @@
     font-size: x-large;
   }
   
-  .imgCont {
+  /* .imgCont {
     position: relative;
     width: 8em;
-  }
+  } */
   
   .registerImg {
       border-radius: 2em;
@@ -79,24 +81,12 @@
     border: 1.5px solid rgba(236, 238, 241, 0.3);
   }
   
-  .textRegTitle {
+  .textRegTitletxt {
     color: rgb(255, 220, 187);
     width: 10em;
-    font-size: 3.5em;
-    position: absolute;
-    top: 2em;
-    animation: slideRight 2s forwards;
+    font-size: 2em;
+    margin-top: -10em;
   }
-  
-  @keyframes slideRight {
-      0% {
-          left: 100%;
-          transform: translateX(100%);
-        }
-        100% {
-          transform: translateX(10%);
-        }
-    }
   
     @media (max-width: 768px) {
       .registerMainStyle {
@@ -138,10 +128,10 @@
           width: 20em;
       }
     
-      .textRegTitle {
-        animation: none;
+      .textRegTitletxt {
         text-align: center;
         font-size: 2em; 
+        margin-top: 0;
       }
   
       .successPopUp {

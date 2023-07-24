@@ -45,22 +45,25 @@ export const GroupRegister = () => {
 
   const handleRegisterGroup = (e) => {
     e.preventDefault();
-    console.log("-----------------", token)
+    console.log("-----------------", token);
     registerGroup(token)
-      .then((res) => {
-        console.log(res);
-        console.log("-----", userData)
-        setSuccessPopup(true);
-        setTimeout(() => {
-          navigate("/login");
-        }, 1500);
-      }, [token])
+      .then(
+        (res) => {
+          console.log(res);
+          console.log("-----", userData);
+          setSuccessPopup(true);
+          setTimeout(() => {
+            navigate("/login");
+          }, 1500);
+        },
+        [token]
+      )
 
       .catch((error) => console.log(error));
   };
   return (
     <div style={{ fontFamily: "Great Vibes" }} className="registerMainStyle">
-      <div className="registerTxt">Regístrate</div>
+      <div className="registerTxt">Regístra tu grupo</div>
       <form onSubmit={handleRegisterGroup} className="formRegisterStyle">
         <Container className="formRegisterStyle">
           <Row className="registerRowStyle">
@@ -133,24 +136,18 @@ export const GroupRegister = () => {
             <Col xs={10} md={6}>
               <Button type="submit" name={"Registrar"}></Button>
             </Col>
-            <Col xs={10} md={8} lg={5} className="my-3 styleLinkText">
-              ¿Ya tienes una cuenta?
-              <Link to="/login" className="registerLink">
-                Inicia tu sesión!
-              </Link>
-            </Col>
           </Row>
           <Row>
-            <Col xs={10} sm={6} md={5} lg={2}>
-              <div class="imgCont">
-                <div class="textRegTitle">
-                  Vive la experiencia de los mejores conciertos en nuestra
-                  plataforma
+            <Col xs={10} sm={6} md={5}>
+              <div >
+                <div class="textRegTitletxt">
+                  ¿Eres músico o perteneces a un grupo musical? ¡Aprovecha
+                  nuestra plataforma para promocionar tus conciertos y llegar a
+                  más público! Con nuestro sistema de publicación de conciertos,
+                  podrás mostrar tus fechas y detalles del evento de manera
+                  sencilla y efectiva.
                 </div>
               </div>
-            </Col>
-            <Col xs={8} sm={6} md={6} lg={6}>
-              <img src={img9} alt="musics" className="registerImg" />
             </Col>
           </Row>
         </Container>
