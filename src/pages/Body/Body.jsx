@@ -9,6 +9,7 @@ import { UserProfile } from "../UserProfile/UserProfile";
 import { MyTickets } from "../MyTickets/MyTickets";
 import { MusicProfile } from "../MusicProfile/MusicProfile";
 import { Concerts } from "../Concerts/Concerts";
+import { GroupRegister } from "../GroupRegister/GroupRegister";
 
 export const Body = () => {
   return (
@@ -18,6 +19,7 @@ export const Body = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/groupRegister" element={<GroupRegister />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admingroups" element={<AdminGroups />} />
         <Route path="/UserProfilee" element={<UserProfile />} />
