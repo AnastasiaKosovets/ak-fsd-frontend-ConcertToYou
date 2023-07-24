@@ -45,6 +45,7 @@ export const GroupRegister = () => {
 
   const handleRegisterGroup = (e) => {
     e.preventDefault();
+    console.log("-----------------", token)
     registerGroup(token)
       .then((res) => {
         console.log(res);
@@ -121,7 +122,6 @@ export const GroupRegister = () => {
               <input
                 className="customInput"
                 type="text"
-                id="image"
                 name="image"
                 placeholder="URL de la imágen"
                 value={userData.image}
