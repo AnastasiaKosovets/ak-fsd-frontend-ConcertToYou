@@ -17,7 +17,7 @@ export const checkError = (name, value) => {
             }
             return "";
 
-            case "email":
+        case "email":
 
             if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
                 return "E-mail no válido";
@@ -33,11 +33,11 @@ export const checkError = (name, value) => {
             }
             return "";
 
-            case "address":
-                if (value.length < 10 ) {
-                    return "Formato no válido";
-                }
-                return "";
+        case "address":
+            if (value.length < 10) {
+                return "Formato no válido";
+            }
+            return "";
 
         case "document":
             if (!value.length < 8 && !/(?=(?:.*[A-Z]){1,2})/.test(value)) {
@@ -45,19 +45,27 @@ export const checkError = (name, value) => {
             }
             return "";
 
-            
-            case "dateOfBirth":
+
+        case "dateOfBirth":
             if (value.length < 10) {
                 return "La fecha debe de tener 10 caracteres minimo";
             }
             return "";
 
-            
-            case "phoneNumber":
-                if (!/^\d{9}$/.test(value)) {
-                  return "El número de teléfono incorrecto";
-                }
-                return "";
+
+        case "phoneNumber":
+            if (!/^\d{9}$/.test(value)) {
+                return "El número de teléfono incorrecto";
+            }
+            return "";
+
+        // case "groupName":
+        //     if (value.length < 2) {
+        //         return "El nombre del grupo muy corto";
+        //     }
+        //     return "";
+
+        
 
         default:
             console.log("Formato desconocido");

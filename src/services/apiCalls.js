@@ -196,3 +196,15 @@ export const confirmTicket = async (concert_id, token) => {
   let res = await axios.post(`${root}/confirm-ticket`, payload,  access);
   return res.data;
 }
+
+// REGISTER GROUP
+export const registerGroup = async (token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  // const payload ={"user_id": user_id;
+  let res = await axios.post(`${root}/registerGroup`, null, access);
+  return res.data;
+}

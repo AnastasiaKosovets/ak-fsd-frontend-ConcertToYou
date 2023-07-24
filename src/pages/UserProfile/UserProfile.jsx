@@ -51,7 +51,7 @@ export const UserProfile = () => {
   useEffect(() => {
     if (showUserInfo) {
       getUsers(token)
-      // console.log(res.data)
+        // console.log(res.data)
         .then((res) => {
           setInfoUser(res.data);
         })
@@ -77,21 +77,19 @@ export const UserProfile = () => {
   const ReadOnlyProductCard = ({ user }) => {
     return (
       <>
-      <UserCard
-        className="usersCardDesign"
-        firstName={`Nombre: ${user.firstName}`}
-        lastName={`Apellido: ${user.lastName}`}
-        email={`Email: ${user.email}`}
-        address={`Dirección: ${user.address}`}
-        phoneNumber={`Teléfono: ${user.phoneNumber}`}
-        document={`DNI / NIE: ${user.document}`}
-        dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-        token={token}
-      />
-      {/* <button onClick={handleDeleteAccount}>Eliminar cuenta</button> */}
+        <UserCard
+          className="usersCardDesign"
+          firstName={`Nombre: ${user.firstName}`}
+          lastName={`Apellido: ${user.lastName}`}
+          email={`Email: ${user.email}`}
+          address={`Dirección: ${user.address}`}
+          phoneNumber={`Teléfono: ${user.phoneNumber}`}
+          document={`DNI / NIE: ${user.document}`}
+          dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
+          token={token}
+        />
+        {/* <button onClick={handleDeleteAccount}>Eliminar cuenta</button> */}
       </>
-      
-      
     );
   };
 
@@ -114,7 +112,7 @@ export const UserProfile = () => {
       <Container className="mainUserProfileStyle">
         <Row className="rowBook">
           <Col xs={6} md={4}>
-          <div className="bookStyle"> Mis datos</div>
+            <div className="bookStyle"> Mis datos</div>
             <div key={user.id} className="userCard"></div>
             {editMode ? (
               <div className="centralInfo">
@@ -170,16 +168,21 @@ export const UserProfile = () => {
           </Col>
         </Row>
         <Row className="bookRow2">
-        <Col xs={6} md={6} className="bookCol">
-         <div className="bookStyle">Mis Reservas</div>
-         <div>
-         <img src={im2} alt="Sala con piano" className="img2Home" />
-         </div>
+          <Col xs={6} md={6} className="bookCol">
+            <div className="bookStyle">Mis Reservas</div>
+            <div>
+              <img src={im2} alt="Sala con piano" className="img2Home" />
+            </div>
           </Col>
           <Col xs={6} md={2} className="mb-4 my-2 classBtn">
-          <Link to={"/myTickets"}>
-        <Button name={"Ver reservas"} />
-      </Link>
+            <Link to={"/myTickets"}>
+              <Button name={"Ver reservas"} />
+            </Link>
+          </Col>
+          <Col xs={6} md={2} className="mb-4 my-2 classBtn">
+            <Link to={"/groupRegister"}>
+              <Button name={"Registrar mi grupo"} />
+            </Link>
           </Col>
         </Row>
       </Container>

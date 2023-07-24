@@ -28,7 +28,7 @@ export const GroupCard = ({ group, handleDataChanged }) => {
   // }, [showModal, onConfirmText, shouldChangeButtonText]);
 
   const handleDeleteGroup = () => {
-    setModalTitle("Eliminar Usuario");
+    setModalTitle("Eliminar Grupo");
     setOnConfirmText("Eliminar");
     setShowModal(true);
   };
@@ -44,14 +44,14 @@ export const GroupCard = ({ group, handleDataChanged }) => {
     if (onConfirmText === "Eliminar") {
       try {
         setIsDeleting(true);
-        console.log("Eliminando usuario...");
+        console.log("Eliminando grupo...");
         const response = await deleteGroupAdmin(token, group.id);
         console.log(response);
         setIsDeleting(false);
         setShowModal(false);
         // handleDataChanged();
       } catch (error) {
-        console.error("Error eliminando usuario:", error);
+        console.error("Error eliminando grupo:", error);
         setIsDeleting(false);
         setShowModal(false);
       }
