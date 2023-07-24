@@ -84,8 +84,8 @@
   .textRegTitletxt {
     color: rgb(255, 220, 187);
     width: 10em;
-    font-size: 2em;
-    margin-top: -10em;
+    font-size: 2.5em;
+    margin-top: -8em;
   }
   
     @media (max-width: 768px) {

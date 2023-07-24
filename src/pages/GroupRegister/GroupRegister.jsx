@@ -21,9 +21,9 @@ export const GroupRegister = () => {
     image: "",
   });
 
-  const [errorData, setErrorData] = useState({
-    groupNameError: "",
-  });
+  // const [errorData, setErrorData] = useState({
+  //   groupNameError: "",
+  // });
 
   const handleChange = (e) => {
     setUserData({
@@ -32,21 +32,28 @@ export const GroupRegister = () => {
     });
   };
 
-  const handleBlur = (e) => {
-    const fieldName = e.target.name;
-    const fieldValue = e.target.value;
-    const errorMessage = checkError(fieldName, fieldValue);
+  // const handleBlur = (e) => {
+  //   const fieldName = e.target.name;
+  //   const fieldValue = e.target.value;
+  //   const errorMessage = checkError(fieldName, fieldValue);
 
-    setErrorData({
-      ...errorData,
-      [fieldName + "Error"]: errorMessage,
-    });
-  };
+  //   setErrorData({
+  //     ...errorData,
+  //     [fieldName + "Error"]: errorMessage,
+  //   });
+  // };
 
   const handleRegisterGroup = (e) => {
     e.preventDefault();
     console.log("-----------------", token);
-    registerGroup(token)
+
+    const formData = new FormData();
+    formData.append("groupName", userData.groupName);
+    formData.append("genre", userData.genre);
+    formData.append("description", userData.description);
+    formData.append("musicsNumber", userData.musicsNumber);
+    formData.append("image", userData.image);
+    registerGroup(token, formData)
       .then(
         (res) => {
           console.log(res);
@@ -76,13 +83,13 @@ export const GroupRegister = () => {
                 placeholder="Nombre del grupo"
                 value={userData.groupName}
                 onChange={handleChange}
-                onBlur={handleBlur}
+                // onBlur={handleBlur}
               />
-              <div className="errorTxtReg">
+              {/* <div className="errorTxtReg">
                 {errorData.groupNameError && (
                   <span className="error">{errorData.groupNameError}</span>
                 )}
-              </div>
+              </div> */}
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Género</Col>
@@ -93,7 +100,7 @@ export const GroupRegister = () => {
                 placeholder="Género"
                 value={userData.genre}
                 onChange={handleChange}
-                onBlur={handleBlur}
+                // onBlur={handleBlur}
               />
             </Col>
             <Col xs={10} md={8}>
@@ -105,7 +112,7 @@ export const GroupRegister = () => {
                 placeholder="Descripción"
                 value={userData.description}
                 onChange={handleChange}
-                onBlur={handleBlur}
+                // onBlur={handleBlur}
               />
             </Col>
             <Col xs={10} md={8}>
@@ -117,7 +124,7 @@ export const GroupRegister = () => {
                 placeholder="Ej. 2"
                 value={userData.musicsNumber}
                 onChange={handleChange}
-                onBlur={handleBlur}
+                // onBlur={handleBlur}
               />
             </Col>
             <Col xs={10} md={8}>
@@ -129,7 +136,7 @@ export const GroupRegister = () => {
                 placeholder="URL de la imágen"
                 value={userData.image}
                 onChange={handleChange}
-                onBlur={handleBlur}
+                // onBlur={handleBlur}
               />
             </Col>
             {/*  */}
