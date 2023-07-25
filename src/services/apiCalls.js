@@ -197,7 +197,7 @@ export const updateMyGroup = async( token) => {
 }
 
 // GET MY CONCERT
-export const getMyConcerts = async ( token) => {
+export const getMyConcerts = async (token) => {
   let access = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -205,6 +205,18 @@ export const getMyConcerts = async ( token) => {
     };
     let res = await axios.get(`${root}/groups/{group_id}/myConcerts`, access);
     return res.data;
+}
+
+// UPDATE MY CONCERT
+export const updateMyConcert = async(concertId, data, token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios.put(`${root}/concerts/${concertId}`, data, access);
+  console.log("respuesta de la función", res);
+  return res.data;
 }
 
 // BOOK TICKET
