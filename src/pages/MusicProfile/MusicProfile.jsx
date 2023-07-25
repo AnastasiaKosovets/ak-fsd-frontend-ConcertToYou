@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import {
   getMyGroup,
+  updateMyGroup,
   updateMyProfile,
 } from "../../services/apiCalls";
 import up from "../../../img/up.png";
@@ -25,9 +26,13 @@ export const MusicProfile = ({ group }) => {
     phoneNumber: user.phoneNumber,
   });
   const [showGroupInfo, setShowGroupInfo] = useState(false);
-  const [groupData, setGroupData] = useState(null);
-  const [sincronized, setSincronized] = useState(false);
+  const [groupData, setGroupData] = useState({
+    desctiption: "Initial description",
+  });
+  // const [sincronized, setSincronized] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [editDescription, setEditDescription] = useState(false);
+  const [newDescription, setNewDescription] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,17 +58,15 @@ export const MusicProfile = ({ group }) => {
   };
 
   useEffect(() => {
-    if(showGroupInfo){
-      console.log("get info")
-        getMyGroup(token)
+    if (showGroupInfo) {
+      console.log("get info");
+      getMyGroup(token)
         .then((res) => {
-          console.log(res.data)
-            setGroupData(res.data);
-
+          setGroupData(res.data);
         })
         .catch((error) => {
-            console.log("Error getting users:", error);
-          });
+          console.log("Error getting users:", error);
+        });
     }
   }, [showGroupInfo, token]);
 
@@ -89,9 +92,9 @@ export const MusicProfile = ({ group }) => {
     );
   };
 
-  const handleDataChanged = () => {
-    setSincronized(false);
-  };
+  // const handleDataChanged = () => {
+  //   setSincronized(false);
+  // };
 
   const handleSaveChanges = () => {
     updateMyProfile(modifiedData, token)
@@ -103,6 +106,23 @@ export const MusicProfile = ({ group }) => {
           address: res.data.address,
           phoneNumber: res.data.phoneNumber,
         });
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleEditDescription = () => {
+    setEditDescription(true);
+    setNewDescription(groupData.description);
+  };
+
+  const handleSaveDescription = () => {
+    updateMyGroup({ description: newDescription }, token)
+      .then((res) => {
+        setGroupData((prevGroupData) => ({
+          ...prevGroupData,
+          description: newDescription,
+        }));
+        setEditDescription(false);
       })
       .catch((error) => console.log(error));
   };
@@ -156,7 +176,7 @@ export const MusicProfile = ({ group }) => {
             ) : (
               <ReadOnlyProductCard user={modifiedData} />
             )}
-             {!editMode && (
+            {!editMode && (
               <button
                 name={"Modificar"}
                 className="modInfo mb-3"
@@ -169,11 +189,39 @@ export const MusicProfile = ({ group }) => {
           {showGroupInfo && groupData && (
             <Col xs={12} md={4} className="groupInfoContainer">
               <h2>Información del grupo</h2>
-              {/* <p>ID del grupo: {groupData.id}</p> */}
               <p>Nombre: {groupData.groupName}</p>
               <p>Género: {groupData.genre}</p>
-              <p>Descripción: {groupData.description}</p>
-              <p>Número de músicos: {groupData.musicsNumber}</p>
+              {editDescription ? (
+                <>
+                  <textarea
+                    value={newDescription}
+                    onChange={(e) => setNewDescription(e.target.value)}
+                    className="form-control mb-3"
+                  />
+                  <button
+                    className="btnAdminClickA"
+                    onClick={handleSaveDescription}
+                  >
+                    Guardar descripción
+                  </button>
+                  <button
+                    className="btnAdminClickA"
+                    onClick={() => setEditDescription(false)}
+                  >
+                    Cancelar
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p>{groupData.description}</p>
+                  <button
+                    className="btnAdminClickA"
+                    onClick={handleEditDescription}
+                  >
+                    Editar descripción
+                  </button>
+                </>
+              )}
             </Col>
           )}
         </Row>

@@ -175,7 +175,6 @@ export const createConcert = async (token) => {
 
 // GET MY GROUP
 export const getMyGroup = async (token) => {
-  console.log("api info", token)
   let access = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -183,6 +182,17 @@ export const getMyGroup = async (token) => {
     };
     let res = await axios.get(`${root}/groups/myGroup`, access);
     return res.data;
+}
+
+// UPDATE MY GROUP
+export const updateMyGroup = async(groupData, token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios.put(`${root}/update-my-group`, groupData, access);
+  return res.data;
 }
 
 // BOOK TICKET
