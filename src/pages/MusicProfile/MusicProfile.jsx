@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import {
+  getMyConcerts,
   getMyGroup,
   updateMyGroup,
   updateMyProfile,
@@ -12,7 +13,7 @@ import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
 import { UserCard } from "../../common/UserCard/UserCard";
 
-export const MusicProfile = ({ group }) => {
+export const MusicProfile = () => {
   const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
   const [editMode, setEditMode] = useState(false);
@@ -27,9 +28,10 @@ export const MusicProfile = ({ group }) => {
   });
   const [showGroupInfo, setShowGroupInfo] = useState(false);
   const [groupData, setGroupData] = useState({
-    desctiption: "Initial description",
+    description: "Initial description",
   });
-  // const [sincronized, setSincronized] = useState(false);
+  const [concerts, setConcerts] = useState([]);
+  const [showConcertInfo, setShowConcertInfo] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
   const [newDescription, setNewDescription] = useState("");
@@ -59,7 +61,6 @@ export const MusicProfile = ({ group }) => {
 
   useEffect(() => {
     if (showGroupInfo) {
-      console.log("get info");
       getMyGroup(token)
         .then((res) => {
           setGroupData(res.data);
@@ -92,10 +93,6 @@ export const MusicProfile = ({ group }) => {
     );
   };
 
-  // const handleDataChanged = () => {
-  //   setSincronized(false);
-  // };
-
   const handleSaveChanges = () => {
     updateMyProfile(modifiedData, token)
       .then((res) => {
@@ -125,6 +122,18 @@ export const MusicProfile = ({ group }) => {
         setEditDescription(false);
       })
       .catch((error) => console.log(error));
+  };
+
+  const handleShowConcerts = () => {
+    getMyConcerts(token)
+      .then((res) => {
+        console.log("----", res.data);
+        setConcerts(res.data.concerts);
+        setShowConcertInfo(true);
+      })
+      .catch((error) => {
+        console.log("Error getting my concerts:", error);
+      });
   };
 
   return (
@@ -198,14 +207,11 @@ export const MusicProfile = ({ group }) => {
                     onChange={(e) => setNewDescription(e.target.value)}
                     className="form-control mb-3"
                   />
-                  <button
-                    className="btnAdminClickA"
-                    onClick={handleSaveDescription}
-                  >
-                    Guardar descripción
+                  <button className="btnGroupA" onClick={handleSaveDescription}>
+                    Guardar
                   </button>
                   <button
-                    className="btnAdminClickA"
+                    className="btnGroupA"
                     onClick={() => setEditDescription(false)}
                   >
                     Cancelar
@@ -214,22 +220,33 @@ export const MusicProfile = ({ group }) => {
               ) : (
                 <>
                   <p>{groupData.description}</p>
-                  <button
-                    className="btnGroupA"
-                    onClick={handleEditDescription}
-                  >
+                  <button className="btnGroupA" onClick={handleEditDescription}>
                     Editar descripción
                   </button>
                 </>
               )}
             </Col>
           )}
+          {showConcertInfo && concerts && concerts.length > 0 ? (
+            <Col xs={12} md={4}>
+              <h2>Mis Conciertos</h2>
+              {concerts.map((concert) => (
+                <div key={concert.id}>
+                  <h4>{concert.title}</h4>
+                  <p>{concert.description}</p>
+                  <p>Date: {concert.date}</p>
+                  <p>Programm: {concert.programm}</p>
+                </div>
+              ))}
+            </Col>
+          ) : null}
         </Row>
+
         <Col xs={6} md={2} className="mb-4 my-4">
           <Button name={"Publicar Concierto"} />
         </Col>
         <Col xs={6} md={2} className="mb-4">
-          <Button name={"Mis Conciertos"} />
+          <Button name={"Mis Conciertos"} onClick={handleShowConcerts} />
         </Col>
         <Col xs={6} md={2} className="mb-4">
           <Button name={"Mi grupo"} onClick={handleMyGroupButtonClick} />

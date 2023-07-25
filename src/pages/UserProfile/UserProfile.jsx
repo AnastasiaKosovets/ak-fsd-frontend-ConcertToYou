@@ -65,15 +65,6 @@ export const UserProfile = () => {
     setEditMode(true);
   };
 
-  // const handleDeleteAccount = async () => {
-  //   try {
-  //     const res = await deleteProfile(token);
-  //     console.log(res.message);
-  //   } catch (error) {
-  //     console.error("Error deleting account:", error);
-  //   }
-  // };
-
   const ReadOnlyProductCard = ({ user }) => {
     return (
       <>

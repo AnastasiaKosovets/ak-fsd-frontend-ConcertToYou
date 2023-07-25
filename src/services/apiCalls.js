@@ -67,6 +67,7 @@ export const getGroups = async () => {
   let res = await axios.get(`${root}/groups`)
   return res.data;
 }
+
 // DELETE GROUP
 export const deleteGroupAdmin = async (token, group_id) => {
   let access = {
@@ -185,14 +186,25 @@ export const getMyGroup = async (token) => {
 }
 
 // UPDATE MY GROUP
-export const updateMyGroup = async(groupData, token) => {
+export const updateMyGroup = async( token) => {
   let access = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.put(`${root}/update-my-group`, groupData, access);
+  let res = await axios.put(`${root}/update-my-group`, access);
   return res.data;
+}
+
+// GET MY CONCERT
+export const getMyConcerts = async ( token) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.get(`${root}/groups/{group_id}/myConcerts`, access);
+    return res.data;
 }
 
 // BOOK TICKET

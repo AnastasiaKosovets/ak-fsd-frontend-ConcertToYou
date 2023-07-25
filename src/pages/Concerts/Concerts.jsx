@@ -22,7 +22,7 @@ export const Concerts = () => {
           setShowConcertInfo(true);
         })
         .catch((error) => {
-          // console.log("error getting groups:", error);
+          console.log("error getting groups:", error);
           setSincronized(true);
         });
     }
