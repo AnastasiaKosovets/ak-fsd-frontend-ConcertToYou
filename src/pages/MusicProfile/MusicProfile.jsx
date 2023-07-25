@@ -215,7 +215,7 @@ export const MusicProfile = ({ group }) => {
                 <>
                   <p>{groupData.description}</p>
                   <button
-                    className="btnAdminClickA"
+                    className="btnGroupA"
                     onClick={handleEditDescription}
                   >
                     Editar descripción
