@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./GroupCard.css";
 import { Card } from "react-bootstrap";
-import { deleteGroupAdmin, restoreGroup } from "../../services/apiCalls";
+import { deleteGroupAdmin, restoreGroup, updateGroupByAdmin } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { useSelector } from "react-redux";
 
@@ -11,6 +11,8 @@ export const GroupCard = ({ group }) => {
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [newDescription, setNewDescription] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
   
 
   const handleDeleteGroup = () => {
@@ -57,6 +59,26 @@ export const GroupCard = ({ group }) => {
     }
   };
 
+  const handleInputChange = (event) => {
+    setNewDescription(event.target.value);
+  };
+
+  const handleUpdateGroup = async () => {
+    try {
+      const updatedGroupData = {
+        description: newDescription
+      };
+  
+      const groupId = group.id; 
+  
+      const updatedGroup = await updateGroupByAdmin(token, groupId, updatedGroupData);
+      console.log('Grupo actualizado:', updatedGroup);
+      setIsEditing(false);
+    } catch (error) {
+      console.log('Error al actualizar el grupo:', error);
+    }
+  };
+
   return (
     <div className="cardPrD">
       <Card className="productCardDesign" style={{ width: "18rem" }}>
@@ -73,6 +95,30 @@ export const GroupCard = ({ group }) => {
           <Card.Text className="cardText">
             Número de músicos: {group.musicsNumber}
           </Card.Text>
+          {isEditing ? (
+            <div>
+              <input
+                type="text"
+                value={newDescription}
+                onChange={handleInputChange}
+                className="cardText"
+              />
+              <button
+                onClick={handleUpdateGroup}
+                disabled={isDeleting}
+                className="btnAdmin"
+              >
+                Guardar
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setIsEditing(true)}
+              className="btnAdmin"
+            >
+              Modificar
+            </button>
+          )}
         </Card.Body>
         <div className="buttonContainer">
           <button

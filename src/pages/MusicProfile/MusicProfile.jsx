@@ -134,7 +134,7 @@ export const MusicProfile = () => {
     if (!showConcertInfo) {
       getMyConcerts(token)
         .then((res) => {
-          setConcerts(res.data.concerts);
+          setConcerts(res.concerts);
           setShowConcertInfo(true);
         })
         .catch((error) => {
@@ -275,7 +275,6 @@ export const MusicProfile = () => {
               )}
             </Col>
           )}
-
           {showConcertInfo && concerts && concerts.length > 0 ? (
             <Col xs={12} md={4}>
               <h2>Mis Conciertos</h2>

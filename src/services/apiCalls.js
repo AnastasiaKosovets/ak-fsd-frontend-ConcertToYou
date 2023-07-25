@@ -112,6 +112,21 @@ export const restoreConcert = async (token, concert_id) => {
     return res.data;
 }
 
+// UPDATE GROUP
+export const updateGroupByAdmin = async (token, group_id, description) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let requestData = {
+    description: description
+  };
+  let res = await axios.put(`${root}/groups/admin/${group_id}`, requestData, access );
+  return res.data;
+}
+
+
 // USER PART
 
 // UPDATE PROFILE
@@ -186,13 +201,13 @@ export const getMyGroup = async (token) => {
 }
 
 // UPDATE MY GROUP
-export const updateMyGroup = async( token) => {
+export const updateMyGroup = async(groupData, token) => {
   let access = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.put(`${root}/update-my-group`, access);
+  let res = await axios.put(`${root}/update-my-group`, groupData, access);
   return res.data;
 }
 
