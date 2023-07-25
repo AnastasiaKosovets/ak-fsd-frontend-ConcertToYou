@@ -1,38 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./GroupCard.css";
 import { Card } from "react-bootstrap";
 import { deleteGroupAdmin, restoreGroup } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { useSelector } from "react-redux";
 
-export const GroupCard = ({ group, handleDataChanged }) => {
+export const GroupCard = ({ group }) => {
   const token = useSelector((state) => state.user.credentials.token);
-  // const [isRestoring, setIsRestoring] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  // const [shouldChangeButtonText, setShouldChangeButtonText] = useState(false);
-
-  // useEffect(() => {
-  //   if (showModal && shouldChangeButtonText) {
-  //     if (onConfirmText === "Eliminar") {
-  //       setModalTitle("Restaurar Grupo");
-  //       setOnConfirmText("Restaurar");
-  //     } else if (onConfirmText === "Restaurar") {
-  //       setModalTitle("Eliminar Grupo");
-  //       setOnConfirmText("Eliminar");
-  //     }
-  //     setShouldChangeButtonText(false);
-  //   }
-  // }, [showModal, onConfirmText, shouldChangeButtonText]);
+  
 
   const handleDeleteGroup = () => {
     setModalTitle("Eliminar Grupo");
     setOnConfirmText("Eliminar");
     setShowModal(true);
   };
-  
+
   const handleRestoreGroup = () => {
     console.log("ID del grupo a restaurar:", group.id);
     setModalTitle("Restaurar Grupo");
@@ -49,7 +35,6 @@ export const GroupCard = ({ group, handleDataChanged }) => {
         console.log(response);
         setIsDeleting(false);
         setShowModal(false);
-        // handleDataChanged();
       } catch (error) {
         console.error("Error eliminando grupo:", error);
         setIsDeleting(false);
@@ -71,20 +56,6 @@ export const GroupCard = ({ group, handleDataChanged }) => {
       }
     }
   };
-
-  // const handleRestoreGroup = async () => {
-  //   console.log("que pasaaaa")
-  //   try {
-  //     setIsRestore(true);
-  //     await restoreGroup(token, group.id);
-  //     // console.log(res)
-  //     // handleDataChanged();
-  //     setIsRestore(false);
-  //   } catch (error) {
-  //     console.error("Error restoring group:", error);
-  //     setIsRestore(false);
-  //   }
-  // };
 
   return (
     <div className="cardPrD">
@@ -111,10 +82,11 @@ export const GroupCard = ({ group, handleDataChanged }) => {
           >
             Eliminar Perfil
           </button>
-          <button 
-          onClick={handleRestoreGroup} 
-          disabled={isDeleting}
-          className="btnAdmin">
+          <button
+            onClick={handleRestoreGroup}
+            disabled={isDeleting}
+            className="btnAdmin"
+          >
             Restaurar
           </button>
         </div>
@@ -125,7 +97,7 @@ export const GroupCard = ({ group, handleDataChanged }) => {
         onConfirm={handleConfirmA}
         title={modalTitle}
         onConfirmText={onConfirmText}
-        isProcessing={isDeleting} 
+        isProcessing={isDeleting}
       />
     </div>
   );

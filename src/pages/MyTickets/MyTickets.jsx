@@ -3,6 +3,8 @@ import "./MyTickets.css";
 import { getMyTickets } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
+import { Card } from "react-bootstrap";
+import spinner from "../../../img/spinner.gif"
 
 export const MyTickets = () => {
   const [bookings, setBookings] = useState([]);
@@ -11,44 +13,58 @@ export const MyTickets = () => {
   const token = useSelector((state) => state.user.credentials.token);
 
   useEffect(() => {
-    // console.log("-----", token)
     const fetchBookings = async () => {
       try {
         const bookingsData = await getMyTickets(token);
-        console.log(bookingsData)
-        setBookings(bookingsData.data);
+        // Verificamos si bookingsData.data es un array antes de actualizar el estado
+        if (Array.isArray(bookingsData.data)) {
+          setBookings(bookingsData.data);
+        } else {
+          setBookings([]); 
+        }
       } catch (error) {
         console.error(error.message);
       } finally {
         setLoading(false);
       }
     };
-
+  
     fetchBookings();
   }, [token]);
 
   return (
-    <div>
-      <h1>Mis Tickets</h1>
-      {loading ? (
-        <p>Cargando...</p>
-      ) : (
-        <ul>
-          {bookings.map((booking) => (
-            <li key={booking.id}>
-              <p>ID del concierto: {booking.concert_id}</p>
-              <p>Título del concierto: {booking.concert.title}</p>
-              <p>Fecha del concierto: {booking.concert.date}</p>
-              <p>Nombre del grupo: {booking.concert.groupName}</p>
-              <p>
-                Nombre del usuario: {booking.user.firstName}{" "}
-                {booking.user.lastName}
-              </p>
-              <p>Código de reserva: {booking.reservation_code}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <div className="ticketsGenStyle" style={{ fontFamily: "Great Vibes" }}>
+    <h1>Mis Entradas</h1>
+    {loading ? (
+      <p>
+        <img src={spinner} alt="Loading..." className="" />
+      </p>
+    ) : (
+      <div className="cardStyleTicket">
+        {bookings.length === 0 ? (
+          <p className="noTickets">No hay entradas disponibles.</p>
+        ) : (
+          bookings.map((booking) => (
+            <Card key={booking.id} className="productCardDesignT">
+              <Card.Body>
+                <Card.Text className="cardText">
+                  Título: {booking.concert.title}
+                </Card.Text>
+                <Card.Text className="cardText">
+                  Fecha: {booking.concert.date}
+                </Card.Text>
+                <Card.Text className="cardText">
+                  Grupo: {booking.concert.groupName}
+                </Card.Text>
+                <Card.Text className="cardText">
+                  Código de reserva: {booking.reservation_code}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          ))
+        )}
+      </div>
+    )}
+  </div>
   );
 };

@@ -1,0 +1,49 @@
+.ticketsGenStyle {
+  height: auto;
+  min-height: 100vh;
+  padding-top: 5em;
+  background-color: rgb(58, 57, 57);
+  color: rgb(211, 157, 20);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardStyleTicket {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 3em;
+}
+
+.productCardDesignT {
+  width: 30em;
+  padding: 1em;
+  margin-bottom: 2em;
+  color: goldenrod;
+  font-family: 'Courier New', Courier, monospace;
+  background: rgba(211, 196, 159, 0.122);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(0.5em);
+  border: 1.5px solid rgba(209, 213, 219, 0.3);
+}
+
+.productCardDesignT:hover {
+    background-color: rgba(243, 232, 204, 0.122);
+    transform: scale(1.1);
+}
+
+.noTickets {
+  font-size: 6em;
+}
+
+@media (max-width: 768px) {
+  .noTickets {
+    font-size: 2em;
+  }
+
+  .productCardDesignT {
+    width: 20em;
+  }
+}

@@ -88,7 +88,6 @@ export const UserProfile = () => {
           dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
           token={token}
         />
-        {/* <button onClick={handleDeleteAccount}>Eliminar cuenta</button> */}
       </>
     );
   };
