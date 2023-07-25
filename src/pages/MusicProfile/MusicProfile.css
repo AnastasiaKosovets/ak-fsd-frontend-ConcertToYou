@@ -7,12 +7,10 @@
   .mainUserProfileStyle {
       padding-top: 5em;
       display: flex;
-      /* justify-content: center; */
-      /* align-items: center; */
+      flex-direction: column;
       color: goldenrod;
       font-family: 'Courier New', Courier, monospace;
       font-size: medium;
-      /* margin: 0; */
   }
   
   .bookStyle {
@@ -48,6 +46,15 @@
   .up:hover {
       height: 2.5em;
       transition: 1s;
+  }
+
+  .groupInfoContainer {
+    height: 15em;
+    padding: 1em;
+    background: rgba(96, 84, 54, 0.122);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(0.5em);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
   }
   
   @media (max-width: 768px) {

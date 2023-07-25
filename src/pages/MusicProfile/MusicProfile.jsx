@@ -68,7 +68,7 @@ export const MusicProfile = ({ group }) => {
   }, [showGroupInfo, token]);
 
   const handleMyGroupButtonClick = () => {
-    setShowGroupInfo(true);
+    setShowGroupInfo((prevShowGroupInfo) => !prevShowGroupInfo);
   };
 
   const ReadOnlyProductCard = ({ user }) => {
@@ -156,28 +156,26 @@ export const MusicProfile = ({ group }) => {
             ) : (
               <ReadOnlyProductCard user={modifiedData} />
             )}
-            {!editMode && (
+             {!editMode && (
               <button
                 name={"Modificar"}
-                className="modInfo"
+                className="modInfo mb-3"
                 onClick={handleEditProfile}
               >
                 Modificar
               </button>
             )}
-            {groupData ? (
-              <div key={groupData.id}>
-                <h2>Información del grupo</h2>
-                <p>ID del grupo: {groupData.id}</p>
-                <p>Nombre: {groupData.groupName}</p>
-                <p>Género: {groupData.genre}</p>
-                <p>Descripción: {groupData.description}</p>
-                <p>Número de músicos: {groupData.musicsNumber}</p>
-              </div>
-            ) : ( null
-              
-            )}
           </Col>
+          {showGroupInfo && groupData && (
+            <Col xs={12} md={4} className="groupInfoContainer">
+              <h2>Información del grupo</h2>
+              {/* <p>ID del grupo: {groupData.id}</p> */}
+              <p>Nombre: {groupData.groupName}</p>
+              <p>Género: {groupData.genre}</p>
+              <p>Descripción: {groupData.description}</p>
+              <p>Número de músicos: {groupData.musicsNumber}</p>
+            </Col>
+          )}
         </Row>
         <Col xs={6} md={2} className="mb-4 my-4">
           <Button name={"Publicar Concierto"} />
