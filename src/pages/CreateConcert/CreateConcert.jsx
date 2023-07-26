@@ -82,9 +82,9 @@ export const CreateConcert = () => {
       <form onSubmit={handleCreateConcert} className="formRegisterStyle">
         <Container className="formRegisterStyle">
           <Row className="registerRowStyle">
-            <Col>
+            {/* <Col>
               <p>ID del grupo: {group_id}</p>
-            </Col>
+            </Col> */}
             <Col xs={10} md={8}>
               <Col className="txtReg">Nombre del grupo</Col>
               <input
@@ -92,7 +92,7 @@ export const CreateConcert = () => {
                 type="text"
                 name="groupName"
                 placeholder="Nombre del grupo"
-                value={userData.groupName}
+                value={modifiedData.groupName}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -109,7 +109,7 @@ export const CreateConcert = () => {
                 type="text"
                 name="title"
                 placeholder="Título del concierto"
-                value={userData.title}
+                value={modifiedData.title}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -126,7 +126,7 @@ export const CreateConcert = () => {
                 type="text"
                 name="date"
                 placeholder="Fecha"
-                value={userData.date}
+                value={modifiedData.date}
                 onChange={handleChange}
                 // onBlur={handleBlur}
               />
@@ -143,7 +143,7 @@ export const CreateConcert = () => {
                 type="text"
                 name="description"
                 placeholder="Descripción"
-                value={userData.description}
+                value={modifiedData.description}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -160,7 +160,7 @@ export const CreateConcert = () => {
                 type="text"
                 name="programm"
                 placeholder="Programa"
-                value={userData.programm}
+                value={modifiedData.programm}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -177,7 +177,7 @@ export const CreateConcert = () => {
                 type="text"
                 name="image"
                 placeholder="URL de la imágen"
-                value={userData.image}
+                value={modifiedData.image}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />

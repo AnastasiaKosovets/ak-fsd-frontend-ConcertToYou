@@ -149,7 +149,7 @@ export const MusicProfile = () => {
   };
 
   const handleEditConcertDescription = (concert) => {
-    console.log("info de concierto ahora:", concert.description); //entra pero no hace nada
+    console.log("info de concierto ahora:", concert.description); 
     setEditedConcert(concert);
     setNewConcertDescription(concert.description);
     setEditConcertDescription(true);
@@ -291,19 +291,8 @@ export const MusicProfile = () => {
                     <Card.Text>Descripción: {concert.description}</Card.Text>
                     <Card.Text>Fecha: {concert.date}</Card.Text>
                     <Card.Text>Programa: {concert.programm}</Card.Text>
-                    <button
-                      className="btnGroupA"
-                      onClick={() => handleEditConcertDescription(concert)}
-                    >
-                      Modificar
-                    </button>
-                  </Card.Body>
-                </Card>
-              ))}
-            </Col>
-          ) : null}
-          {editConcertDescription && (
-            <>
+                    {editConcertDescription && (
+            <div className="modConcertStyleG">
               <textarea
                 value={editedConcert.description}
                 onChange={(e) => {setNewConcertDescription(e.target.value)
@@ -326,8 +315,20 @@ export const MusicProfile = () => {
               >
                 Cancelar
               </button>
-            </>
+            </div>
           )}
+                    <button
+                      className="btnGroupA"
+                      onClick={() => handleEditConcertDescription(concert)}
+                    >
+                      Modificar
+                    </button>
+                  </Card.Body>
+                </Card>
+              ))}
+            </Col>
+          ) : null}
+          
         </Row>
       </Container>
       {showScrollButton && (

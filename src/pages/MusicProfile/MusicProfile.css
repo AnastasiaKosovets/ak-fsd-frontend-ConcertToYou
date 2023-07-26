@@ -82,6 +82,13 @@
   background-color: rgba(129, 114, 90, 0.884);
 }
 
+.modConcertStyleG {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width: 30em; */
+}
+
 @media (max-width: 768px) {
   .mainUserProfileStyle {
     flex-direction: column;
