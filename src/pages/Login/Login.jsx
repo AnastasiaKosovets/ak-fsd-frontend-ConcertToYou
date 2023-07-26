@@ -4,9 +4,9 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { InputText } from "../../common/InputText/InputText";
 import { logIn } from "../../services/apiCalls";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../userSlice";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export const Login = () => {
@@ -14,6 +14,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({});
   const [inputError, setInputError] = useState({});
+  const user = useSelector((state) => state.user);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -28,6 +29,7 @@ export const Login = () => {
 
       .catch((error) => console.log(error));
   };
+  const group_id = user.data && user.data.group_id;
   // console.log(userData);
 
   return (
@@ -82,6 +84,11 @@ export const Login = () => {
                 ¡Regístrate aquí!
               </Link>
           </Col>
+          {group_id && ( // Conditionally render 'group_id' if it exists
+            <Col xs={10} md={8} lg={5} className="my-3">
+              Group ID: {group_id}
+            </Col>
+          )}
         </Row>
       </Container>
     </div>

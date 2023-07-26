@@ -13,6 +13,7 @@ import {
 import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
 import { UserCard } from "../../common/UserCard/UserCard";
+import { Link } from "react-router-dom";
 
 export const MusicProfile = () => {
   const user = useSelector(userData);
@@ -68,7 +69,8 @@ export const MusicProfile = () => {
   useEffect(() => {
     if (showGroupInfo) {
       getMyGroup(token)
-        .then((res) => {z
+        .then((res) => {
+          // z;
           setGroupData(res.data);
         })
         .catch((error) => {
@@ -146,7 +148,7 @@ export const MusicProfile = () => {
   };
 
   const handleEditConcertDescription = (concert) => {
-    console.log("info de concierto:", concert.description); //entra pero no hace nada
+    console.log("info de concierto ahora:", concert.description); //entra pero no hace nada
     setEditedConcert(concert);
     setNewConcertDescription(concert.description);
     setEditConcertDescription(true);
@@ -178,7 +180,9 @@ export const MusicProfile = () => {
       <Container className="mainUserProfileStyle">
         <Row className="rowBook">
           <Col xs={6} md={4} className="mb-4 my-4">
-            <Button name={"Publicar Concierto"} />
+            <Link to="/createConcert">
+              <Button name={"Publicar concierto"}></Button>
+            </Link>
           </Col>
           <Col xs={6} md={4} className="mb-4">
             <Button name={"Mis Conciertos"} onClick={handleShowConcerts} />
@@ -280,7 +284,6 @@ export const MusicProfile = () => {
               <h2>Mis Conciertos</h2>
               {concerts.map((concert) => (
                 <Card key={concert.id} className="mb-3 cardStyleMyConcert">
-                  {/* <Card.Img variant="top" src={concert.image} /> */}
                   <Card.Body>
                     <Card.Title>Título: {concert.title}</Card.Title>
                     <Card.Text>Descripción: {concert.description}</Card.Text>
@@ -301,11 +304,11 @@ export const MusicProfile = () => {
             <>
               <textarea
                 value={editedConcert.description}
-                onChange={(e) =>
+                onChange={(e) => {setNewConcertDescription(e.target.value)
                   setEditedConcert((prev) => ({
                     ...prev,
                     description: e.target.value,
-                  }))
+                  }))}
                 }
                 className="form-control mb-3"
               />

@@ -78,6 +78,7 @@ export const userSlice = createSlice({
     credentials: {
       token: "",
       user_id: "",
+      group_id: "",
     },
     data: {
       firstName: "",
@@ -96,6 +97,7 @@ export const userSlice = createSlice({
       image: "",
       concert_id: "",
       book_id: "",
+      programm: "",
     },
   },
   reducers: {
@@ -106,6 +108,7 @@ export const userSlice = createSlice({
         credentials: {
           token: payload.token,
           user_id: payload.user_id,
+          group_id: payload.group_id
         },
         data: {
           ...state.data,
@@ -125,6 +128,7 @@ export const userSlice = createSlice({
           image: payload.data.image,
           concert_id: payload.data.concert_id,
           book_id: payload.data.book_id,
+          programm: payload.data.programm,
         },
       };
     },
@@ -153,6 +157,7 @@ export const userSlice = createSlice({
           image: "",
           concert_id: "",
           book_id: "",
+          programm: "",
         },
       };
     }

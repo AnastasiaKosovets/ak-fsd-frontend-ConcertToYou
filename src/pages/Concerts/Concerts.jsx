@@ -3,7 +3,8 @@ import "./Concerts.css";
 import up from "../../../img/up.png";
 import { getConcerts } from "../../services/apiCalls";
 import { Col, Container, Row } from "react-bootstrap";
-import { Button } from "../../common/Button/Button";
+// import { Button } from "../../common/Button/Button";
+// import { scrollTop } from "../../common/scrollTop";
 import { GenConcertCard } from "../../common/GenConcertCard/GenConcertCard";
 
 export const Concerts = () => {
@@ -11,6 +12,7 @@ export const Concerts = () => {
   const [sincronized, setSincronized] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [showConcertInfo, setShowConcertInfo] = useState(false);
+  // const { scrollTop, showScrollButton} = scrollTop();
 
   useEffect(() => {
     if (!sincronized) {

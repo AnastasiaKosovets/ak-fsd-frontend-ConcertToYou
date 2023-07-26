@@ -6,21 +6,24 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { checkError } from "../../services/useful";
 import { createConcert } from "../../services/apiCalls";
+import { userData } from "../userSlice";
 
 export const CreateConcert = () => {
-  const navigate = useNavigate();
+  const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
-  const group_id = useSelector((state) => state.user.credentials.group_id);
-  console.log("revision id group", group_id);
+  const navigate = useNavigate();
+  //   const group_id = useSelector((state) => state.user.credentials.group_id);
+  //   console.log("revision id group", group_id);
   const [successPopup, setSuccessPopup] = useState(false);
-  const [userData, setUserData] = useState({
-    image: "",
-    title: "",
-    date: "",
-    groupName: "",
-    description: "",
-    programm: "",
-  });
+  const [modifiedData, setModifiedData] = useState([]);
+  // const [userData, setUserData] = useState({
+  //   image: "",
+  //   title: "",
+  //   date: "",
+  //   groupName: "",
+  //   description: "",
+  //   programm: "",
+  // });
 
   const [errorData, setErrorData] = useState({
     imageError: "",
@@ -32,7 +35,7 @@ export const CreateConcert = () => {
   });
 
   const handleChange = (e) => {
-    setUserData({
+    setModifiedData({
       ...userData,
       [e.target.name]: e.target.value,
     });
@@ -51,7 +54,7 @@ export const CreateConcert = () => {
 
   const handleCreateConcert = async (e) => {
     e.preventDefault();
-
+    console.log("user = ", user);
     const newConcertData = {
       image: userData.image,
       title: userData.title,
@@ -59,7 +62,7 @@ export const CreateConcert = () => {
       groupName: userData.groupName,
       description: userData.description,
       programm: userData.programm,
-      group_id: group_id,
+      group_id: user.group_id,
     };
     console.log("id del grupo", newConcertData.group_id);
     try {
@@ -188,11 +191,10 @@ export const CreateConcert = () => {
             <Col xs={10} sm={6} md={5}>
               <div>
                 <div class="textRegTitletxt">
-                  ¿Eres músico o perteneces a un grupo musical? ¡Aprovecha
-                  nuestra plataforma para promocionar tus conciertos y llegar a
-                  más público! Con nuestro sistema de publicación de conciertos,
-                  podrás mostrar tus fechas y detalles del evento de manera
-                  sencilla y efectiva.
+                  ¡Anuncia tu Concierto en Nuestra Plataforma Musical! Llega a
+                  una audiencia más amplia y diversa con nuestra base de
+                  usuarios apasionados por la música. Promociona tus conciertos
+                  y haz que tu música llegue a nuevos seguidores y aficionados.
                 </div>
               </div>
             </Col>
