@@ -1,32 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./ConcertCard.css";
-import { deleteConcert, restoreConcert } from "../../services/apiCalls";
+import { deleteConcert, restoreConcert, updateConcertByAdmin } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 export const ConcertCard = ({ concert, handleDataChanged }) => {
   const token = useSelector((state) => state.user.credentials.token);
-  // const [isRestoring, setIsRestoring] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  // const [shouldChangeButtonText, setShouldChangeButtonText] = useState(false);
-
-  // useEffect(() => {
-  //   if (showModal && shouldChangeButtonText) {
-  //     if (onConfirmText === "Eliminar") {
-  //       setModalTitle("Restaurar Grupo");
-  //       setOnConfirmText("Restaurar");
-  //     } else if (onConfirmText === "Restaurar") {
-  //       setModalTitle("Eliminar Grupo");
-  //       setOnConfirmText("Eliminar");
-  //     }
-  //     setShouldChangeButtonText(false);
-  //   }
-  // }, [showModal, onConfirmText, shouldChangeButtonText]);
-
+  const [isEditing, setIsEditing] = useState(false);
+  const [newDescriptionByAdmin, setNewDescriptionByAdmin] = useState(concert.description);
+  
   const handleDeleteConcert = () => {
     setModalTitle("Eliminar Concierto");
     setOnConfirmText("Eliminar");
@@ -71,6 +58,28 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
     }
   };
 
+  const handleEditConcertByAdmin = () => {
+    setIsEditing(true);
+  };
+
+  const handleSaveConcertAdmin = async () => {
+    try {
+      const updatedData = {
+        description: newDescriptionByAdmin,
+      };
+      const updatedConcert = await updateConcertByAdmin(concert.id, updatedData, token);
+      console.log("prueba concierto actualizado:", updatedConcert);
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error al actualizar el concierto como admin:", error);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+    setNewDescriptionByAdmin(concert.description);
+  };
+
   return (
     <div className="cardPrD">
       <Card className="productCardDesign" style={{ width: "18rem" }}>
@@ -89,7 +98,26 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
             Programa: {concert.programm}
           </Card.Text>
         </Card.Body>
-        <div className="buttonContainer">
+        {isEditing ? (
+            <div>
+              <input
+                type="text"
+                value={newDescriptionByAdmin}
+                onChange={(e) => setNewDescriptionByAdmin(e.target.value)}
+                className="cardText"
+              />
+              <button onClick={handleSaveConcertAdmin} className="btnAdmin">
+                Guardar
+              </button>
+              <button onClick={handleCancelEdit} className="btnAdmin">
+                Cancelar
+              </button>
+            </div>
+          ) : (
+            <button onClick={handleEditConcertByAdmin} className="btnAdmin">
+              Modificar
+            </button>
+          )}
           <button
             onClick={handleDeleteConcert}
             disabled={isDeleting}
@@ -103,7 +131,33 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
           className="btnAdmin">
             Restaurar
           </button> 
-        </div>
+        {/* <div className="buttonContainer">
+          <button
+            onClick={handleDeleteConcert}
+            disabled={isDeleting}
+            className="btnAdmin"
+          >
+            Eliminar Concierto
+          </button>
+          <button 
+          onClick={handleRestoreConcert} 
+          disabled={isDeleting}
+          className="btnAdmin">
+            Restaurar
+          </button> 
+          <button 
+          onClick={handleRestoreConcert} 
+          disabled={isDeleting}
+          className="btnAdmin">
+            Modificar
+          </button> 
+          <button 
+          onClick={handleRestoreConcert} 
+          disabled={isDeleting}
+          className="btnAdmin">
+            Cancelar
+          </button> 
+        </div> */}
       </Card>
        <GenModal
         show={showModal}

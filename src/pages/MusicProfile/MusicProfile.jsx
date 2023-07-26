@@ -68,7 +68,7 @@ export const MusicProfile = () => {
   useEffect(() => {
     if (showGroupInfo) {
       getMyGroup(token)
-        .then((res) => {
+        .then((res) => {z
           setGroupData(res.data);
         })
         .catch((error) => {
@@ -134,7 +134,7 @@ export const MusicProfile = () => {
     if (!showConcertInfo) {
       getMyConcerts(token)
         .then((res) => {
-          setConcerts(res.concerts);
+          setConcerts(res.data.concerts);
           setShowConcertInfo(true);
         })
         .catch((error) => {
@@ -146,7 +146,7 @@ export const MusicProfile = () => {
   };
 
   const handleEditConcertDescription = (concert) => {
-    console.log("info de concierto:", concert.description);
+    console.log("info de concierto:", concert.description); //entra pero no hace nada
     setEditedConcert(concert);
     setNewConcertDescription(concert.description);
     setEditConcertDescription(true);

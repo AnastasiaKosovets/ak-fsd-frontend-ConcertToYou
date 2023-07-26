@@ -110,6 +110,13 @@ export const GroupCard = ({ group }) => {
               >
                 Guardar
               </button>
+              <button
+                onClick={() => setIsEditing(false)}
+                disabled={isDeleting}
+                className="btnAdmin"
+              >
+                Cancelar
+              </button>
             </div>
           ) : (
             <button

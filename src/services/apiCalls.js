@@ -21,7 +21,6 @@ export const myRegister = async (userData) => {
 }
 
 // ADMIN PART :
-
 // UPDATE PROFILE
 export const updateProfile = async (userData, token) => {
     let access = {
@@ -32,6 +31,7 @@ export const updateProfile = async (userData, token) => {
     let res = await axios.put(`${root}/users`, userData, access);
     return res.data;
   };
+
 //   GET ALL USERS 
 export const getUsers = async ( token) => {
     let access = {
@@ -42,6 +42,7 @@ export const getUsers = async ( token) => {
     let res = await axios.get(`${root}/users`, access)
     return res.data;
 }
+
 // DELETE  USER
 export const deleteUser = async (token, id) => {
     let access = {
@@ -52,6 +53,7 @@ export const deleteUser = async (token, id) => {
       let res = await axios.delete(`${root}/user/delete/${id}`, access);
       return res.data;
 }
+
 // RESTORE USER
 export const restoreUser = async (token, id) => {
     let access = {
@@ -62,6 +64,7 @@ export const restoreUser = async (token, id) => {
       let res = await axios.post(`${root}/users/restore/${id}`, null,  access);
       return res.data;
 }
+
 // GET ALL GROUPS
 export const getGroups = async () => {
   let res = await axios.get(`${root}/groups`)
@@ -126,9 +129,19 @@ export const updateGroupByAdmin = async (token, group_id, description) => {
   return res.data;
 }
 
+// UPDATE CONCERT
+export const updateConcertByAdmin = async(id, data, token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios.put(`${root}/concerts/admin/${id}`, data, access);
+  console.log("respuesta de la función", res);
+  return res.data;
+}
 
 // USER PART
-
 // UPDATE PROFILE
 export const updateMyProfile = async (userData, token) => {
     let access = {
@@ -173,22 +186,6 @@ export const restoreProfile = async (token) => {
     return res.data;
 }
 
-export const getConcerts = async () => {
-  let res = await axios.get(`${root}/concerts`)
-  return res.data;
-}
-
-// CONCERT PART
-export const createConcert = async (token) => {
-  let access = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  let res = await axios.delete(`${root}/createConcert`, access);
-  return res.data;
-}
-
 // GET MY GROUP
 export const getMyGroup = async (token) => {
   let access = {
@@ -223,13 +220,13 @@ export const getMyConcerts = async (token) => {
 }
 
 // UPDATE MY CONCERT
-export const updateMyConcert = async(concertId, data, token) => {
+export const updateMyConcert = async(id, data, token) => {
   let access = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.put(`${root}/concerts/${concertId}`, data, access);
+  let res = await axios.put(`${root}/concerts/${id}`, data, access);
   console.log("respuesta de la función", res);
   return res.data;
 }
@@ -255,5 +252,23 @@ export const registerGroup = async (token, formData) => {
     },
   };
   let res = await axios.post(`${root}/registerGroup`, formData, access);
+  return res.data;
+}
+
+// CONCERT PART
+// GET ALL CONCERTS
+export const getConcerts = async () => {
+  let res = await axios.get(`${root}/concerts`)
+  return res.data;
+}
+
+// CREATE CONCERT
+export const createConcert = async (token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  let res = await axios.delete(`${root}/createConcert`, access);
   return res.data;
 }
