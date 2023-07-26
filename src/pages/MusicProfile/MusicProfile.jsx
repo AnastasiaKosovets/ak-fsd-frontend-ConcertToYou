@@ -121,6 +121,7 @@ export const MusicProfile = () => {
   };
 
   const handleSaveDescription = () => {
+    console.lo
     updateMyGroup({ description: newDescription }, token)
       .then((res) => {
         setGroupData((prevGroupData) => ({
@@ -251,6 +252,7 @@ export const MusicProfile = () => {
             <Col xs={12} md={4} className="groupInfoContainer mb-4">
               <h2>Información del grupo</h2>
               <p>Nombre: {groupData.groupName}</p>
+              <p>ID del grupo: {groupData.id}</p>
               <p>Género: {groupData.genre}</p>
               {editDescription ? (
                 <>

@@ -23,7 +23,7 @@ export const Login = () => {
         dispatch(login(res));
         console.log(res);
         setTimeout(() => {
-          navigate("/home");
+          navigate("/concerts");
         }, 500);
       })
 
@@ -84,7 +84,7 @@ export const Login = () => {
                 ¡Regístrate aquí!
               </Link>
           </Col>
-          {group_id && ( // Conditionally render 'group_id' if it exists
+          {group_id && ( 
             <Col xs={10} md={8} lg={5} className="my-3">
               Group ID: {group_id}
             </Col>

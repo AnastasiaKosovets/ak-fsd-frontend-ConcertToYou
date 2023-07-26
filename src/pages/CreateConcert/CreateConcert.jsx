@@ -9,11 +9,11 @@ import { createConcert } from "../../services/apiCalls";
 import { userData } from "../userSlice";
 
 export const CreateConcert = () => {
-  const user = useSelector(userData);
+  const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.user.credentials.token);
   const navigate = useNavigate();
-  //   const group_id = useSelector((state) => state.user.credentials.group_id);
-  //   console.log("revision id group", group_id);
+  const group_id = useSelector((state) => state.user.credentials.group_id);
+  // const [concertGroupId, setConcertGroupId] = useState(null);
   const [successPopup, setSuccessPopup] = useState(false);
   const [modifiedData, setModifiedData] = useState({
     image: "",
@@ -52,7 +52,6 @@ export const CreateConcert = () => {
 
   const handleCreateConcert = async (e) => {
     e.preventDefault();
-    const group_id = user && user.data ? user.data.group_id : null
     const newConcertData = {
       image: modifiedData.image,
       title: modifiedData.title,
@@ -68,10 +67,10 @@ export const CreateConcert = () => {
       const { data } = res;
       const { group_id: concertGroupId } = data;
       console.log("group ID es", concertGroupId);
-      // const createdConcert = await createConcert(token, newConcertData);
-      // console.log("Concierto creado:", createdConcert);
-      // successPopup("Concierto creado", createdConcert);
-      // setSuccessPopup(true);
+      // if (concertGroupId !== undefined) {
+      //   setConcertGroupId(concertGroupId);
+      // }
+
     } catch (error) {
       console.error("Error al crear el concierto:", error);
     }
@@ -83,6 +82,9 @@ export const CreateConcert = () => {
       <form onSubmit={handleCreateConcert} className="formRegisterStyle">
         <Container className="formRegisterStyle">
           <Row className="registerRowStyle">
+            <Col>
+              <p>ID del grupo: {group_id}</p>
+            </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Nombre del grupo</Col>
               <input
