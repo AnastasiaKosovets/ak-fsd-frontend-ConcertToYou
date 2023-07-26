@@ -15,20 +15,18 @@ export const CreateConcert = () => {
   //   const group_id = useSelector((state) => state.user.credentials.group_id);
   //   console.log("revision id group", group_id);
   const [successPopup, setSuccessPopup] = useState(false);
-  const [modifiedData, setModifiedData] = useState([]);
-  // const [userData, setUserData] = useState({
-  //   image: "",
-  //   title: "",
-  //   date: "",
-  //   groupName: "",
-  //   description: "",
-  //   programm: "",
-  // });
+  const [modifiedData, setModifiedData] = useState({
+    image: "",
+    title: "",
+    date: "",
+    groupName: "",
+    description: "",
+    programm: "",
+  });
 
   const [errorData, setErrorData] = useState({
     imageError: "",
     titleError: "",
-    dateError: "",
     groupNameError: "",
     descriptionError: "",
     programmError: "",
@@ -36,7 +34,7 @@ export const CreateConcert = () => {
 
   const handleChange = (e) => {
     setModifiedData({
-      ...userData,
+      ...modifiedData,
       [e.target.name]: e.target.value,
     });
   };
@@ -54,22 +52,26 @@ export const CreateConcert = () => {
 
   const handleCreateConcert = async (e) => {
     e.preventDefault();
-    console.log("user = ", user);
+    const group_id = user && user.data ? user.data.group_id : null
     const newConcertData = {
-      image: userData.image,
-      title: userData.title,
-      date: userData.date,
-      groupName: userData.groupName,
-      description: userData.description,
-      programm: userData.programm,
-      group_id: user.group_id,
+      image: modifiedData.image,
+      title: modifiedData.title,
+      date: modifiedData.date,
+      groupName: modifiedData.groupName,
+      description: modifiedData.description,
+      programm: modifiedData.programm,
+      group_id: group_id,
     };
     console.log("id del grupo", newConcertData.group_id);
     try {
-      const createdConcert = await createConcert(token, newConcertData);
-      console.log("Concierto creado:", createdConcert);
-      successPopup("Concierto creado", createdConcert);
-      setSuccessPopup(true);
+      const res = await createConcert(token, newConcertData);
+      const { data } = res;
+      const { group_id: concertGroupId } = data;
+      console.log("group ID es", concertGroupId);
+      // const createdConcert = await createConcert(token, newConcertData);
+      // console.log("Concierto creado:", createdConcert);
+      // successPopup("Concierto creado", createdConcert);
+      // setSuccessPopup(true);
     } catch (error) {
       console.error("Error al crear el concierto:", error);
     }
@@ -124,13 +126,13 @@ export const CreateConcert = () => {
                 placeholder="Fecha"
                 value={userData.date}
                 onChange={handleChange}
-                onBlur={handleBlur}
+                // onBlur={handleBlur}
               />
-              <div className="errorTxtReg">
+              {/* <div className="errorTxtReg">
                 {errorData.dateError && (
                   <span className="error">{errorData.dateError}</span>
                 )}
-              </div>
+              </div> */}
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Descripción</Col>

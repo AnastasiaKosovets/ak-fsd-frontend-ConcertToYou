@@ -95,14 +95,14 @@ export const checkError = (name, value) => {
             }
             return "";
 
-        case "date":
-            const currentDate = new Date();
-            const selectedDate = new Date(value);
+        // case "date":
+        //     const currentDate = new Date();
+        //     const selectedDate = new Date(value);
 
-            if (selectedDate <= currentDate) {
-                return "Por favor, ingresa una fecha posterior a la fecha actual";
-            }
-            return "";
+        //     if (selectedDate <= currentDate) {
+        //         return "Por favor, ingresa una fecha posterior a la fecha actual";
+        //     }
+        //     return "";
 
         case "title":
 
