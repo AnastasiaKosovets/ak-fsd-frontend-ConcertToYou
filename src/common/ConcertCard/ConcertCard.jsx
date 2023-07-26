@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./ConcertCard.css";
-import { deleteConcert, restoreConcert, updateConcertByAdmin } from "../../services/apiCalls";
+import {
+  deleteConcert,
+  restoreConcert,
+  updateConcertByAdmin,
+} from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { Card, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
@@ -12,14 +16,16 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [newDescriptionByAdmin, setNewDescriptionByAdmin] = useState(concert.description);
-  
+  const [newDescriptionByAdmin, setNewDescriptionByAdmin] = useState(
+    concert.description
+  );
+
   const handleDeleteConcert = () => {
     setModalTitle("Eliminar Concierto");
     setOnConfirmText("Eliminar");
     setShowModal(true);
   };
-  
+
   const handleRestoreConcert = () => {
     setModalTitle("Restaurar Concierto");
     setOnConfirmText("Restaurar");
@@ -67,7 +73,11 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
       const updatedData = {
         description: newDescriptionByAdmin,
       };
-      const updatedConcert = await updateConcertByAdmin(concert.id, updatedData, token);
+      const updatedConcert = await updateConcertByAdmin(
+        concert.id,
+        updatedData,
+        token
+      );
       console.log("prueba concierto actualizado:", updatedConcert);
       setIsEditing(false);
     } catch (error) {
@@ -86,21 +96,25 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
         <Card.Body className="bodyGeneralStyleCard">
           <Card.Text className="cardText">ID: {concert.id}</Card.Text>
           <Card.Text className="cardText">
-            <img src={concert.image} alt={concert.groupName} className="imgGeneralStyle" />
+            <img
+              src={concert.image}
+              alt={concert.groupName}
+              className="imgGeneralStyle"
+            />
           </Card.Text>
           <Card.Text className="cardText">Título: {concert.title}</Card.Text>
           <Card.Text className="cardText">Fecha: {concert.date}</Card.Text>
-          <Card.Text className="cardText">Nombre del grupo: {concert.groupName}</Card.Text>
+          <Card.Text className="cardText">
+            Nombre del grupo: {concert.groupName}
+          </Card.Text>
           <Card.Text className="cardText">
             Descripción: {concert.description}
           </Card.Text>
           <Card.Text className="cardText">
             Programa: {concert.programm}
           </Card.Text>
-        </Card.Body>
-        <Col className="colGeneralStyle">
-        {isEditing ? (
-            <div className="divGen">
+          {isEditing ? (
+            <div className="">
               <input
                 type="text"
                 value={newDescriptionByAdmin}
@@ -119,6 +133,8 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
               Modificar
             </button>
           )}
+        </Card.Body>
+        <Col className="colGeneralStyle">
           <button
             onClick={handleDeleteConcert}
             disabled={isDeleting}
@@ -126,16 +142,16 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
           >
             Eliminar Concierto
           </button>
-          <button 
-          onClick={handleRestoreConcert} 
-          disabled={isDeleting}
-          className="btnAdmin">
+          <button
+            onClick={handleRestoreConcert}
+            disabled={isDeleting}
+            className="btnAdmin"
+          >
             Restaurar
-          </button> 
+          </button>
         </Col>
-        
       </Card>
-       <GenModal
+      <GenModal
         show={showModal}
         onClose={() => setShowModal(false)}
         onConfirm={handleConfirm}

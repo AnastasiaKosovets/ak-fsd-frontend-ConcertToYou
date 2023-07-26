@@ -26,7 +26,6 @@
 
   .colGeneralStyle {
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
 
@@ -44,7 +43,7 @@
     }
   
     .pictureDesign {
-      margin-top: 0.5em; /* Adjust as needed */
+      margin-top: 0.5em; 
     }
   
     .bodyGeneralStyleCard {
