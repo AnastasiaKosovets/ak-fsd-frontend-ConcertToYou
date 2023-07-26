@@ -59,7 +59,7 @@ export const CreateConcert = () => {
       groupName: modifiedData.groupName,
       description: modifiedData.description,
       programm: modifiedData.programm,
-      group_id: group_id,
+      // group_id: group_id,
     };
     console.log("id del grupo", newConcertData.group_id);
     try {
@@ -194,7 +194,7 @@ export const CreateConcert = () => {
           <Row>
             <Col xs={10} sm={6} md={5}>
               <div>
-                <div class="textRegTitletxt">
+                <div className="textRegTitletxt">
                   ¡Anuncia tu Concierto en Nuestra Plataforma Musical! Llega a
                   una audiencia más amplia y diversa con nuestra base de
                   usuarios apasionados por la música. Promociona tus conciertos
