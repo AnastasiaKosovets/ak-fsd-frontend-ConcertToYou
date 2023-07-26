@@ -263,12 +263,12 @@ export const getConcerts = async () => {
 }
 
 // CREATE CONCERT
-export const createConcert = async (token) => {
+export const createConcert = async (token, concertData) => {
   let access = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.delete(`${root}/createConcert`, access);
+  let res = await axios.post(`${root}/createConcert`, concertData, access);
   return res.data;
 }

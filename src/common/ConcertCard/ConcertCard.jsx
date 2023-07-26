@@ -131,33 +131,6 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
           className="btnAdmin">
             Restaurar
           </button> 
-        {/* <div className="buttonContainer">
-          <button
-            onClick={handleDeleteConcert}
-            disabled={isDeleting}
-            className="btnAdmin"
-          >
-            Eliminar Concierto
-          </button>
-          <button 
-          onClick={handleRestoreConcert} 
-          disabled={isDeleting}
-          className="btnAdmin">
-            Restaurar
-          </button> 
-          <button 
-          onClick={handleRestoreConcert} 
-          disabled={isDeleting}
-          className="btnAdmin">
-            Modificar
-          </button> 
-          <button 
-          onClick={handleRestoreConcert} 
-          disabled={isDeleting}
-          className="btnAdmin">
-            Cancelar
-          </button> 
-        </div> */}
       </Card>
        <GenModal
         show={showModal}

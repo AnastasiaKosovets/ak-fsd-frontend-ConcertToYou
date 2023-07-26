@@ -1,0 +1,146 @@
+.registerMainStyle {
+    height: auto;
+    background-color: rgb(17, 17, 17);
+  }
+  
+  .registerRowStyle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50em;
+    width: 35em;
+    margin-bottom: 4em;
+    background: rgba(163, 142, 83, 0.122);
+    color: white;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(0.5em);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
+  }
+  
+  .formRegisterStyle {
+    margin: 0;
+    padding: 0;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+  
+  .registerTxt {
+    padding-top: 1.3em;
+    font-size: 7vh;
+    align-items: center;
+    text-align: center;
+    color: goldenrod;
+    margin-bottom: 1em;
+  }
+  
+  .errorTxtReg {
+    color: rgb(249, 149, 149);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: small;
+  }
+  
+  .customInput {
+    height: 2em;
+    width: 20em;
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    font-size: large;
+    border: none;
+    border-radius: 1em;
+  }
+  
+  .txtReg {
+    font-size: x-large;
+  }
+  
+  /* .imgCont {
+    position: relative;
+    width: 8em;
+  } */
+  
+  .registerImg {
+      border-radius: 2em;
+  }
+  
+  .successPopUp {
+    position: fixed;
+    width: 15em;
+    text-align: center;
+    font-size: xx-large;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fdc57246;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 9999;
+    color: white;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(0.5em);
+    border: 1.5px solid rgba(236, 238, 241, 0.3);
+  }
+  
+  .textRegTitletxt {
+    color: rgb(255, 220, 187);
+    width: 10em;
+    font-size: 2.5em;
+    margin-top: -8em;
+  }
+  
+    @media (max-width: 768px) {
+      .registerMainStyle {
+        overflow-x: hidden;
+      }
+  
+      .registerRowStyle {
+        display: flex;
+        height: auto; 
+        max-width: none; 
+        margin-bottom: 2em;
+      }
+  
+      .formRegisterStyle {
+          flex-direction: column;
+      }
+    
+      .registerRowStyle {
+          height: 70em;
+          width: 20em;
+      }  
+  
+      .registerTxt {
+        font-size: 4vh;
+        padding-top: 3em;
+      }
+    
+      .customInput {
+        width: 100%;
+        max-width: 20em;
+      }
+    
+      .imgCont {
+        max-width: none; 
+      }
+  
+      .registerImg {
+          height: 30em;
+          width: 20em;
+      }
+    
+      .textRegTitletxt {
+        text-align: center;
+        font-size: 2em; 
+        margin-top: 0;
+      }
+  
+      .successPopUp {
+        width: 90%;
+        font-size: large;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+      }
+    
+    }

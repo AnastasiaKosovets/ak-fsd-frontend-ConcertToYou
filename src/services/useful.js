@@ -95,6 +95,29 @@ export const checkError = (name, value) => {
             }
             return "";
 
+        case "date":
+            const currentDate = new Date();
+            const selectedDate = new Date(value);
+
+            if (selectedDate <= currentDate) {
+                return "Por favor, ingresa una fecha posterior a la fecha actual";
+            }
+            return "";
+
+        case "title":
+
+            if (value.length < 5) {
+                return "El título tiene que ser más largo"
+            }
+            return "";
+
+        case "programm":
+
+            if (value.length < 20) {
+                return "El programma tiene que ser más largo"
+            }
+            return "";
+
         default:
             console.log("Formato desconocido");
     }
