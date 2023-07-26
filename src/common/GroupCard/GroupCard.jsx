@@ -81,11 +81,11 @@ export const GroupCard = ({ group }) => {
 
   return (
     <div className="cardPrD">
-      <Card className="productCardDesign" style={{ width: "18rem" }}>
-        <Card.Body>
+      <Card className="productCardDesign" style={{ width: "20rem" }}>
+        <Card.Body className="bodyGeneralStyleCard">
           <Card.Text className="cardText">ID: {group.id}</Card.Text>
           <Card.Text className="cardText">
-            <img src={group.image} alt={group.groupName} />
+            <img src={group.image} alt={group.groupName} className="imgGeneralStyle"/>
           </Card.Text>
           <Card.Text className="cardText">Nombre: {group.groupName}</Card.Text>
           <Card.Text className="cardText">Género: {group.genre}</Card.Text>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ConcertCard.css";
 import { deleteConcert, restoreConcert, updateConcertByAdmin } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
-import { Card } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 export const ConcertCard = ({ concert, handleDataChanged }) => {
@@ -82,11 +82,11 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
 
   return (
     <div className="cardPrD">
-      <Card className="productCardDesign" style={{ width: "18rem" }}>
-        <Card.Body>
+      <Card className="productCardDesign" style={{ width: "20rem" }}>
+        <Card.Body className="bodyGeneralStyleCard">
           <Card.Text className="cardText">ID: {concert.id}</Card.Text>
           <Card.Text className="cardText">
-            <img src={concert.image} alt={concert.groupName} />
+            <img src={concert.image} alt={concert.groupName} className="imgGeneralStyle" />
           </Card.Text>
           <Card.Text className="cardText">Título: {concert.title}</Card.Text>
           <Card.Text className="cardText">Fecha: {concert.date}</Card.Text>
@@ -98,8 +98,9 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
             Programa: {concert.programm}
           </Card.Text>
         </Card.Body>
+        <Col className="colGeneralStyle">
         {isEditing ? (
-            <div>
+            <div className="divGen">
               <input
                 type="text"
                 value={newDescriptionByAdmin}
@@ -131,6 +132,8 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
           className="btnAdmin">
             Restaurar
           </button> 
+        </Col>
+        
       </Card>
        <GenModal
         show={showModal}

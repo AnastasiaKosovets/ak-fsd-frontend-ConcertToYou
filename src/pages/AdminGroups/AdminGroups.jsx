@@ -80,7 +80,7 @@ export const AdminGroups = () => {
 
   return (
     <div className="adminPageStyle">
-      <Container>
+      <Container className="adminCont">
         <Row className="fRowA">
           <Col xs={6} md={2} className="mb-4 my-4">
             <Button name={"Grupos"} onClick={handleShowGroups} />
@@ -89,6 +89,7 @@ export const AdminGroups = () => {
             <Button name={"Conciertos"} onClick={handleShowConcerts} />
           </Col>
         </Row>
+        <Row>
         {showGroupInfo && (
           <div className="thisCard">
             {groups.map((group) => (
@@ -96,13 +97,19 @@ export const AdminGroups = () => {
             ))}
           </div>
         )}
-        {showConcertInfo && (
+        
+          </Row>
+          <Row>
+          {showConcertInfo && (
           <div className="thisCard">
             {concerts.map((concert) => (
               <ConcertCard key={concert.id} concert={concert} handleDataChanged={handleDataChanged} />
             ))}
           </div>
         )}
+        </Row>
+        
+       
         {showScrollButton && (
           <button className="scrollButton bg-transparent" onClick={scrollTop}>
             <img src={up} alt="boton hacía arriba" className="up" />

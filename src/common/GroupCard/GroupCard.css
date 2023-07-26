@@ -17,4 +17,14 @@
   .pictureDesign {
     margin-top: 1em;
   }
+
+  .imgGeneralStyle {
+    width: 15em;
+  }
+
+  .bodyGeneralStyleCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   
