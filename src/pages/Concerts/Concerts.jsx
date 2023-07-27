@@ -6,6 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 // import { Button } from "../../common/Button/Button";
 // import { scrollTop } from "../../common/scrollTop";
 import { GenConcertCard } from "../../common/GenConcertCard/GenConcertCard";
+import { ConcertSearch } from "../../common/ConcertSearch/ConcertSearch";
 
 export const Concerts = () => {
   const [concerts, setConcerts] = useState([]);
@@ -28,7 +29,7 @@ export const Concerts = () => {
           setSincronized(true);
         });
     }
-  }, []);
+  }, [sincronized]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,10 +50,19 @@ export const Concerts = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleConcertSearch = (concertsData) => {
+    setConcerts(concertsData);
+    setSincronized(true);
+    setShowConcertInfo(true);
+  };
+
   return (
     <div className="generalConcertView">
       <Container className="contConc">
         <Row className="fRow">
+          {/* <Col xs={6} md={12}> */}
+      <ConcertSearch onConcertsFetched={handleConcertSearch} />
+          {/* </Col> */}
           <Col xs={6} md={12} className="mb-4 my-4">
             {showConcertInfo && (
               <div className="">
@@ -60,7 +70,6 @@ export const Concerts = () => {
                   <GenConcertCard
                     key={concert.id}
                     concert={concert}
-                    // handleDataChanged={handleDataChanged}
                   />
                 ))}
               </div>

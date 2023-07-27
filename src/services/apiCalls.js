@@ -262,6 +262,14 @@ export const getConcerts = async () => {
   return res.data;
 }
 
+// GET ALL CONCERTS
+export const searchConcerts = async (groupName, title) => {
+  let res = await axios.get(`${root}/concerts/groupName`, {
+    params: { groupName, title},
+  });
+  return res.data;
+}
+
 // CREATE CONCERT
 export const createConcert = async (token, concertData) => {
   let access = {
