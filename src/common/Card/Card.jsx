@@ -43,7 +43,6 @@ export const ProductCard = ({
       try {
         setIsDeleting(true);
         console.log("Eliminando usuario...");
-        // Lógica para eliminar el usuario
         const response = await deleteUser(token, id);
         console.log(response);
         setIsDeleting(false);
@@ -57,7 +56,6 @@ export const ProductCard = ({
       try {
         setIsDeleting(true);
         console.log("Restaurando usuario...");
-        // Lógica para restaurar el usuario
         const res = await restoreUser(token, id);
         console.log(res);
         setIsDeleting(false);
