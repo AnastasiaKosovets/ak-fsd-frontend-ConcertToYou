@@ -10,10 +10,10 @@ import {
   updateMyGroup,
   updateMyProfile,
 } from "../../services/apiCalls";
-import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
 import { UserCard } from "../../common/UserCard/UserCard";
 import { Link } from "react-router-dom";
+import { ScrollTopButton } from "../../common/scrollTop";
 
 export const MusicProfile = () => {
   const user = useSelector(userData);
@@ -29,38 +29,14 @@ export const MusicProfile = () => {
     phoneNumber: user.phoneNumber,
   });
   const [showGroupInfo, setShowGroupInfo] = useState(false);
-  const [groupData, setGroupData] = useState({
-    description: "Initial description",
-  });
+  const [groupData, setGroupData] = useState({description: "Initial description",});
   const [concerts, setConcerts] = useState([]);
   const [showConcertInfo, setShowConcertInfo] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
   const [editDescription, setEditDescription] = useState(false);
   const [newDescription, setNewDescription] = useState("");
-
   const [editedConcert, setEditedConcert] = useState({});
-
   const [editConcertDescription, setEditConcertDescription] = useState(false);
   const [newConcertDescription, setNewConcertDescription] = useState("");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const handleEditProfile = () => {
     setEditMode(true);
@@ -70,7 +46,6 @@ export const MusicProfile = () => {
     if (showGroupInfo) {
       getMyGroup(token)
         .then((res) => {
-          // z;
           setGroupData(res.data);
         })
         .catch((error) => {
@@ -95,8 +70,7 @@ export const MusicProfile = () => {
           phoneNumber={`Teléfono: ${user.phoneNumber}`}
           document={`DNI / NIE: ${user.document}`}
           dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-          token={token}
-        />
+          token={token}/>
       </>
     );
   };
@@ -105,7 +79,6 @@ export const MusicProfile = () => {
     updateMyProfile(modifiedData, token)
       .then((res) => {
         setEditMode(false);
-
         setModifiedData({
           ...modifiedData,
           address: res.data.address,
@@ -121,7 +94,6 @@ export const MusicProfile = () => {
   };
 
   const handleSaveDescription = () => {
-    console.lo;
     updateMyGroup({ description: newDescription }, token)
       .then((res) => {
         setGroupData((prevGroupData) => ({
@@ -149,21 +121,18 @@ export const MusicProfile = () => {
   };
 
   const handleEditConcertDescription = (concert) => {
-    console.log("info de concierto ahora:", concert.description);
     setEditedConcert(concert);
     setNewConcertDescription(concert.description);
     setEditConcertDescription(true);
   };
 
   const handleSaveConcertDescription = () => {
-    console.log("actual descripcion", newConcertDescription);
     updateMyConcert(
       editedConcert.id,
       { description: newConcertDescription },
       token
     )
       .then((res) => {
-        console.log("descripcion actualizada", res);
         setConcerts((prevConcerts) =>
           prevConcerts.map((concert) =>
             concert.id === editedConcert.id
@@ -209,9 +178,7 @@ export const MusicProfile = () => {
                       setModifiedData({
                         ...modifiedData,
                         address: e.target.value,
-                      })
-                    }
-                  />
+                      })}/>
                   <label>Teléfono:</label>
                   <input
                     className="inputTxtAdminChange"
@@ -221,17 +188,14 @@ export const MusicProfile = () => {
                       setModifiedData({
                         ...modifiedData,
                         phoneNumber: e.target.value,
-                      })
-                    }
-                  />
+                      })}/>
                 </form>
                 <button className="btnAdminClickA" onClick={handleSaveChanges}>
                   Guardar cambios
                 </button>
                 <button
                   className="btnAdminClickB"
-                  onClick={() => setEditMode(false)}
-                >
+                  onClick={() => setEditMode(false)}>
                   Cancelar
                 </button>
               </div>
@@ -242,8 +206,7 @@ export const MusicProfile = () => {
               <button
                 name={"Modificar"}
                 className="modInfo mb-3"
-                onClick={handleEditProfile}
-              >
+                onClick={handleEditProfile}>
                 Modificar
               </button>
             )}
@@ -259,15 +222,13 @@ export const MusicProfile = () => {
                   <textarea
                     value={newDescription}
                     onChange={(e) => setNewDescription(e.target.value)}
-                    className="form-control mb-3"
-                  />
+                    className="form-control mb-3"/>
                   <button className="btnGroupA" onClick={handleSaveDescription}>
                     Guardar
                   </button>
                   <button
                     className="btnGroupA"
-                    onClick={() => setEditDescription(false)}
-                  >
+                    onClick={() => setEditDescription(false)}>
                     Cancelar
                   </button>
                 </>
@@ -302,26 +263,22 @@ export const MusicProfile = () => {
                               description: e.target.value,
                             }));
                           }}
-                          className="form-control mb-3"
-                        />
+                          className="form-control mb-3"/>
                         <button
                           className="btnGroupA"
-                          onClick={handleSaveConcertDescription}
-                        >
+                          onClick={handleSaveConcertDescription}>
                           Guardar
                         </button>
                         <button
                           className="btnGroupA"
-                          onClick={() => setEditConcertDescription(false)}
-                        >
+                          onClick={() => setEditConcertDescription(false)}>
                           Cancelar
                         </button>
                       </div>
                     )}
                     <button
                       className="btnGroupA"
-                      onClick={() => handleEditConcertDescription(concert)}
-                    >
+                      onClick={() => handleEditConcertDescription(concert)}>
                       Modificar
                     </button>
                   </Card.Body>
@@ -330,12 +287,8 @@ export const MusicProfile = () => {
             </Col>
           ) : null}
         </Row>
+        <ScrollTopButton />
       </Container>
-      {showScrollButton && (
-        <button className="upButn bg-transparent" onClick={scrollTop}>
-          <img src={up} alt="boton hacía arriba" className="up" />
-        </button>
-      )}
     </div>
   );
 };

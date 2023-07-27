@@ -25,6 +25,7 @@ export const ProductCard = ({
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  
 
   const handleDeleteUser = () => {
     setModalTitle("Eliminar Usuario");

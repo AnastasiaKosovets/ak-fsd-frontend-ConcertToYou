@@ -6,6 +6,7 @@ import { GroupCard } from "../../common/GroupCard/GroupCard";
 import { Button } from "../../common/Button/Button";
 import { getConcerts, getGroups } from "../../services/apiCalls";
 import { ConcertCard } from "../../common/ConcertCard/ConcertCard";
+import { ScrollTopButton } from "../../common/scrollTop";
 
 export const AdminGroups = () => {
   const [groups, setGroups] = useState([]);
@@ -18,19 +19,19 @@ export const AdminGroups = () => {
   useEffect(() => {
     if (!sincronized) {
       getGroups()
-      .then((res) => {
-        console.log(res.data)
-        setGroups(res.data);
-        setSincronized(true);
-      })
-      .catch((error) => {
-        console.log("error getting groups:", error);
-        setSincronized(true);
-      });
+        .then((res) => {
+          console.log(res.data);
+          setGroups(res.data);
+          setSincronized(true);
+        })
+        .catch((error) => {
+          console.log("error getting groups:", error);
+          setSincronized(true);
+        });
     }
   }, [sincronized]);
 
-   const handleShowGroups = async () => {
+  const handleShowGroups = async () => {
     setShowGroupInfo((prevShowGroupInfo) => !prevShowGroupInfo);
     // console.log("token en admin:", token);
   };
@@ -38,44 +39,25 @@ export const AdminGroups = () => {
   useEffect(() => {
     if (!sincronized) {
       getConcerts()
-      .then((res) => {
-        console.log(res.data)
-        setConcerts(res.data);
-        setSincronized(true);
-      })
-      .catch((error) => {
-        console.log("error getting groups:", error);
-        setSincronized(true);
-      });
+        .then((res) => {
+          console.log(res.data);
+          setConcerts(res.data);
+          setSincronized(true);
+        })
+        .catch((error) => {
+          console.log("error getting groups:", error);
+          setSincronized(true);
+        });
     }
   }, [sincronized]);
 
-   const handleShowConcerts = async () => {
+  const handleShowConcerts = async () => {
     setShowConcertInfo((prevShowConcertInfo) => !prevShowConcertInfo);
     // console.log("token en admin:", token);
   };
 
   const handleDataChanged = () => {
     setSincronized(false);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -90,31 +72,32 @@ export const AdminGroups = () => {
           </Col>
         </Row>
         <Row>
-        {showGroupInfo && (
-          <div className="thisCard">
-            {groups.map((group) => (
-              <GroupCard key={group.id} group={group} handleDataChanged={handleDataChanged} />
-            ))}
-          </div>
-        )}
-        
-          </Row>
-          <Row>
-          {showConcertInfo && (
-          <div className="thisCard">
-            {concerts.map((concert) => (
-              <ConcertCard key={concert.id} concert={concert} handleDataChanged={handleDataChanged} />
-            ))}
-          </div>
-        )}
+          {showGroupInfo && (
+            <div className="thisCard">
+              {groups.map((group) => (
+                <GroupCard
+                  key={group.id}
+                  group={group}
+                  handleDataChanged={handleDataChanged}
+                />
+              ))}
+            </div>
+          )}
         </Row>
-        
-       
-        {showScrollButton && (
-          <button className="scrollButton bg-transparent" onClick={scrollTop}>
-            <img src={up} alt="boton hacía arriba" className="up" />
-          </button>
-        )}
+        <Row>
+          {showConcertInfo && (
+            <div className="thisCard">
+              {concerts.map((concert) => (
+                <ConcertCard
+                  key={concert.id}
+                  concert={concert}
+                  handleDataChanged={handleDataChanged}
+                />
+              ))}
+            </div>
+          )}
+        </Row>
+        <ScrollTopButton />
       </Container>
     </div>
   );

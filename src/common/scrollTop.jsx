@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import up from "../../img/up.png";
 
-export const scrollTop = () => {
+export const ScrollTopButton = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
@@ -22,5 +23,11 @@ export const scrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  return { scrollTop, showScrollButton };
+  if(showScrollButton){
+    return(
+      <button className="scrollButton bg-transparent" onClick={scrollTop}>
+        <img src={up} alt="boton hacia arriba" className="up" />
+      </button>
+    )
+  }
 };

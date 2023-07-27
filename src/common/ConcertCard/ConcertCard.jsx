@@ -9,7 +9,7 @@ import { GenModal } from "../GenModal/GenModal";
 import { Card, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
-export const ConcertCard = ({ concert, handleDataChanged }) => {
+export const ConcertCard = ({ concert }) => {
   const token = useSelector((state) => state.user.credentials.token);
   const [showModal, setShowModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");

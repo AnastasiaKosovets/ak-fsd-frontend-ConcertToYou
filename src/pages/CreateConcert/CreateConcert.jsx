@@ -6,7 +6,6 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 import { checkError } from "../../services/useful";
 import { createConcert } from "../../services/apiCalls";
-import { userData } from "../userSlice";
 
 export const CreateConcert = () => {
   const user = useSelector((state) => state.user);
@@ -66,7 +65,6 @@ export const CreateConcert = () => {
       console.log("group ID es", concertGroupId);
       setSuccessPopup(true);
       setTimeout(() => {
-        // onConcertCreated();
         navigate("/musicProfile");
       }, 1500);
     } catch (error) {

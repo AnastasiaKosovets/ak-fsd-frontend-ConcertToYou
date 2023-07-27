@@ -8,6 +8,8 @@ import { Button } from "../../common/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
 import { getUsers, updateProfile } from "../../services/apiCalls";
+import { ScrollTopButton } from "../../common/scrollTop";
+import { UserSearch } from "../../common/UserSearch/UserSearch";
 
 export const Profile = () => {
   const user = useSelector(userData);
@@ -27,26 +29,7 @@ export const Profile = () => {
   });
   const [infoUser, setInfoUser] = useState([]);
   const [showUserInfo, setShowUSerInfo] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   useEffect(() => {
     if (showUserInfo) {
@@ -122,6 +105,7 @@ export const Profile = () => {
         <Row className="rSecondA">
           {showUserInfo ? (
             <div>
+              <UserSearch />
               {infoUser.length > 0 ? (
                 <div className="thisCard">
                   {infoUser.map((user) => {
@@ -140,8 +124,9 @@ export const Profile = () => {
                           dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
                         />
                       </div>
-                    );
-                  })}
+                      
+                      );
+                    })}
                 </div>
               ) : (
                 <div>CARGANDO...</div>
@@ -197,11 +182,7 @@ export const Profile = () => {
             </Col>
           )}
         </Row>
-        {showScrollButton && (
-          <button className="scrollButton bg-transparent" onClick={scrollTop}>
-            <img src={up} alt="boton hacía arriba" className="up" />
-          </button>
-        )}
+        <ScrollTopButton />
       </Container>
     </div>
   );
