@@ -3,33 +3,22 @@ import "./Concerts.css";
 import up from "../../../img/up.png";
 import { getConcerts } from "../../services/apiCalls";
 import { Col, Container, Row } from "react-bootstrap";
-// import { Button } from "../../common/Button/Button";
-// import { scrollTop } from "../../common/scrollTop";
 import { GenConcertCard } from "../../common/GenConcertCard/GenConcertCard";
 import { ConcertSearch } from "../../common/ConcertSearch/ConcertSearch";
 
 export const Concerts = () => {
   const [concerts, setConcerts] = useState([]);
-  const [sincronized, setSincronized] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
-  const [showConcertInfo, setShowConcertInfo] = useState(false);
-  // const { scrollTop, showScrollButton} = scrollTop();
 
   useEffect(() => {
-    if (!sincronized) {
-      getConcerts()
-        .then((res) => {
-          // console.log(res.data);
-          setConcerts(res.data);
-          setSincronized(true);
-          setShowConcertInfo(true);
-        })
-        .catch((error) => {
-          console.log("error getting groups:", error);
-          setSincronized(true);
-        });
-    }
-  }, [sincronized]);
+    getConcerts()
+      .then((res) => {
+        setConcerts(res.data);
+      })
+      .catch((error) => {
+        console.error("error getting groups:", error);
+      });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,29 +40,24 @@ export const Concerts = () => {
   };
 
   const handleConcertSearch = (concertsData) => {
-    setConcerts(concertsData);
-    setSincronized(true);
-    setShowConcertInfo(true);
+    if (concertsData.data && Array.isArray(concertsData.data)) {
+      setConcerts(concertsData.data);
+    } else {
+      console.error("Concerts not found", error);
+    }
   };
 
   return (
     <div className="generalConcertView">
       <Container className="contConc">
         <Row className="fRow">
-          {/* <Col xs={6} md={12}> */}
-      <ConcertSearch onConcertsFetched={handleConcertSearch} />
-          {/* </Col> */}
+          <ConcertSearch onConcertsFetched={handleConcertSearch} />
           <Col xs={6} md={12} className="mb-4 my-4">
-            {showConcertInfo && (
-              <div className="">
-                {concerts.map((concert) => (
-                  <GenConcertCard
-                    key={concert.id}
-                    concert={concert}
-                  />
-                ))}
-              </div>
-            )}
+            <div className="">
+              {concerts.map((concert) => (
+                <GenConcertCard key={concert.id} concert={concert} />
+              ))}
+            </div>
           </Col>
         </Row>
         {showScrollButton && (

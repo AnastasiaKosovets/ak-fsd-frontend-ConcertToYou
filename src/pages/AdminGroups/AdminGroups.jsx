@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import "./AdminGroups.css";
-import up from "../../../img/up.png";
 import { GroupCard } from "../../common/GroupCard/GroupCard";
 import { Button } from "../../common/Button/Button";
 import { getConcerts, getGroups } from "../../services/apiCalls";

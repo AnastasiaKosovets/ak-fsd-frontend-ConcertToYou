@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import "./ConcertSearch.css";
 import { searchConcerts } from "../../services/apiCalls";
-import { useSelector } from "react-redux";
-import { ProductCard } from "../Card/Card";
 
-export const ConcertSearch = () => {
-  //   const token = useSelector((state) => state.user.credentials.token);
-  //   const user = useSelector((state) => state.user);
+export const ConcertSearch = ({ onConcertsFetched }) => {
   const [groupName, setGroupName] = useState("");
   const [title, setTitle] = useState("");
 
   const handleSearchConcert = async () => {
     try {
       const concerts = await searchConcerts(groupName, title);
-      onConcertFetched(concerts);
+      onConcertsFetched(concerts);
     } catch (error) {
       console.log("error al buscar conciertos:", error);
     }
