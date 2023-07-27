@@ -10,6 +10,8 @@
     font-size: medium;
     text-align: center;
     border-radius: 1em;
+    border: none;
+    box-shadow: 0em 0.1em 0.5em rgba(119, 86, 2, 0.659);
     
 }
 
@@ -21,6 +23,7 @@
     font-size: medium;
     color: white;
     background-color: rgb(131, 99, 19);
+    box-shadow: 0em 0.1em 0.5em rgba(62, 45, 1, 0.659);
 }
 
 .btnSearchConcert:hover {

@@ -39,6 +39,7 @@
 .BtnConcrt {
   height: 3rem;
   width: 10em;
+  margin-right: 1em;
   font-size: xx-large;
   color: white;
   border: none;
@@ -102,6 +103,18 @@
   backdrop-filter: blur(0.5em);
   border: 1.5px solid rgba(236, 238, 241, 0.3);
 }
+
+.showDetailModal {
+  padding-top: 5em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgb(226, 165, 11);
+  background-color: #131313a1;
+}
+
+.bodyDetail {
+  background-color: #4a4841f8;
+}
+
 @media (max-width: 768px) {
   .cardBody {
     flex-direction: column;
@@ -133,3 +146,4 @@
     width: 8em;
   }
 }
+

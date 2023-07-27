@@ -12,6 +12,7 @@ export const GenConcertCard = ({ concert }) => {
   const token = useSelector((state) => state.user.credentials.token);
   const [showTokenModal, setShowTokenModal] = useState(false);
   const [successBookTicket, setSuccessBookTicket] = useState(false);
+  const [showDetail, setShowDetail] = useState(false);
 
   const handleBookTicket = () => {
     if (token) {
@@ -31,6 +32,14 @@ export const GenConcertCard = ({ concert }) => {
     }
   };
 
+  const handleShowDetail = () => {
+    setShowDetail(true);
+  }
+
+  const handleCloseDetail = () => {
+    setShowDetail(false);
+  }
+
   return (
     <div
       className="concertCardContainer my-5"
@@ -46,14 +55,17 @@ export const GenConcertCard = ({ concert }) => {
                 className="imgConcerts"
               />
             </Col>
-            <Col xs={10} md={7}>
+            <Col xs={10} md={7} >
               <Card.Text className="cardTxt">{concert.title}</Card.Text>
-              <Card.Title className="cardTlt">{concert.date}</Card.Title>
-              <Card.Title className="cardTlt">{concert.groupName}</Card.Title>
-              <Card.Title className="cardTlt">{concert.description}</Card.Title>
-              <Card.Title className="cardTlt">{concert.programm}</Card.Title>
+              {/* <Card.Title className="cardTlt">{concert.date}</Card.Title> */}
+              <Card.Title className="cardTlt">Grupo: {concert.groupName}</Card.Title>
+              {/* <Card.Title className="cardTlt">{concert.description}</Card.Title> */}
+              {/* <Card.Title className="cardTlt">{concert.programm}</Card.Title> */}
               <button className="BtnConcrt" onClick={handleBookTicket}>
                 Reservar entrada
+              </button>
+              <button className="BtnConcrt" onClick={handleShowDetail}>
+                Detalles
               </button>
               <Modal
                 className="genModalStyleConcert"
@@ -93,8 +105,36 @@ export const GenConcertCard = ({ concert }) => {
               )}
             </Col>
           </Row>
+          <Modal
+        className="showDetailModal"
+        show={showDetail}
+        onHide={handleCloseDetail}
+      >
+        <Modal.Header className="bodyDetail">
+          <Modal.Title>
+            Detalles del concierto
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="bodyDetail">
+          <p>Título: {concert.title}</p>
+          <p>Fecha: {concert.date}</p>
+          <p>Grupo: {concert.groupName}</p>
+          <p>Descripción: {concert.description}</p>
+          <p>Programa: {concert.programm}</p>
+        </Modal.Body>
+        <Modal.Footer className="bodyDetail">
+          <button
+            className="modalConcertBook"
+            variant="secondary"
+            onClick={handleCloseDetail}
+          >
+            Cerrar
+          </button>
+        </Modal.Footer>
+      </Modal>
         </Card.Body>
       </Card>
+      
     </div>
   );
 };
