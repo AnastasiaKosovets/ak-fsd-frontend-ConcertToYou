@@ -13,7 +13,6 @@ export const CreateConcert = () => {
   const token = useSelector((state) => state.user.credentials.token);
   const navigate = useNavigate();
   const group_id = useSelector((state) => state.user.credentials.group_id);
-  // const [concertGroupId, setConcertGroupId] = useState(null);
   const [successPopup, setSuccessPopup] = useState(false);
   const [modifiedData, setModifiedData] = useState({
     image: "",
@@ -59,18 +58,17 @@ export const CreateConcert = () => {
       groupName: modifiedData.groupName,
       description: modifiedData.description,
       programm: modifiedData.programm,
-      // group_id: group_id,
     };
-    console.log("id del grupo", newConcertData.group_id);
     try {
       const res = await createConcert(token, newConcertData);
       const { data } = res;
       const { group_id: concertGroupId } = data;
       console.log("group ID es", concertGroupId);
-      // if (concertGroupId !== undefined) {
-      //   setConcertGroupId(concertGroupId);
-      // }
-
+      setSuccessPopup(true);
+      setTimeout(() => {
+        // onConcertCreated();
+        navigate("/musicProfile");
+      }, 1500);
     } catch (error) {
       console.error("Error al crear el concierto:", error);
     }
@@ -82,9 +80,6 @@ export const CreateConcert = () => {
       <form onSubmit={handleCreateConcert} className="formRegisterStyle">
         <Container className="formRegisterStyle">
           <Row className="registerRowStyle">
-            {/* <Col>
-              <p>ID del grupo: {group_id}</p>
-            </Col> */}
             <Col xs={10} md={8}>
               <Col className="txtReg">Nombre del grupo</Col>
               <input
@@ -206,7 +201,7 @@ export const CreateConcert = () => {
         </Container>
       </form>
       {successPopup && (
-        <div className="successPopUp">¡Gracias por registrarte!</div>
+        <div className="successPopUp">¡Gracias por publicar tu concierto!</div>
       )}
     </div>
   );

@@ -121,7 +121,7 @@ export const MusicProfile = () => {
   };
 
   const handleSaveDescription = () => {
-    console.lo
+    console.lo;
     updateMyGroup({ description: newDescription }, token)
       .then((res) => {
         setGroupData((prevGroupData) => ({
@@ -149,7 +149,7 @@ export const MusicProfile = () => {
   };
 
   const handleEditConcertDescription = (concert) => {
-    console.log("info de concierto ahora:", concert.description); 
+    console.log("info de concierto ahora:", concert.description);
     setEditedConcert(concert);
     setNewConcertDescription(concert.description);
     setEditConcertDescription(true);
@@ -292,31 +292,32 @@ export const MusicProfile = () => {
                     <Card.Text>Fecha: {concert.date}</Card.Text>
                     <Card.Text>Programa: {concert.programm}</Card.Text>
                     {editConcertDescription && (
-            <div className="modConcertStyleG">
-              <textarea
-                value={editedConcert.description}
-                onChange={(e) => {setNewConcertDescription(e.target.value)
-                  setEditedConcert((prev) => ({
-                    ...prev,
-                    description: e.target.value,
-                  }))}
-                }
-                className="form-control mb-3"
-              />
-              <button
-                className="btnGroupA"
-                onClick={handleSaveConcertDescription}
-              >
-                Guardar
-              </button>
-              <button
-                className="btnGroupA"
-                onClick={() => setEditConcertDescription(false)}
-              >
-                Cancelar
-              </button>
-            </div>
-          )}
+                      <div className="modConcertStyleG">
+                        <textarea
+                          value={editedConcert.description}
+                          onChange={(e) => {
+                            setNewConcertDescription(e.target.value);
+                            setEditedConcert((prev) => ({
+                              ...prev,
+                              description: e.target.value,
+                            }));
+                          }}
+                          className="form-control mb-3"
+                        />
+                        <button
+                          className="btnGroupA"
+                          onClick={handleSaveConcertDescription}
+                        >
+                          Guardar
+                        </button>
+                        <button
+                          className="btnGroupA"
+                          onClick={() => setEditConcertDescription(false)}
+                        >
+                          Cancelar
+                        </button>
+                      </div>
+                    )}
                     <button
                       className="btnGroupA"
                       onClick={() => handleEditConcertDescription(concert)}
@@ -328,7 +329,6 @@ export const MusicProfile = () => {
               ))}
             </Col>
           ) : null}
-          
         </Row>
       </Container>
       {showScrollButton && (
