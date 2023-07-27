@@ -41,7 +41,6 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
         console.log(response);
         setIsDeleting(false);
         setShowModal(false);
-        // handleDataChanged();
       } catch (error) {
         console.error("Error eliminando concierto:", error);
         setIsDeleting(false);
@@ -55,7 +54,6 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
         console.log(res);
         setIsDeleting(false);
         setShowModal(false);
-        // handleDataChanged();
       } catch (error) {
         console.error("Error restaurando concierto:", error);
         setIsDeleting(false);
@@ -156,7 +154,7 @@ export const ConcertCard = ({ concert, handleDataChanged }) => {
         onClose={() => setShowModal(false)}
         onConfirm={handleConfirm}
         title="Eliminar Concierto"
-        onConfirmText="Eliminar"
+        onConfirmText={onConfirmText}
       />
     </div>
   );
