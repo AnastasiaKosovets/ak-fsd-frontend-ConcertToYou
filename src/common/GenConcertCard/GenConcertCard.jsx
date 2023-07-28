@@ -61,17 +61,9 @@ export const GenConcertCard = ({ concert }) => {
     setShowDetail(false);
   };
 
-  const handleShowAlert = () => {
-    if(addToFavorite) {
-      setShowFavoriteModal(true);
-    } else {
-      handleFavorite();
-    }
-  }
-
   const handleCloseAlert = () => {
     setShowFavoriteModal(false);
-  }
+  };
 
   return (
     <div
@@ -82,7 +74,7 @@ export const GenConcertCard = ({ concert }) => {
         <Card.Body>
           <Row className="">
             <Col className="favoriteRow" xs={{ offset: 8 }} md={{ offset: 10 }}>
-            <button onClick={handleFavorite} className="favoriteBoton">
+              <button onClick={handleFavorite} className="favoriteBoton">
                 <img
                   src={isFavorite ? favorito : favoritoGrayScale}
                   alt="añadir a favoritos"
@@ -185,10 +177,7 @@ export const GenConcertCard = ({ concert }) => {
               Este concierto ya ha sido agregado a tu lista de favoritos.
             </Modal.Body>
             <Modal.Footer>
-              <Button
-                variant="secondary"
-                onClick={handleCloseAlert}
-              >
+              <Button variant="secondary" onClick={handleCloseAlert}>
                 Cerrar
               </Button>
             </Modal.Footer>
