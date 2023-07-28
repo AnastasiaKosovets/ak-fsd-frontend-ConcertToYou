@@ -1,3 +1,4 @@
+/* general design of the page */
 .generalStyleFav {
     height: auto;
     background-image: url("../../../img/bgr1.jpg");
@@ -31,6 +32,7 @@
     color: rgb(224, 189, 136);
 }
 
+/* favorite-card design */
 .favColCardStyle {
     height: 14em;
     display: flex;
