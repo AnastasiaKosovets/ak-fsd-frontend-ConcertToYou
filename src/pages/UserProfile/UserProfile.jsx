@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { getUsers, updateMyProfile } from "../../services/apiCalls";
 import im2 from "../../../img/im2.jpg";
-import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
 import { Link } from "react-router-dom";
 import { UserCard } from "../../common/UserCard/UserCard";

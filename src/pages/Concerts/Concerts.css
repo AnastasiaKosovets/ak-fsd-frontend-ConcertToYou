@@ -1,4 +1,6 @@
+/* general css style of the page */
 .generalConcertView {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   color: white;
@@ -11,44 +13,15 @@
   justify-content: center;
 }
 
+/* container style */
 .contConc {
   margin: 0;
   padding: 0;
 }
 
-.productCardDesign {
-  display: flex;
-}
-
-.upC {
-  height: 3rem;
-  transition: 1s;
-  position: fixed;
-  bottom: 0.5em;
-  right: 2em;
-}
-
-.upC:hover {
-  transition: 1s;
-}
-
 .scrollButtonC {
   border: none;
   cursor: pointer;
-}
-
-.BtnConcrt {
-  height: 3rem;
-  width: 10em;
-  font-size: xx-large;
-  color: white;
-  border: none;
-  border-radius: 1em;
-  background-color: rgb(131, 99, 19);
-}
-
-.BtnConcrt:hover {
-  background-color: goldenrod;
 }
 
 @media (max-width: 768px) {

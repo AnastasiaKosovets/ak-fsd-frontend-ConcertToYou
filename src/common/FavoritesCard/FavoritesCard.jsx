@@ -66,5 +66,4 @@ export const FavoriteCard = () => {
       </Container>
     </div>
   );
-  
 };
