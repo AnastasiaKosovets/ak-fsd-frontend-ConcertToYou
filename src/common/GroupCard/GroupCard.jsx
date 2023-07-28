@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./GroupCard.css";
 import { Card } from "react-bootstrap";
-import { deleteGroupAdmin, restoreGroup, updateGroupByAdmin } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { useSelector } from "react-redux";
+import { deleteGroupAdmin, restoreGroup, updateGroupByAdmin } from "../../services/adminCalls";
 
 export const GroupCard = ({ group }) => {
   const token = useSelector((state) => state.user.credentials.token);
@@ -13,7 +13,6 @@ export const GroupCard = ({ group }) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [newDescription, setNewDescription] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  
 
   const handleDeleteGroup = () => {
     setModalTitle("Eliminar Grupo");
@@ -66,16 +65,19 @@ export const GroupCard = ({ group }) => {
   const handleUpdateGroup = async () => {
     try {
       const updatedGroupData = {
-        description: newDescription
+        description: newDescription,
       };
-  
-      const groupId = group.id; 
-  
-      const updatedGroup = await updateGroupByAdmin(token, groupId, updatedGroupData);
-      console.log('Grupo actualizado:', updatedGroup);
+
+      const groupId = group.id;
+      const updatedGroup = await updateGroupByAdmin(
+        token,
+        groupId,
+        updatedGroupData
+      );
+      console.log("Grupo actualizado:", updatedGroup);
       setIsEditing(false);
     } catch (error) {
-      console.log('Error al actualizar el grupo:', error);
+      console.log("Error al actualizar el grupo:", error);
     }
   };
 
@@ -85,7 +87,11 @@ export const GroupCard = ({ group }) => {
         <Card.Body className="bodyGeneralStyleCard">
           <Card.Text className="cardText">ID: {group.id}</Card.Text>
           <Card.Text className="cardText">
-            <img src={group.image} alt={group.groupName} className="imgGeneralStyle"/>
+            <img
+              src={group.image}
+              alt={group.groupName}
+              className="imgGeneralStyle"
+            />
           </Card.Text>
           <Card.Text className="cardText">Nombre: {group.groupName}</Card.Text>
           <Card.Text className="cardText">Género: {group.genre}</Card.Text>
@@ -119,10 +125,7 @@ export const GroupCard = ({ group }) => {
               </button>
             </div>
           ) : (
-            <button
-              onClick={() => setIsEditing(true)}
-              className="btnAdmin"
-            >
+            <button onClick={() => setIsEditing(true)} className="btnAdmin">
               Modificar
             </button>
           )}

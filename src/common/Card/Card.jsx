@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Card.css";
 import Card from "react-bootstrap/Card";
-import { deleteUser, restoreUser } from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
+import { deleteUser, restoreUser } from "../../services/adminCalls";
 
 export const ProductCard = ({
   id,

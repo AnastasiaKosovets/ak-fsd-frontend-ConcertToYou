@@ -3,7 +3,8 @@ import { Modal, Button } from 'react-bootstrap';
 
 export const GenModal = ({ show, onClose, onConfirm, title, onConfirmText }) => {
   return (
-    <Modal show={show} onHide={onClose}>
+    <div >
+        <Modal className="modalStyleGen" show={show} onHide={onClose} style={{paddingTop: '4em'}}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
@@ -19,5 +20,7 @@ export const GenModal = ({ show, onClose, onConfirm, title, onConfirmText }) => 
         </Button>
       </Modal.Footer>
     </Modal>
+    </div>
+  
   );
 };

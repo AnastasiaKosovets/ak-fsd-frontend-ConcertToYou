@@ -26,7 +26,7 @@ export const ScrollTopButton = () => {
   if(showScrollButton){
     return(
       <button className="scrollButton bg-transparent" onClick={scrollTop}>
-        <img src={up} alt="boton hacia arriba" className="up" style={{ width: '3rem', height: '3rem', marginRight: '-6em', marginBottom: '-3em' }}/>
+        <img src={up} alt="boton hacia arriba" className="up" style={{ width: '3rem', height: '3rem', marginBottom: '-2em' }}/>
       </button>
     )
   }

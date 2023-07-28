@@ -3,12 +3,13 @@ import "./UserProfile.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../userSlice";
-import { getUsers, updateMyProfile } from "../../services/apiCalls";
+import { updateMyProfile } from "../../services/apiCalls";
 import im2 from "../../../img/im2.jpg";
 import { Button } from "../../common/Button/Button";
 import { Link } from "react-router-dom";
 import { UserCard } from "../../common/UserCard/UserCard";
 import { ScrollTopButton } from "../../common/scrollTop";
+import { getUsers } from "../../services/adminCalls";
 
 export const UserProfile = () => {
   const user = useSelector(userData);

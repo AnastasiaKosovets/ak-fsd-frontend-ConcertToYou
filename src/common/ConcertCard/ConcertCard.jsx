@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./ConcertCard.css";
-import {
-  deleteConcert,
-  restoreConcert,
-  updateConcertByAdmin,
-} from "../../services/apiCalls";
 import { GenModal } from "../GenModal/GenModal";
 import { Card, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { humanDate } from "../../services/useful";
+import { deleteConcert, restoreConcert, updateConcertByAdmin } from "../../services/adminCalls";
 
 export const ConcertCard = ({ concert }) => {
   const token = useSelector((state) => state.user.credentials.token);

@@ -7,9 +7,9 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import { ProductCard } from "../../common/Card/Card";
-import { getUsers, updateProfile } from "../../services/apiCalls";
 import { ScrollTopButton } from "../../common/scrollTop";
 import { UserSearch } from "../../common/UserSearch/UserSearch";
+import { getUsers, updateProfile } from "../../services/adminCalls";
 
 export const Profile = () => {
   const user = useSelector(userData);
