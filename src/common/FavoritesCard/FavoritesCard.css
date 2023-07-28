@@ -1,4 +1,49 @@
-.divTest {
-    padding-top: 5em;
-    margin-top: 5em;
+.generalStyleFav {
+    height: auto;
+    background-image: url("../../../img/bgr1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.genFavStyle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.rowFavStyle {
+    display: flex;
+    justify-content: center;
+    padding-top: 4em;
+    
+}
+
+.colorColStyle {
+    color: goldenrod;
+    font-size: 4em;
+}
+
+.colorColSt {
+    color: rgb(224, 189, 136);
+}
+
+.favColCardStyle {
+    height: 14em;
+    display: flex;
+    margin: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+    border-radius: 1em;
+    color: rgb(160, 119, 13);
+    background: rgba(94, 89, 79, 0.453);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(0.5em);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
 }

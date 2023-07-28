@@ -60,7 +60,6 @@ export const userSlice = createSlice({
           programm: payload.data.programm,
           favorites: payload.data.groupName,
         },
-        // favorites: payload.favorites,
       };
     },
     userout: (state) => {
@@ -91,7 +90,6 @@ export const userSlice = createSlice({
           programm: "",
           favorites: ""
         },
-        // favorites: [],
       };
     }
   }
@@ -99,6 +97,5 @@ export const userSlice = createSlice({
 
 export const { login, userout } = userSlice.actions;
 export const userData = (state) => state.user.data;
-// export const userFavorites = (state) => state.user.favorites;
 
 export default userSlice.reducer;
