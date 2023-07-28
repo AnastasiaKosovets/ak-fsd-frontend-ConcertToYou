@@ -170,16 +170,20 @@ export const GenConcertCard = ({ concert }) => {
             show={showFavoriteModal}
             onHide={handleCloseAlert}
           >
-            <Modal.Header closeButton>
-              <Modal.Title>¡Concierto ya en tus favoritos!</Modal.Title>
+            <Modal.Header closeButton className="favoriteHeaderModal">
+              <Modal.Title className="textFavorite">¡Concierto ya en tus favoritos!</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              Este concierto ya ha sido agregado a tu lista de favoritos.
+              El concierto ya está en tu lista de favoritos.
             </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleCloseAlert}>
+            <Modal.Footer className="footerFavorite">
+            <button
+                className="modalConcertBook"
+                variant="secondary"
+                onClick={handleCloseAlert}
+              >
                 Cerrar
-              </Button>
+              </button>
             </Modal.Footer>
           </Modal>
         </Card.Body>

@@ -117,22 +117,30 @@
 
 .favoriteRow {
   display: flex;
-  /* justify-content: start; */
 }
 
 .favImg {
   height: 3rem;
-  /* filter: grayscale(100%);
-  transition: filter 0.3s ease; */
 }
-
-/* .favImg.desaturate {
-  filter: brightness(0.5)
-} */
 
 .favoriteBoton {
   border: none;
   background-color: transparent;
+}
+
+.favoriteModal {
+  padding-top: 7em;
+  text-align: center;
+}
+
+.textFavorite {
+  margin-left: 3em;
+  color: goldenrod;
+}
+
+.footerFavorite {
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -164,6 +172,10 @@
 
   .BtnConcrt {
     width: 8em;
+  }
+
+  .textFavorite {
+    margin-left: 1em;
   }
 }
 
