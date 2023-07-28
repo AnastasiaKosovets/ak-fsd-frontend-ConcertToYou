@@ -243,6 +243,19 @@ export const confirmTicket = async (concert_id, token) => {
   return res.data;
 }
 
+// ADD TO FAVORITE
+// BOOK TICKET
+export const toFavorite = async (concert_id, token) => {
+  let access = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const payload = {"concert_id": concert_id};
+  let res = await axios.post(`${root}/my-favorite`, payload,  access);
+  return res.data;
+}
+
 // REGISTER GROUP
 export const registerGroup = async (token, formData) => {
   let access = {

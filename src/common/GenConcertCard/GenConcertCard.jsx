@@ -3,15 +3,19 @@ import "./GenConcertCard.css";
 import { Card, Col, Container, Modal, Nav, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Button } from "../Button/Button";
-import { confirmTicket } from "../../services/apiCalls";
+import { confirmTicket, toFavorite } from "../../services/apiCalls";
 import { userData } from "../../pages/userSlice";
 import { Link } from "react-router-dom";
+import favorito from "../../../img/favorito.png";
+import favoritoGrayScale from "../../../img/favoritoGrayScale.png";
 
 export const GenConcertCard = ({ concert }) => {
   const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
   const [showTokenModal, setShowTokenModal] = useState(false);
   const [successBookTicket, setSuccessBookTicket] = useState(false);
+  const [addToFavorite, setAddToFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
 
   const handleBookTicket = () => {
@@ -32,13 +36,29 @@ export const GenConcertCard = ({ concert }) => {
     }
   };
 
+
+  const handleFavorite = () => {
+    if (token) {
+      toFavorite(concert.id, token)
+        .then(() => {
+          setAddToFavorite(!addToFavorite);
+          // setAddToFavorite(true);
+          setIsFavorite(!isFavorite);
+          console.log("Añadido a favoritos", concert.id);
+        })
+        .catch((error) => {
+          console.error("Error al añadir a favoritos", error);
+        });
+    }
+  };
+
   const handleShowDetail = () => {
     setShowDetail(true);
-  }
+  };
 
   const handleCloseDetail = () => {
     setShowDetail(false);
-  }
+  };
 
   return (
     <div
@@ -47,6 +67,13 @@ export const GenConcertCard = ({ concert }) => {
     >
       <Card className="cardCP">
         <Card.Body>
+          <Row className="">
+            <Col className="favoriteRow" xs={{ offset: 8 }} md={{ offset: 10 }}>
+              <button onClick={handleFavorite} className="favoriteBoton">
+              <img src={isFavorite ? favorito : favoritoGrayScale} alt="añadir a favoritos" className="favImg" />
+              </button>
+            </Col>
+          </Row>
           <Row className="cardBody">
             <Col xs={4}>
               <img
@@ -55,12 +82,11 @@ export const GenConcertCard = ({ concert }) => {
                 className="imgConcerts"
               />
             </Col>
-            <Col xs={10} md={7} >
+            <Col xs={10} md={7}>
               <Card.Text className="cardTxt">{concert.title}</Card.Text>
-              {/* <Card.Title className="cardTlt">{concert.date}</Card.Title> */}
-              <Card.Title className="cardTlt">Grupo: {concert.groupName}</Card.Title>
-              {/* <Card.Title className="cardTlt">{concert.description}</Card.Title> */}
-              {/* <Card.Title className="cardTlt">{concert.programm}</Card.Title> */}
+              <Card.Title className="cardTlt">
+                Grupo: {concert.groupName}
+              </Card.Title>
               <button className="BtnConcrt" onClick={handleBookTicket}>
                 Reservar entrada
               </button>
@@ -106,35 +132,32 @@ export const GenConcertCard = ({ concert }) => {
             </Col>
           </Row>
           <Modal
-        className="showDetailModal"
-        show={showDetail}
-        onHide={handleCloseDetail}
-      >
-        <Modal.Header className="bodyDetail">
-          <Modal.Title>
-            Detalles del concierto
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="bodyDetail">
-          <p>Título: {concert.title}</p>
-          <p>Fecha: {concert.date}</p>
-          <p>Grupo: {concert.groupName}</p>
-          <p>Descripción: {concert.description}</p>
-          <p>Programa: {concert.programm}</p>
-        </Modal.Body>
-        <Modal.Footer className="bodyDetail">
-          <button
-            className="modalConcertBook"
-            variant="secondary"
-            onClick={handleCloseDetail}
+            className="showDetailModal"
+            show={showDetail}
+            onHide={handleCloseDetail}
           >
-            Cerrar
-          </button>
-        </Modal.Footer>
-      </Modal>
+            <Modal.Header className="bodyDetail">
+              <Modal.Title>Detalles del concierto</Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="bodyDetail">
+              <p>Título: {concert.title}</p>
+              <p>Fecha: {concert.date}</p>
+              <p>Grupo: {concert.groupName}</p>
+              <p>Descripción: {concert.description}</p>
+              <p>Programa: {concert.programm}</p>
+            </Modal.Body>
+            <Modal.Footer className="bodyDetail">
+              <button
+                className="modalConcertBook"
+                variant="secondary"
+                onClick={handleCloseDetail}
+              >
+                Cerrar
+              </button>
+            </Modal.Footer>
+          </Modal>
         </Card.Body>
       </Card>
-      
     </div>
   );
 };
