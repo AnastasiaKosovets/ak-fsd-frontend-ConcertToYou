@@ -9,6 +9,7 @@ import up from "../../../img/up.png";
 import { Button } from "../../common/Button/Button";
 import { Link } from "react-router-dom";
 import { UserCard } from "../../common/UserCard/UserCard";
+import { ScrollTopButton } from "../../common/scrollTop";
 
 export const UserProfile = () => {
   const user = useSelector(userData);
@@ -27,26 +28,6 @@ export const UserProfile = () => {
   });
   const [infoUser, setInfoUser] = useState([]);
   const [showUserInfo, setShowUSerInfo] = useState(false);
-  const [showScrollButton, setShowScrollButton] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollButton(true);
-      } else {
-        setShowScrollButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   useEffect(() => {
     if (showUserInfo) {
@@ -64,6 +45,7 @@ export const UserProfile = () => {
     setEditMode(true);
   };
 
+  // this component take user data in read mode
   const ReadOnlyProductCard = ({ user }) => {
     return (
       <>
@@ -76,17 +58,16 @@ export const UserProfile = () => {
           phoneNumber={`Teléfono: ${user.phoneNumber}`}
           document={`DNI / NIE: ${user.document}`}
           dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-          token={token}
-        />
+          token={token}/>
       </>
     );
   };
 
+  // function that save changes of user data and update state of component
   const handleSaveChanges = () => {
     updateMyProfile(modifiedData, token)
       .then((res) => {
         setEditMode(false);
-
         setModifiedData({
           ...modifiedData,
           address: res.data.address,
@@ -99,7 +80,7 @@ export const UserProfile = () => {
   return (
     <div className="userProfileStyle" style={{ fontFamily: "Great Vibes" }}>
       <Container className="mainUserProfileSt">
-        <Row className="rowBookUser">
+        <Row>
           <Col xs={6} md={4}>
             <div className="bookStyle"> Mis datos</div>
             <div key={user.id} className="userCard"></div>
@@ -117,8 +98,7 @@ export const UserProfile = () => {
                         ...modifiedData,
                         address: e.target.value,
                       })
-                    }
-                  />
+                    } />
                   <label>Teléfono:</label>
                   <input
                     className="inputTxtAdminChange"
@@ -129,16 +109,14 @@ export const UserProfile = () => {
                         ...modifiedData,
                         phoneNumber: e.target.value,
                       })
-                    }
-                  />
+                    } />
                 </form>
                 <button className="btnAdminClickA" onClick={handleSaveChanges}>
                   Guardar cambios
                 </button>
                 <button
                   className="btnAdminClickB"
-                  onClick={() => setEditMode(false)}
-                >
+                  onClick={() => setEditMode(false)}>
                   Cancelar
                 </button>
               </div>
@@ -149,8 +127,7 @@ export const UserProfile = () => {
               <button
                 name={"Modificar"}
                 className="modInfo"
-                onClick={handleEditProfile}
-              >
+                onClick={handleEditProfile}>
                 Modificar
               </button>
             )}
@@ -158,14 +135,14 @@ export const UserProfile = () => {
         </Row>
         <Row className="bookRow2">
           <Col xs={6} md={6} className="bookCol">
-            <div className="bookStyle">Mis Reservas</div>
+            <div className="bookStyle">Entradas</div>
             <div>
               <img src={im2} alt="Sala con piano" className="img2Home" />
             </div>
           </Col>
           <Col xs={6} md={2} className="mb-4 my-2 classBtn">
             <Link to={"/myTickets"}>
-              <Button name={"Ver reservas"} />
+              <Button name={"Mis entradas"} />
             </Link>
           </Col>
           <Col xs={6} md={2} className="mb-4 my-2 classBtn">
@@ -179,12 +156,8 @@ export const UserProfile = () => {
             </Link>
           </Col>
         </Row>
+        <ScrollTopButton />
       </Container>
-      {showScrollButton && (
-        <button className="upButn bg-transparent" onClick={scrollTop}>
-          <img src={up} alt="boton hacía arriba" className="up" />
-        </button>
-      )}
     </div>
   );
 };
