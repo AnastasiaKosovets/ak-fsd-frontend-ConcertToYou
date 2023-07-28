@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import "./AdminGroups.css";
 import { GroupCard } from "../../common/GroupCard/GroupCard";
 import { Button } from "../../common/Button/Button";
 import { getConcerts, getGroups } from "../../services/apiCalls";
@@ -32,7 +31,6 @@ export const AdminGroups = () => {
 
   const handleShowGroups = async () => {
     setShowGroupInfo((prevShowGroupInfo) => !prevShowGroupInfo);
-    // console.log("token en admin:", token);
   };
 
   useEffect(() => {
@@ -52,7 +50,6 @@ export const AdminGroups = () => {
 
   const handleShowConcerts = async () => {
     setShowConcertInfo((prevShowConcertInfo) => !prevShowConcertInfo);
-    // console.log("token en admin:", token);
   };
 
   const handleDataChanged = () => {
@@ -62,8 +59,8 @@ export const AdminGroups = () => {
   return (
     <div className="adminPageStyle">
       <Container className="adminCont">
-        <Row className="fRowA">
-          <Col xs={6} md={2} className="mb-4 my-4">
+        <Row className="fRowA my-4">
+          <Col xs={6} md={2} className="mb-4 my-5">
             <Button name={"Grupos"} onClick={handleShowGroups} />
           </Col>
           <Col xs={6} md={2} className="mb-4">
@@ -77,8 +74,7 @@ export const AdminGroups = () => {
                 <GroupCard
                   key={group.id}
                   group={group}
-                  handleDataChanged={handleDataChanged}
-                />
+                  handleDataChanged={handleDataChanged}/>
               ))}
             </div>
           )}
@@ -90,8 +86,7 @@ export const AdminGroups = () => {
                 <ConcertCard
                   key={concert.id}
                   concert={concert}
-                  handleDataChanged={handleDataChanged}
-                />
+                  handleDataChanged={handleDataChanged}/>
               ))}
             </div>
           )}

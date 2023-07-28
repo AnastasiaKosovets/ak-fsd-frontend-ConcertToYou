@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
-import up from "../../../img/up.png";
 import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
 import { Col, Container, Row } from "react-bootstrap";
@@ -121,10 +120,8 @@ export const Profile = () => {
                           address={`Dirección: ${user.address}`}
                           phoneNumber={`Teléfono: ${user.phoneNumber}`}
                           document={`DNI / NIE: ${user.document}`}
-                          dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-                        />
+                          dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`} />
                       </div>
-                      
                       );
                     })}
                 </div>
@@ -149,8 +146,7 @@ export const Profile = () => {
                           ...modifiedData,
                           address: e.target.value,
                         })
-                      }
-                    />
+                      } />
                     <label>Teléfono:</label>
                     <input
                     className="inputTxtAdminChange"
@@ -161,8 +157,7 @@ export const Profile = () => {
                           ...modifiedData,
                           phoneNumber: e.target.value,
                         })
-                      }
-                    />
+                      }/>
                   </form>
                   <button className="btnAdminClickA" onClick={handleSaveChanges}>Guardar cambios</button>
                   <button className="btnAdminClickB" onClick={() => setEditMode(false)}>Cancelar</button>
@@ -174,8 +169,7 @@ export const Profile = () => {
                 <button
                   name={"Modificar"}
                   className="modInfo"
-                  onClick={handleEditProfile}
-                >
+                  onClick={handleEditProfile}>
                   Modificar
                 </button>
               )}
