@@ -160,7 +160,6 @@ export const updateMyConcert = async (id, data, token) => {
     },
   };
   let res = await axios.put(`${root}/concerts/${id}`, data, access);
-  console.log("respuesta de la función", res);
   return res.data;
 }
 

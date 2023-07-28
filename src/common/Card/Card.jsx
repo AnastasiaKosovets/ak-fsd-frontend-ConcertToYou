@@ -42,9 +42,7 @@ export const ProductCard = ({
     if (onConfirmText === "Eliminar") {
       try {
         setIsDeleting(true);
-        console.log("Eliminando usuario...");
         const response = await deleteUser(token, id);
-        console.log(response);
         setIsDeleting(false);
         setShowModal(false);
       } catch (error) {
@@ -55,9 +53,7 @@ export const ProductCard = ({
     } else if (onConfirmText === "Restaurar") {
       try {
         setIsDeleting(true);
-        console.log("Restaurando usuario...");
         const res = await restoreUser(token, id);
-        console.log(res);
         setIsDeleting(false);
         setShowModal(false);
       } catch (error) {

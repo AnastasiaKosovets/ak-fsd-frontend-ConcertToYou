@@ -18,7 +18,6 @@ export const AdminGroups = () => {
     if (!sincronized) {
       getGroups()
         .then((res) => {
-          console.log(res.data);
           setGroups(res.data);
           setSincronized(true);
         })
@@ -37,7 +36,6 @@ export const AdminGroups = () => {
     if (!sincronized) {
       getConcerts()
         .then((res) => {
-          console.log(res.data);
           setConcerts(res.data);
           setSincronized(true);
         })

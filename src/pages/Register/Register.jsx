@@ -55,7 +55,6 @@ export const Register = () => {
     e.preventDefault();
     myRegister(userData)
       .then((res) => {
-        console.log(res);
         setSuccessPopup(true);
         setTimeout(() => {
           navigate("/login");

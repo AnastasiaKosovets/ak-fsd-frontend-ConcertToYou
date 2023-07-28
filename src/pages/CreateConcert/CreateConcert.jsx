@@ -62,7 +62,6 @@ export const CreateConcert = () => {
       const res = await createConcert(token, newConcertData);
       const { data } = res;
       const { group_id: concertGroupId } = data;
-      console.log("group ID es", concertGroupId);
       setSuccessPopup(true);
       setTimeout(() => {
         navigate("/musicProfile");

@@ -21,7 +21,6 @@ export const GroupCard = ({ group }) => {
   };
 
   const handleRestoreGroup = () => {
-    console.log("ID del grupo a restaurar:", group.id);
     setModalTitle("Restaurar Grupo");
     setOnConfirmText("Restaurar");
     setShowModal(true);
@@ -31,9 +30,7 @@ export const GroupCard = ({ group }) => {
     if (onConfirmText === "Eliminar") {
       try {
         setIsDeleting(true);
-        console.log("Eliminando grupo...");
         const response = await deleteGroupAdmin(token, group.id);
-        console.log(response);
         setIsDeleting(false);
         setShowModal(false);
       } catch (error) {
@@ -44,9 +41,7 @@ export const GroupCard = ({ group }) => {
     } else if (onConfirmText === "Restaurar") {
       try {
         setIsDeleting(true);
-        console.log("Restaurando grupo...");
         const res = await restoreGroup(token, group.id);
-        console.log(res);
         setIsDeleting(false);
         setShowModal(false);
         // handleDataChanged();
@@ -74,7 +69,6 @@ export const GroupCard = ({ group }) => {
         groupId,
         updatedGroupData
       );
-      console.log("Grupo actualizado:", updatedGroup);
       setIsEditing(false);
     } catch (error) {
       console.log("Error al actualizar el grupo:", error);

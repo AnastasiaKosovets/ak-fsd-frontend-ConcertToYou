@@ -25,7 +25,6 @@ export const GenConcertCard = ({ concert }) => {
       confirmTicket(concert.id, token)
         .then(() => {
           setSuccessBookTicket(true);
-          console.log("ticket reservado", concert.id);
           setTimeout(() => {
             setSuccessBookTicket(false);
           }, 2500);
@@ -45,7 +44,6 @@ export const GenConcertCard = ({ concert }) => {
           setAddToFavorite(!addToFavorite);
           setIsFavorite(!isFavorite);
           setShowFavoriteModal(true);
-          console.log("Añadido a favoritos", concert.id);
         })
         .catch((error) => {
           console.error("Error al añadir a favoritos", error);

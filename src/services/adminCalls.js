@@ -127,6 +127,5 @@ export const updateConcertByAdmin = async (id, data, token) => {
         },
     };
     let res = await axios.put(`${root}/concerts/admin/${id}`, data, access);
-    console.log("respuesta de la función", res);
     return res.data;
 }

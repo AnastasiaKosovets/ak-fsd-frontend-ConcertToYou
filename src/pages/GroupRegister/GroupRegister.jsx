@@ -47,8 +47,6 @@ export const GroupRegister = () => {
 
   const handleRegisterGroup = (e) => {
     e.preventDefault();
-    console.log("-----------------", token);
-
     const formData = new FormData();
     formData.append("groupName", userData.groupName);
     formData.append("genre", userData.genre);
@@ -58,8 +56,6 @@ export const GroupRegister = () => {
     registerGroup(token, formData)
       .then(
         (res) => {
-          console.log(res);
-          console.log("-----", userData);
           setSuccessPopup(true);
           setTimeout(() => {
             navigate("/musicProfile");
@@ -67,7 +63,6 @@ export const GroupRegister = () => {
         },
         [token]
       )
-
       .catch((error) => console.log(error));
   };
   return (

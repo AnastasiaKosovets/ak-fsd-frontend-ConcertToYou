@@ -33,9 +33,7 @@ export const ConcertCard = ({ concert }) => {
     if (onConfirmText === "Eliminar") {
       try {
         setIsDeleting(true);
-        console.log("Eliminando concierto...");
         const response = await deleteConcert(token, concert.id);
-        console.log(response);
         setIsDeleting(false);
         setShowModal(false);
       } catch (error) {
@@ -46,9 +44,7 @@ export const ConcertCard = ({ concert }) => {
     } else if (onConfirmText === "Restaurar") {
       try {
         setIsDeleting(true);
-        console.log("Restaurando concierto...");
         const res = await restoreConcert(token, concert.id);
-        console.log(res);
         setIsDeleting(false);
         setShowModal(false);
       } catch (error) {
@@ -73,7 +69,6 @@ export const ConcertCard = ({ concert }) => {
         updatedData,
         token
       );
-      console.log("prueba concierto actualizado:", updatedConcert);
       setIsEditing(false);
     } catch (error) {
       console.error("Error al actualizar el concierto como admin:", error);

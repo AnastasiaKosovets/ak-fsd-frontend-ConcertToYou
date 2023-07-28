@@ -35,7 +35,6 @@ export const UserCard = ({
         return;
       }
       const res = await deleteProfile(token);
-      console.log(res.message);
     } catch (error) {
       console.error("Error deleting account:", error);
     }
@@ -45,7 +44,6 @@ export const UserCard = ({
     if (onConfirmText === "Eliminar") {
       try {
         setIsDeleting(true);
-        console.log("Eliminando usuario...");
         await handleDeleteAccount();
         setIsDeleting(false);
         setShowModal(false);

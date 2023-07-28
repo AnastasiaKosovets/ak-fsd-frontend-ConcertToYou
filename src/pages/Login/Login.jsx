@@ -21,7 +21,6 @@ export const Login = () => {
     logIn(userData)
       .then((res) => {
         dispatch(login(res));
-        console.log(res);
         setTimeout(() => {
           navigate("/concerts");
         }, 500);
@@ -30,7 +29,6 @@ export const Login = () => {
       .catch((error) => console.log(error));
   };
   const group_id = user.data && user.data.group_id;
-  // console.log(userData);
 
   return (
     <div className="genLoginStyle" style={{ fontFamily: "Great Vibes" }}>
