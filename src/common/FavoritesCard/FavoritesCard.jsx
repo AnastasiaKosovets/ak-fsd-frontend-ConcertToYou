@@ -1,41 +1,39 @@
-import React from "react";
+import React, { useState } from 'react';
 import "./FavoritesCard.css";
-import { humanDate } from "../../services/useful";
+import { useSelector } from 'react-redux';
+import { userData } from '../../pages/userSlice';
+import { getMyFavorites } from '../../services/apiCalls';
 
-export const FavoritesCard = ({ concert }) => {
-  const user = useSelector(userData);
-  const token = useSelector((state) => state.user.credentials.token);
-  
+export const FavoriteCard = () => {
+    const user = useSelector(userData);
+    const token = useSelector((state) => state.user.credentials.token);
+    const [favorites, setFavorites] = useState([]);
+
+    const loadFavorites = async () => {
+        try {
+          const data = await getMyFavorites(token);
+          if (data.success) {
+            setFavorites(data.data);
+          } else {
+            console.log('Error al obtener los favoritos: ' + data.message);
+          }
+        } catch (error) {
+          console.log('Error en la solicitud AJAX: ' + error);
+        }
+      };
+
   return (
-    <div
-      className="concertCardContainer my-5"
-      style={{ fontFamily: "Great Vibes" }}
-    >
-      <Card className="cardCP">
-        <Card.Body>
-          <Row className="cardBody">
-            <Col xs={4}>
-              <img
-                src={concert.image}
-                alt={concert.groupName}
-                className="imgConcerts"
-              />
-            </Col>
-            <Col xs={10} md={7}>
-              <Card.Text className="cardTxt">{concert.title}</Card.Text>
-              <Card.Title className="cardTlt">
-                Grupo: {humanDate(concert.date)}
-              </Card.Title>
-              <Card.Title className="cardTlt">
-                Grupo: {concert.groupName}
-              </Card.Title>
-              <Card.Title className="cardTlt">
-                Grupo: {concert.programm}
-              </Card.Title>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
+    <div >
+      <button onClick={loadFavorites} className='divTest'>Cargar Favoritos</button>
+      <div>
+        {favorites.map(favorite => (
+          <div key={favorite.id}>
+            <h3>{favorite.concert.title}</h3>
+            <p>Date: {favorite.concert.date}</p>
+            <p>Group Name: {favorite.concert.groupName}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
-};
+}

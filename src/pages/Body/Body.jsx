@@ -11,6 +11,7 @@ import { MusicProfile } from "../MusicProfile/MusicProfile";
 import { Concerts } from "../Concerts/Concerts";
 import { GroupRegister } from "../GroupRegister/GroupRegister";
 import { CreateConcert } from "../CreateConcert/CreateConcert";
+import { FavoriteCard } from "../../common/FavoritesCard/FavoritesCard";
 
 export const Body = () => {
   return (
@@ -26,6 +27,7 @@ export const Body = () => {
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/musicProfile" element={<MusicProfile />} />
         <Route path="/myTickets" element={<MyTickets />} />
+        <Route path="/myFavorites" element={<FavoriteCard />} />
         <Route path="/concerts" element={<Concerts />} />
         <Route path="/createConcert" element={<CreateConcert />} />
       </Routes>

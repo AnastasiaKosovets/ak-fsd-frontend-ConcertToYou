@@ -51,7 +51,6 @@ export const UserProfile = () => {
   useEffect(() => {
     if (showUserInfo) {
       getUsers(token)
-        // console.log(res.data)
         .then((res) => {
           setInfoUser(res.data);
         })
@@ -175,7 +174,7 @@ export const UserProfile = () => {
             </Link>
           </Col>
           <Col xs={6} md={2} className="mb-4 my-2 classBtn">
-            <Link to={"/groupRegister"}>
+            <Link to={"/myFavorites"}>
               <Button name={"Mis Favoritos"} />
             </Link>
           </Col>

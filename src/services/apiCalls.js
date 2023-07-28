@@ -268,6 +268,16 @@ export const registerGroup = async (token, formData) => {
   return res.data;
 }
 
+export const getMyFavorites = async (token) => {
+  let access = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.get(`${root}/favorites`, access);
+    return res.data;
+}
+
 // CONCERT PART
 // GET ALL CONCERTS
 export const getConcerts = async () => {
