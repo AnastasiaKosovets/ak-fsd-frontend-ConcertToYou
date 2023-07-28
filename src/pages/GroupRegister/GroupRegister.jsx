@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./GroupRegister.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { registerGroup } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { checkError } from "../../services/useful";

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./CreateConcert.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { checkError } from "../../services/useful";
 import { createConcert } from "../../services/apiCalls";

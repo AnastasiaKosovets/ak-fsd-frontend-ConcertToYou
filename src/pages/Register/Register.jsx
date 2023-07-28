@@ -3,7 +3,7 @@ import "./Register.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { checkError } from "../../services/useful";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { myRegister } from "../../services/apiCalls";
 import img9 from "../../../img/img9.jpg";
 import { Link } from "react-router-dom";
