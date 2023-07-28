@@ -14,6 +14,7 @@ import { Button } from "../../common/Button/Button";
 import { UserCard } from "../../common/UserCard/UserCard";
 import { Link } from "react-router-dom";
 import { ScrollTopButton } from "../../common/scrollTop";
+import { humanDate } from "../../services/useful";
 
 export const MusicProfile = () => {
   const user = useSelector(userData);
@@ -250,7 +251,7 @@ export const MusicProfile = () => {
                   <Card.Body>
                     <Card.Title>Título: {concert.title}</Card.Title>
                     <Card.Text>Descripción: {concert.description}</Card.Text>
-                    <Card.Text>Fecha: {concert.date}</Card.Text>
+                    <Card.Text>Fecha: {humanDate(concert.date)}</Card.Text>
                     <Card.Text>Programa: {concert.programm}</Card.Text>
                     {editConcertDescription && concert.id == editedConcert.id ? (
                       <div className="modConcertStyleG">

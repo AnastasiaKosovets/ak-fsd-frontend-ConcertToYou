@@ -8,6 +8,7 @@ import {
 import { GenModal } from "../GenModal/GenModal";
 import { Card, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { humanDate } from "../../services/useful";
 
 export const ConcertCard = ({ concert }) => {
   const token = useSelector((state) => state.user.credentials.token);
@@ -101,7 +102,7 @@ export const ConcertCard = ({ concert }) => {
             />
           </Card.Text>
           <Card.Text className="cardText">Título: {concert.title}</Card.Text>
-          <Card.Text className="cardText">Fecha: {concert.date}</Card.Text>
+          <Card.Text className="cardText">Fecha: {humanDate(concert.date)}</Card.Text>
           <Card.Text className="cardText">
             Nombre del grupo: {concert.groupName}
           </Card.Text>
