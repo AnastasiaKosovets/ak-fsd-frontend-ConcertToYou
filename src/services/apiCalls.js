@@ -244,7 +244,7 @@ export const confirmTicket = async (concert_id, token) => {
 }
 
 // ADD TO FAVORITE
-// BOOK TICKET
+// FAVORITE CONCERT
 export const toFavorite = async (concert_id, token) => {
   let access = {
     headers: {

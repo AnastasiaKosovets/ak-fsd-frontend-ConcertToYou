@@ -252,7 +252,7 @@ export const MusicProfile = () => {
                     <Card.Text>Descripción: {concert.description}</Card.Text>
                     <Card.Text>Fecha: {concert.date}</Card.Text>
                     <Card.Text>Programa: {concert.programm}</Card.Text>
-                    {editConcertDescription && (
+                    {editConcertDescription && concert.id == editedConcert.id ? (
                       <div className="modConcertStyleG">
                         <textarea
                           value={editedConcert.description}
@@ -275,12 +275,13 @@ export const MusicProfile = () => {
                           Cancelar
                         </button>
                       </div>
-                    )}
+                    ) : (
                     <button
                       className="btnGroupA"
                       onClick={() => handleEditConcertDescription(concert)}>
                       Modificar
                     </button>
+                    ) } 
                   </Card.Body>
                 </Card>
               ))}

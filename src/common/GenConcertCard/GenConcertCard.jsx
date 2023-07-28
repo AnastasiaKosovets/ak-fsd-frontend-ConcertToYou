@@ -8,6 +8,7 @@ import { userData } from "../../pages/userSlice";
 import { Link } from "react-router-dom";
 import favorito from "../../../img/favorito.png";
 import favoritoGrayScale from "../../../img/favoritoGrayScale.png";
+import { humanDate } from "../../services/useful";
 
 export const GenConcertCard = ({ concert }) => {
   const user = useSelector(userData);
@@ -17,6 +18,7 @@ export const GenConcertCard = ({ concert }) => {
   const [addToFavorite, setAddToFavorite] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [showDetail, setShowDetail] = useState(false);
+  const [showFavoriteModal, setShowFavoriteModal] = useState(false);
 
   const handleBookTicket = () => {
     if (token) {
@@ -36,14 +38,13 @@ export const GenConcertCard = ({ concert }) => {
     }
   };
 
-
   const handleFavorite = () => {
     if (token) {
       toFavorite(concert.id, token)
         .then(() => {
           setAddToFavorite(!addToFavorite);
-          // setAddToFavorite(true);
           setIsFavorite(!isFavorite);
+          setShowFavoriteModal(true);
           console.log("Añadido a favoritos", concert.id);
         })
         .catch((error) => {
@@ -60,6 +61,18 @@ export const GenConcertCard = ({ concert }) => {
     setShowDetail(false);
   };
 
+  const handleShowAlert = () => {
+    if(addToFavorite) {
+      setShowFavoriteModal(true);
+    } else {
+      handleFavorite();
+    }
+  }
+
+  const handleCloseAlert = () => {
+    setShowFavoriteModal(false);
+  }
+
   return (
     <div
       className="concertCardContainer my-5"
@@ -69,8 +82,12 @@ export const GenConcertCard = ({ concert }) => {
         <Card.Body>
           <Row className="">
             <Col className="favoriteRow" xs={{ offset: 8 }} md={{ offset: 10 }}>
-              <button onClick={handleFavorite} className="favoriteBoton">
-              <img src={isFavorite ? favorito : favoritoGrayScale} alt="añadir a favoritos" className="favImg" />
+            <button onClick={handleFavorite} className="favoriteBoton">
+                <img
+                  src={isFavorite ? favorito : favoritoGrayScale}
+                  alt="añadir a favoritos"
+                  className="favImg"
+                />
               </button>
             </Col>
           </Row>
@@ -141,7 +158,7 @@ export const GenConcertCard = ({ concert }) => {
             </Modal.Header>
             <Modal.Body className="bodyDetail">
               <p>Título: {concert.title}</p>
-              <p>Fecha: {concert.date}</p>
+              <p>Fecha: {humanDate(concert.date)}</p>
               <p>Grupo: {concert.groupName}</p>
               <p>Descripción: {concert.description}</p>
               <p>Programa: {concert.programm}</p>
@@ -154,6 +171,26 @@ export const GenConcertCard = ({ concert }) => {
               >
                 Cerrar
               </button>
+            </Modal.Footer>
+          </Modal>
+          <Modal
+            className="favoriteModal"
+            show={showFavoriteModal}
+            onHide={handleCloseAlert}
+          >
+            <Modal.Header closeButton>
+              <Modal.Title>¡Concierto ya en tus favoritos!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Este concierto ya ha sido agregado a tu lista de favoritos.
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={handleCloseAlert}
+              >
+                Cerrar
+              </Button>
             </Modal.Footer>
           </Modal>
         </Card.Body>

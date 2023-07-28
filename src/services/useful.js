@@ -121,4 +121,12 @@ export const checkError = (name, value) => {
         default:
             console.log("Formato desconocido");
     }
+
+
+}
+
+export const humanDate = (dbDate) => {
+    const date = new Date(dbDate);
+
+    return date.toLocaleDateString("es-ES", {year:"numeric", month:"2-digit", day:"numeric", hour:"2-digit", minute:"2-digit"});
 }
