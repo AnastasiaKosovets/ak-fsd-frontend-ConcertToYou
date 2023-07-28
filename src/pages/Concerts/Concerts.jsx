@@ -5,7 +5,6 @@ import { getConcerts } from "../../services/apiCalls";
 import { Col, Container, Row } from "react-bootstrap";
 import { GenConcertCard } from "../../common/GenConcertCard/GenConcertCard";
 import { ConcertSearch } from "../../common/ConcertSearch/ConcertSearch";
-import { humanDate } from "../../services/useful";
 
 export const Concerts = () => {
   const [concerts, setConcerts] = useState([]);

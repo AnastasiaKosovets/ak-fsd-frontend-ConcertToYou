@@ -117,6 +117,7 @@
 
 .favoriteRow {
   display: flex;
+  height: 1em;
 }
 
 .favImg {
@@ -176,6 +177,10 @@
 
   .textFavorite {
     margin-left: 1em;
+  }
+
+  .favoriteRow {
+    height: 1.5em;
   }
 }
 

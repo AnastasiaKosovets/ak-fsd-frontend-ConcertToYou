@@ -86,7 +86,7 @@ export const Header = () => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="UserProfilee"
+              to="userProfile"
               className="headerText mb-3"
               onClick={handleClose}
             >
@@ -120,7 +120,7 @@ export const Header = () => {
               <>
                 <Nav.Link
                   as={Link}
-                  to="/UserProfilee"
+                  to="/userProfile"
                   className="headerText mb-3"
                   onClick={handleClose}
                 >

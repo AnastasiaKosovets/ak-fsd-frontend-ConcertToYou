@@ -4,7 +4,7 @@
   background-color: rgb(58, 57, 57);
 }
 
-.mainUserProfileStyle {
+.mainUserProfileSt {
     padding-top: 5em;
     display: flex;
     /* justify-content: center; */
@@ -51,7 +51,7 @@
 }
 
 @media (max-width: 768px) {
-    .mainUserProfileStyle {
+    .mainUserProfileSt {
         flex-direction: column;
         overflow-x: hidden;
     }

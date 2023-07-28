@@ -23,7 +23,7 @@ export const Body = () => {
         <Route path="/groupRegister" element={<GroupRegister />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/admingroups" element={<AdminGroups />} />
-        <Route path="/UserProfilee" element={<UserProfile />} />
+        <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/musicProfile" element={<MusicProfile />} />
         <Route path="/myTickets" element={<MyTickets />} />
         <Route path="/concerts" element={<Concerts />} />

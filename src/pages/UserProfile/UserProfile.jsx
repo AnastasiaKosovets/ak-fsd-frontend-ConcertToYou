@@ -99,8 +99,8 @@ export const UserProfile = () => {
 
   return (
     <div className="userProfileStyle" style={{ fontFamily: "Great Vibes" }}>
-      <Container className="mainUserProfileStyle">
-        <Row className="rowBook">
+      <Container className="mainUserProfileSt">
+        <Row className="rowBookUser">
           <Col xs={6} md={4}>
             <div className="bookStyle"> Mis datos</div>
             <div key={user.id} className="userCard"></div>
@@ -172,6 +172,11 @@ export const UserProfile = () => {
           <Col xs={6} md={2} className="mb-4 my-2 classBtn">
             <Link to={"/groupRegister"}>
               <Button name={"Registrar mi grupo"} />
+            </Link>
+          </Col>
+          <Col xs={6} md={2} className="mb-4 my-2 classBtn">
+            <Link to={"/groupRegister"}>
+              <Button name={"Mis Favoritos"} />
             </Link>
           </Col>
         </Row>
