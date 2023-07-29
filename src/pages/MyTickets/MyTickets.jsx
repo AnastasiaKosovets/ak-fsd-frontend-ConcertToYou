@@ -4,7 +4,7 @@ import { getMyTickets } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { Card } from "react-bootstrap";
-import Spinner from "/src/img/Spinner.gif";
+// import Spinner from "/src/img/Spinner.gif";
 
 export const MyTickets = () => {
   const [bookings, setBookings] = useState([]);
@@ -37,7 +37,7 @@ export const MyTickets = () => {
     <h1>Mis Entradas</h1>
     {loading ? (
       <p>
-        <img src={Spinner} alt="Loading..." className="" />
+        {/* <img src={Spinner} alt="Loading..." className="" /> */}
       </p>
     ) : (
       <div className="cardStyleTicket">
