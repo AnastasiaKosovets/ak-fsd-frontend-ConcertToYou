@@ -20,7 +20,7 @@ export const GroupsCard = ({ group }) => {
               <img src={group.image} className="imgConcerts" />
             </Col>
             <Col xs={10} md={7}>
-              <Card.Text className="cardTxt">Grupo: {group.groupName}</Card.Text>
+              <Card.Text className="cardTxt"> {group.groupName}</Card.Text>
               <Card.Title className="cardTlt">
                 Género: {group.genre}
               </Card.Title>
