@@ -107,6 +107,7 @@ export const ConcertCard = ({ concert }) => {
             <div className="modtypeStyle">
               <input
                 type="text"
+                maxLength={300}
                 value={newDescriptionByAdmin}
                 onChange={(e) => setNewDescriptionByAdmin(e.target.value)}
                 className="cardText"

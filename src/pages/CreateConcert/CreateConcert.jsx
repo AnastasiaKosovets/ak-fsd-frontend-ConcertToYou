@@ -96,6 +96,7 @@ export const CreateConcert = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={20}
                 name="groupName"
                 placeholder="Nombre del grupo"
                 value={modifiedData.groupName}
@@ -113,6 +114,7 @@ export const CreateConcert = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={20}
                 name="title"
                 placeholder="Título del concierto"
                 value={modifiedData.title}
@@ -144,6 +146,7 @@ export const CreateConcert = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={300}
                 name="description"
                 placeholder="Descripción"
                 value={modifiedData.description}
@@ -161,6 +164,7 @@ export const CreateConcert = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={200}
                 name="programm"
                 placeholder="Programa"
                 value={modifiedData.programm}
@@ -178,6 +182,7 @@ export const CreateConcert = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={100}
                 name="image"
                 placeholder="URL de la imágen"
                 value={modifiedData.image}

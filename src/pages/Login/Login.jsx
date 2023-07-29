@@ -52,7 +52,9 @@ export const Login = () => {
                 fontFamily: "Courier New, Courier, monospace",
               }}
               state={setUserData}
-              errorState={setInputError}></InputText>
+              errorState={setInputError}
+              maxLength={30}
+            ></InputText>
             <div className="errorInput">{inputError.emailError}</div>
           </Col>
           <Col xs={10} md={8} className="my-3">
@@ -68,7 +70,9 @@ export const Login = () => {
                 fontFamily: "Courier New, Courier, monospace",
               }}
               state={setUserData}
-              errorState={setInputError}></InputText>
+              errorState={setInputError}
+              maxLength={30}
+            ></InputText>
             <div className="errorInput">{inputError.passwordError}</div>
           </Col>
           <Col xs={10} md={6} lg={5} className="my-3 mb-4">

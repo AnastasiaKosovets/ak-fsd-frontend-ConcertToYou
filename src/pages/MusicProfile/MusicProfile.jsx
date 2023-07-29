@@ -174,6 +174,7 @@ export const MusicProfile = () => {
                   <input
                     className="inputTxtAdminChange"
                     type="text"
+                    maxLength={50}
                     value={modifiedData.address}
                     onChange={(e) =>
                       setModifiedData({
@@ -184,6 +185,7 @@ export const MusicProfile = () => {
                   <input
                     className="inputTxtAdminChange"
                     type="text"
+                    maxLength={9}
                     value={modifiedData.phoneNumber}
                     onChange={(e) =>
                       setModifiedData({

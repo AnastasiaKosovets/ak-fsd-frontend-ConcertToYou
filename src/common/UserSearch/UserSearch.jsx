@@ -31,6 +31,7 @@ export const UserSearch = () => {
           First Name:
           <input
             type="text"
+            maxLength={20}
             className="inputSearchUser"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -40,6 +41,7 @@ export const UserSearch = () => {
           Last Name:
           <input
             type="text"
+            maxLength={20}
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />

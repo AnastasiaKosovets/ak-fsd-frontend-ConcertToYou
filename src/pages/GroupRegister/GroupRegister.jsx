@@ -76,6 +76,7 @@ export const GroupRegister = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={20}
                 name="groupName"
                 placeholder="Nombre del grupo"
                 value={userData.groupName}
@@ -93,6 +94,7 @@ export const GroupRegister = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={20}
                 name="genre"
                 placeholder="Género"
                 value={userData.genre}
@@ -110,6 +112,7 @@ export const GroupRegister = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={300}
                 name="description"
                 placeholder="Descripción"
                 value={userData.description}
@@ -127,6 +130,7 @@ export const GroupRegister = () => {
               <input
                 className="customInput"
                 type="integer"
+                maxLength={3}
                 name="musicsNumber"
                 placeholder="Ej. 2"
                 value={userData.musicsNumber}
@@ -144,6 +148,7 @@ export const GroupRegister = () => {
               <input
                 className="customInput"
                 type="text"
+                maxLength={100}
                 name="image"
                 placeholder="URL de la imágen"
                 value={userData.image}

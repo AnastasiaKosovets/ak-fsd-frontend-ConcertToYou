@@ -20,6 +20,7 @@ export const ConcertSearch = ({ onConcertsFetched }) => {
       <input
       className="inputConcertSearch"
         type="text"
+        maxLength={20}
         value={groupName}
         onChange={(e) => setGroupName(e.target.value)}
         placeholder="Nombre del grupo"
@@ -27,6 +28,7 @@ export const ConcertSearch = ({ onConcertsFetched }) => {
       <input
       className="inputConcertSearch"
         type="text"
+        maxLength={20}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Título"

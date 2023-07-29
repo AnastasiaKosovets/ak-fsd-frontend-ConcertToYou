@@ -99,6 +99,7 @@ export const GroupCard = ({ group }) => {
             <div className="modtypeStyle">
               <input
                 type="text"
+                maxLength={300}
                 value={newDescription}
                 placeholder="Descripción..."
                 onChange={handleInputChange}
