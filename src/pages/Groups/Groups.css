@@ -1,31 +1,32 @@
-.contGroups {
+.divGRs {
+    height: auto;
+    width: auto;
+}
+
+.generalViewDiv {
+    min-height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.generalGroupsView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
+   
 }
 
-.centerDiv {
+.viewRowGroup {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.groupsgStyle {
-    margin-top: 1em;
     text-align: center;
-    color: goldenrod;
+    margin: 0;
+
 }
 
-.hGroups {
-    font-size: 4rem;
+.viewGroupCol {
+    margin-top: 5em;
 }
-
-@media (max-width: 768px) {
-    .fRow {
-        display: flex;
-        flex-direction: column;
-    }
-  }
-  

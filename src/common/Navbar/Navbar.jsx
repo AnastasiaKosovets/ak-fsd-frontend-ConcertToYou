@@ -86,7 +86,7 @@ export const Header = () => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="userProfile"
+              to="groups"
               className="headerText mb-3"
               onClick={handleClose}
             >

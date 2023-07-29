@@ -5,7 +5,6 @@ import { Col, Container, Row } from "react-bootstrap";
 import { GenConcertCard } from "../../common/GenConcertCard/GenConcertCard";
 import { ConcertSearch } from "../../common/ConcertSearch/ConcertSearch";
 import { ScrollTopButton } from "../../common/scrollTop";
-// import spInner from "../../../img/spInner.gif";
 
 export const Concerts = () => {
   const [concerts, setConcerts] = useState([]);
@@ -38,7 +37,7 @@ export const Concerts = () => {
           <Row className="rowFavStyle">
             <Col>
               <p>
-                {/* <img src={spInner} alt="Loading..." className="" /> */}
+                Cargando...
               </p>
             </Col>
           </Row>
@@ -54,7 +53,7 @@ export const Concerts = () => {
                 </div>
               </Col>
             </Row>
-            <div className="upSize">
+            <div>
               <ScrollTopButton />
             </div>
           </>

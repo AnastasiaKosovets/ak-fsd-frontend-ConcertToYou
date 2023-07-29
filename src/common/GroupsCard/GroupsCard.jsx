@@ -2,11 +2,11 @@ import React from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
+import "./GroupsCard.css";
 
 export const GroupsCard = ({ group }) => {
   const user = useSelector(userData);
   const token = useSelector((state) => state.user.credentials.token);
-
 
   return (
     <div
@@ -17,17 +17,15 @@ export const GroupsCard = ({ group }) => {
         <Card.Body>
           <Row className="cardBody">
             <Col xs={4}>
-              <img
-                src={group.image}
-                alt={group.groupName}
-                className="imgConcerts"
-              />
+              <img src={group.image} className="imgConcerts" />
             </Col>
             <Col xs={10} md={7}>
-              <Card.Text className="cardTxt">{group.groupName}</Card.Text>
-              <Card.Title className="cardTlt">Género: {group.genre}</Card.Title>
+              <Card.Text className="cardTxt">Grupo: {group.groupName}</Card.Text>
               <Card.Title className="cardTlt">
-                Descripción: {group.genre}
+                Género: {group.genre}
+              </Card.Title>
+              <Card.Title className="cardTlt">
+                Descripción: {group.description}
               </Card.Title>
             </Col>
           </Row>
