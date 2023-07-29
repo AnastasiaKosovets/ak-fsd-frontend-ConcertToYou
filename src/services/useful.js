@@ -128,5 +128,12 @@ export const checkError = (name, value) => {
 export const humanDate = (dbDate) => {
     const date = new Date(dbDate);
 
-    return date.toLocaleDateString("es-ES", {year:"numeric", month:"2-digit", day:"numeric", hour:"2-digit", minute:"2-digit"});
+    return date.toLocaleDateString("es-ES", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        timeZone: "EST",
+    });
 }

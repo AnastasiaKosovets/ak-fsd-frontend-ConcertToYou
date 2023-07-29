@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import "./CreateConcert.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+// import "react-datetime/css/react-datetime.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { useNavigate } from "react-router-dom";
@@ -13,10 +16,11 @@ export const CreateConcert = () => {
   const navigate = useNavigate();
   const group_id = useSelector((state) => state.user.credentials.group_id);
   const [successPopup, setSuccessPopup] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
   const [modifiedData, setModifiedData] = useState({
     image: "",
     title: "",
-    date: "",
+    date: new Date(),
     groupName: "",
     description: "",
     programm: "",
@@ -48,6 +52,16 @@ export const CreateConcert = () => {
     });
   };
 
+  const handleDateChange = (date) => {
+    setModifiedData({
+      ...modifiedData,
+      date: date instanceof Date ? date : new Date(date),
+    });
+  };
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const handleCreateConcert = async (e) => {
     e.preventDefault();
     const newConcertData = {
@@ -58,6 +72,7 @@ export const CreateConcert = () => {
       description: modifiedData.description,
       programm: modifiedData.programm,
     };
+
     try {
       const res = await createConcert(token, newConcertData);
       const { data } = res;
@@ -113,20 +128,17 @@ export const CreateConcert = () => {
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Fecha</Col>
-              <input
+              <DatePicker
                 className="customInput"
-                type="text"
-                name="date"
-                placeholder="Fecha"
-                value={modifiedData.date}
-                onChange={handleChange}
-                // onBlur={handleBlur}
+                selected={modifiedData.date}
+                onChange={handleDateChange}
+                showTimeSelect
+                timeFormat="HH:mm"
+                timeIntervals={15}
+                dateFormat="yyyy-MM-dd HH:mm"
+                minDate={today}
+                placeholderText="Fecha y Hora"
               />
-              {/* <div className="errorTxtReg">
-                {errorData.dateError && (
-                  <span className="error">{errorData.dateError}</span>
-                )}
-              </div> */}
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Descripción</Col>

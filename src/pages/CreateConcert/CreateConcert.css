@@ -20,9 +20,6 @@
   .formRegisterStyle {
     margin: 0;
     padding: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
   }
   
   .registerTxt {
@@ -54,10 +51,6 @@
     font-size: x-large;
   }
   
-  /* .imgCont {
-    position: relative;
-    width: 8em;
-  } */
   
   .registerImg {
       border-radius: 2em;
