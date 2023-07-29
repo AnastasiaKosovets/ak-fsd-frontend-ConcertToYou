@@ -1,0 +1,31 @@
+.contGroups {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.centerDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.groupsgStyle {
+    margin-top: 1em;
+    text-align: center;
+    color: goldenrod;
+}
+
+.hGroups {
+    font-size: 4rem;
+}
+
+@media (max-width: 768px) {
+    .fRow {
+        display: flex;
+        flex-direction: column;
+    }
+  }
+  
