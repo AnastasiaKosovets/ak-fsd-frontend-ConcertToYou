@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Groups.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { ScrollTopButton } from "../../common/scrollTop";
-import spInner from "../../../img/spInner.gif";
+// import spInner from "../../../img/spInner.gif";
 import { getGroups } from "../../services/apiCalls";
 import { GroupsCard } from "../../common/GroupsCard/GroupsCard";
 
@@ -25,38 +25,7 @@ export const Groups = () => {
 
   return (
     <div className="generalConcertView">
-      <Container className="contGroups">
-        <div className="centerDiv" style={{ fontFamily: "Great Vibes" }}>
-
-        {loading ? (
-            <Row className="rowFavStyle">
-            <Col>
-              <p>
-                <img src={spInner} alt="Loading..." className="" />
-              </p>
-            </Col>
-          </Row>
-        ) : (
-          <>
-            <Row className="fRow">
-            <Col xs={6} md={12} className="groupsgStyle">
-            <h2 className="hGroups">Descubre nuestros grupos</h2>
-          </Col>
-              <Col xs={6} md={12} className="mb-4 my-4">
-                <div>
-                  {groups.map((group) => (
-                      <GroupsCard key={group.id} group={group} />
-                      ))}
-                </div>
-              </Col>
-            </Row>
-            <div className="upSize">
-              <ScrollTopButton />
-            </div>
-          </>
-        )}
-        </div>
-      </Container>
+      
     </div>
   );
 };
