@@ -25,7 +25,6 @@
 
 .navbar {
   display: flex;
-  /* width: 100%; */
   position: fixed;
   justify-content: space-around;
   top: 0;

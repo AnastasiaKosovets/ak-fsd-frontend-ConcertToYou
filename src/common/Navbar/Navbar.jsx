@@ -39,6 +39,11 @@ export const Header = () => {
     dispatch(userout({ credentials: "" }));
   };
 
+  const handleLogOutAndClose = async () => {
+    await handleLogout();
+    handleClose();
+  };
+
   return (
     <header
       className={`navbar ${isSticky ? "sticky" : ""} ${
@@ -130,7 +135,7 @@ export const Header = () => {
                   as={Link}
                   to="/login"
                   className="headerText"
-                  onClick={handleLogout}
+                  onClick={handleLogOutAndClose}
                 >
                   Logout
                 </Nav.Link>
@@ -149,7 +154,7 @@ export const Header = () => {
                   as={Link}
                   to="/login"
                   className="headerText"
-                  onClick={handleLogout}
+                  onClick={handleLogOutAndClose}
                 >
                   Logout
                 </Nav.Link>
@@ -168,7 +173,7 @@ export const Header = () => {
                   as={Link}
                   to="/login"
                   className="headerText"
-                  onClick={handleLogout}
+                  onClick={handleLogOutAndClose}
                 >
                   Logout
                 </Nav.Link>

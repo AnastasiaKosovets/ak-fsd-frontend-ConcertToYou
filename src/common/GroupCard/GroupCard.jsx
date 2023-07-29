@@ -96,10 +96,11 @@ export const GroupCard = ({ group }) => {
             Número de músicos: {group.musicsNumber}
           </Card.Text>
           {isEditing ? (
-            <div>
+            <div className="modtypeStyle">
               <input
                 type="text"
                 value={newDescription}
+                placeholder="Descripción..."
                 onChange={handleInputChange}
                 className="cardText"
               />

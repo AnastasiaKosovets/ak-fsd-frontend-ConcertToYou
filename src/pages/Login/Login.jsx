@@ -25,9 +25,9 @@ export const Login = () => {
           navigate("/concerts");
         }, 500);
       })
-
       .catch((error) => console.log(error));
   };
+  // this part confirm if logged user had group_id
   const group_id = user.data && user.data.group_id;
 
   return (
@@ -41,19 +41,18 @@ export const Login = () => {
         <Row className="loginRowStyle">
           <Col xs={10} md={8}>
             <InputText
-            className="txtLogInput"
+              className="txtLogInput"
               title={"Email"}
               name={"email"}
               type={"email"}
               placeholder={"example@example.com"}
-              placeholderStyle={{ 
+              placeholderStyle={{
                 fontSize: "0.8em",
                 textAlign: "center",
-    fontFamily: "Courier New, Courier, monospace"
-               }}
+                fontFamily: "Courier New, Courier, monospace",
+              }}
               state={setUserData}
-              errorState={setInputError}
-            ></InputText>
+              errorState={setInputError}></InputText>
             <div className="errorInput">{inputError.emailError}</div>
           </Col>
           <Col xs={10} md={8} className="my-3">
@@ -63,26 +62,25 @@ export const Login = () => {
               name={"password"}
               type={"password"}
               placeholder={"********"}
-              placeholderStyle={{ 
+              placeholderStyle={{
                 fontSize: "0.8em",
                 textAlign: "center",
-    fontFamily: "Courier New, Courier, monospace"
-               }}
+                fontFamily: "Courier New, Courier, monospace",
+              }}
               state={setUserData}
-              errorState={setInputError}
-            ></InputText>
+              errorState={setInputError}></InputText>
             <div className="errorInput">{inputError.passwordError}</div>
           </Col>
           <Col xs={10} md={6} lg={5} className="my-3 mb-4">
             <Button name={"Login"} onClick={handleLogin}></Button>
           </Col>
           <Col xs={10} md={8} lg={5} className="my-3 styleLinkText">
-              ¿No tienes una cuenta?
-              <Link to="/register" className="registerLink">
-                ¡Regístrate aquí!
-              </Link>
+            ¿No tienes una cuenta?
+            <Link to="/register" className="registerLink">
+              ¡Regístrate aquí!
+            </Link>
           </Col>
-          {group_id && ( 
+          {group_id && (
             <Col xs={10} md={8} lg={5} className="my-3">
               Group ID: {group_id}
             </Col>

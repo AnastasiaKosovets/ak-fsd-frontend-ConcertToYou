@@ -104,7 +104,7 @@ export const ConcertCard = ({ concert }) => {
             Programa: {concert.programm}
           </Card.Text>
           {isEditing ? (
-            <div className="">
+            <div className="modtypeStyle">
               <input
                 type="text"
                 value={newDescriptionByAdmin}
