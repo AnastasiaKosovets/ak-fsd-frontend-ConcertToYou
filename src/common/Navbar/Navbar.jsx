@@ -107,19 +107,11 @@ export const Header = () => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="#"
+              to="/contacts"
               className="headerText mb-3"
               onClick={handleClose}
             >
               Contacto
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="#"
-              className="headerText mb-3"
-              onClick={handleClose}
-            >
-              Colaboraciónes
             </Nav.Link>
             {role === 1 ? (
               <>

@@ -195,7 +195,7 @@ export const CreateConcert = () => {
             </Col>
           </Row>
           <Row>
-            <Col xs={10} sm={6} md={5}>
+            <Col xs={10} sm={6} md={5} className="my-5 colTxtCreate">
               <div>
                 <div className="textRegTitletxt">
                   ¡Anuncia tu Concierto en Nuestra Plataforma Musical! Llega a
