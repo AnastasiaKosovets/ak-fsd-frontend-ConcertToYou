@@ -1,0 +1,81 @@
+.genContactsView {
+  height: 100vh;
+  background-image: url("../../../img/contacts.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.contactsRow {
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 220, 187);
+    font-size: 2em;
+}
+
+.firstPartCont {
+    display: flex;
+    padding-top: 3em;
+    flex-direction: column;
+    font-size: 2rem;
+}
+
+.firstRow {
+    height: 10em;
+    color: goldenrod;
+    text-align: center;
+    border-radius: 1em;
+    justify-content: space-between;
+    background: rgba(96, 84, 54, 0.122);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(0.5em);
+    border: 1.5px solid rgba(209, 213, 219, 0.3);
+}
+
+.txtBold {
+    color: rgb(255, 220, 187);
+    border-radius: 1.3em;
+}
+
+.txtContacts {
+    font-size: 1.2em;
+}
+
+.linkTo {
+    padding-top: 2em;
+    transition: 1s;
+}
+
+.linkTo:hover {
+    color: antiquewhite;
+    font-size: 1.2em;
+    transition: 1s;
+}
+
+.animated-row {
+    opacity: 0;
+    animation: fadeInUp 2s ease forwards;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .firstRow {
+        font-size: x-large;
+        height: 30em;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .firstRow {
+        font-size: x-large;
+        height: 15em;
+    }
+  }
