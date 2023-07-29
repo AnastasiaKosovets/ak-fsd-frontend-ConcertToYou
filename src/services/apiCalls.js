@@ -1,28 +1,29 @@
 import axios from 'axios';
 
-const root = "http://localhost:8000/api";
+// const root = "http://localhost:8000/api";
+const root = "https://ak-fsd-backend-concert-to-you-njjo.vercel.app/api";
 
 // LOGIN
 export const logIn = async (userData) => {
-  let res = await axios.post(`${root}/login`, userData);
+  let res = await axios.post(`${root}/api/login`, userData);
   return res.data
 }
 
 // LOGOUT
 export const logOut = async (userData) => {
-  let res = await axios.post(`${root}/logout`, userData);
+  let res = await axios.post(`${root}/api/logout`, userData);
   return res.data;
 }
 
 // REGISTER
 export const myRegister = async (userData) => {
-  let res = await axios.post(`${root}/register`, userData);
+  let res = await axios.post(`${root}/api/register`, userData);
   return res.data;
 }
 
 // GET ALL GROUPS
 export const getGroups = async () => {
-  let res = await axios.get(`${root}/groups`)
+  let res = await axios.get(`${root}/api/groups`)
   return res.data;
 }
 
@@ -34,7 +35,7 @@ export const updateMyProfile = async (userData, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.put(`${root}/user/profile`, userData, access);
+  let res = await axios.put(`${root}/api/user/profile`, userData, access);
   return res.data;
 };
 
@@ -45,7 +46,7 @@ export const getMyTickets = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.get(`${root}/my-tickets`, access);
+  let res = await axios.get(`${root}/api/my-tickets`, access);
   return res.data;
 }
 
@@ -56,7 +57,7 @@ export const deleteProfile = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.delete(`${root}/users/delete`, access);
+  let res = await axios.delete(`${root}/api/users/delete`, access);
   return res.data.data;
 }
 
@@ -67,7 +68,7 @@ export const restoreProfile = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.post(`${root}/users/restore/${id}`, access);
+  let res = await axios.post(`${root}/api/users/restore/${id}`, access);
   return res.data;
 }
 
@@ -79,7 +80,7 @@ export const confirmTicket = async (concert_id, token) => {
     },
   };
   const payload = { "concert_id": concert_id };
-  let res = await axios.post(`${root}/confirm-ticket`, payload, access);
+  let res = await axios.post(`${root}/api/confirm-ticket`, payload, access);
   return res.data;
 }
 
@@ -91,7 +92,7 @@ export const toFavorite = async (concert_id, token) => {
     },
   };
   const payload = { "concert_id": concert_id };
-  let res = await axios.post(`${root}/my-favorite`, payload, access);
+  let res = await axios.post(`${root}/api/my-favorite`, payload, access);
   return res.data;
 }
 
@@ -102,7 +103,7 @@ export const getMyFavorites = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.get(`${root}/favorites`, access);
+  let res = await axios.get(`${root}/api/favorites`, access);
   return res.data;
 }
 
@@ -114,7 +115,7 @@ export const registerGroup = async (token, formData) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.post(`${root}/registerGroup`, formData, access);
+  let res = await axios.post(`${root}/api/registerGroup`, formData, access);
   return res.data;
 }
 
@@ -126,7 +127,7 @@ export const getMyGroup = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.get(`${root}/groups/myGroup`, access);
+  let res = await axios.get(`${root}/api/groups/myGroup`, access);
   return res.data;
 }
 
@@ -137,7 +138,7 @@ export const updateMyGroup = async (groupData, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.put(`${root}/update-my-group`, groupData, access);
+  let res = await axios.put(`${root}/api/update-my-group`, groupData, access);
   return res.data;
 }
 
@@ -148,7 +149,7 @@ export const getMyConcerts = async (token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.get(`${root}/groups/{group_id}/myConcerts`, access);
+  let res = await axios.get(`${root}/api/groups/{group_id}/myConcerts`, access);
   return res.data;
 }
 
@@ -159,7 +160,7 @@ export const updateMyConcert = async (id, data, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.put(`${root}/concerts/${id}`, data, access);
+  let res = await axios.put(`${root}/api/concerts/${id}`, data, access);
   return res.data;
 }
 
@@ -167,13 +168,13 @@ export const updateMyConcert = async (id, data, token) => {
 // CONCERT PART
 // GET ALL CONCERTS
 export const getConcerts = async () => {
-  let res = await axios.get(`${root}/concerts`)
+  let res = await axios.get(`${root}/api/concerts`)
   return res.data;
 }
 
 // GET ALL CONCERTS
 export const searchConcerts = async (groupName, title) => {
-  let res = await axios.get(`${root}/concerts/groupName`, {
+  let res = await axios.get(`${root}/api/concerts/groupName`, {
     params: { groupName, title },
   });
   return res.data;
@@ -186,6 +187,6 @@ export const createConcert = async (token, concertData) => {
       Authorization: `Bearer ${token}`,
     },
   };
-  let res = await axios.post(`${root}/createConcert`, concertData, access);
+  let res = await axios.post(`${root}/api/createConcert`, concertData, access);
   return res.data;
 }

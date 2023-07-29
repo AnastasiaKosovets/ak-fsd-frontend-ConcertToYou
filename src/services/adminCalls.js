@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const root = "http://localhost:8000/api";
+// const root = "http://localhost:8000/api";
+const root = "https://ak-fsd-backend-concert-to-you-njjo.vercel.app/api";
 
 // SEARCH USERS BY NAME & SURNAME
 export const searchUser = async (firstName, lastName, token) => {
@@ -13,7 +14,7 @@ export const searchUser = async (firstName, lastName, token) => {
             lastName,
         },
     };
-    let res = await axios.get(`${root}/user`, access);
+    let res = await axios.get(`${root}/api/user`, access);
     return res.data
 }
 
@@ -24,7 +25,7 @@ export const updateProfile = async (userData, token) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.put(`${root}/users`, userData, access);
+    let res = await axios.put(`${root}/api/users`, userData, access);
     return res.data;
 };
 
@@ -35,7 +36,7 @@ export const getUsers = async (token) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.get(`${root}/users`, access)
+    let res = await axios.get(`${root}/api/users`, access)
     return res.data;
 }
 
@@ -46,7 +47,7 @@ export const deleteUser = async (token, id) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.delete(`${root}/user/delete/${id}`, access);
+    let res = await axios.delete(`${root}/api/user/delete/${id}`, access);
     return res.data;
 }
 
@@ -57,7 +58,7 @@ export const restoreUser = async (token, id) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.post(`${root}/users/restore/${id}`, null, access);
+    let res = await axios.post(`${root}/api/users/restore/${id}`, null, access);
     return res.data;
 }
 
@@ -68,7 +69,7 @@ export const deleteGroupAdmin = async (token, group_id) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.delete(`${root}/group/delete/${group_id}`, access);
+    let res = await axios.delete(`${root}/api/group/delete/${group_id}`, access);
     return res.data;
 }
 
@@ -79,7 +80,7 @@ export const restoreGroup = async (token, group_id) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.post(`${root}/group/restore/${group_id}`, null, access);
+    let res = await axios.post(`${root}/api/group/restore/${group_id}`, null, access);
     return res.data;
 }
 
@@ -90,7 +91,7 @@ export const deleteConcert = async (token, concert_id) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.delete(`${root}/concert/delete/${concert_id}`, access);
+    let res = await axios.delete(`${root}/api/concert/delete/${concert_id}`, access);
     return res.data;
 }
 
@@ -101,7 +102,7 @@ export const restoreConcert = async (token, concert_id) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.post(`${root}/concert/restore/${concert_id}`, null, access);
+    let res = await axios.post(`${root}/api/concert/restore/${concert_id}`, null, access);
     return res.data;
 }
 
@@ -115,7 +116,7 @@ export const updateGroupByAdmin = async (token, group_id, description) => {
     let requestData = {
         description: description
     };
-    let res = await axios.put(`${root}/groups/admin/${group_id}`, requestData, access);
+    let res = await axios.put(`${root}/api/groups/admin/${group_id}`, requestData, access);
     return res.data;
 }
 
@@ -126,6 +127,6 @@ export const updateConcertByAdmin = async (id, data, token) => {
             Authorization: `Bearer ${token}`,
         },
     };
-    let res = await axios.put(`${root}/concerts/admin/${id}`, data, access);
+    let res = await axios.put(`${root}/api/concerts/admin/${id}`, data, access);
     return res.data;
 }
