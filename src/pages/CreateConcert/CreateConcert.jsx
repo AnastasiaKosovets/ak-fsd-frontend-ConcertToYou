@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./CreateConcert.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import "react-datetime/css/react-datetime.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "../../common/Button/Button";
 import { useNavigate } from "react-router-dom";

@@ -1,5 +1,6 @@
 .homeStyle {
   height: auto;
+  min-height: 100vh;
   background-color: rgb(17, 17, 17);
   color: white;
   font-size: 5em;
@@ -111,7 +112,7 @@
   }
 
   .text1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     align-items: center;
     top: 200%;
     left: 27%;
@@ -120,19 +121,19 @@
   .img1Home {
     height: 5em;
     width: 3.5em;
-    margin-left: 1.2rem;
+    margin-left: 0.5em;
   }
 
-  .img2Home {
-    height: 2.5em;
+  .img2H {
+    height: 2em;
     width: 4em;
+    margin-left: 2rem;
   }
 
   .text2 {
     font-size: 2.5rem;
     width: 6em;
     margin-left: 2em;
-    top: -25%;
   }
 }
 
