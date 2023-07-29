@@ -6,7 +6,7 @@ import { getMyFavorites } from "../../services/apiCalls";
 import { Col, Container, Row } from "react-bootstrap";
 import { humanDate } from "../../services/useful";
 import { ScrollTopButton } from "../../common/scrollTop";
-import spinner from "../../../img/spinner.gif"
+import spInner from "../../../img/spInner.gif"
 
 export const FavoriteCard = () => {
   const user = useSelector(userData);
@@ -40,7 +40,7 @@ export const FavoriteCard = () => {
           <Row className="rowFavStyle">
             <Col>
               <p>
-                <img src={spinner} alt="Loading..." className="" />
+                <img src={spInner} alt="Loading..." className="" />
               </p>
             </Col>
           </Row>

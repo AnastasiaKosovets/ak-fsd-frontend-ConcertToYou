@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Groups.css";
 import { Col, Container, Row } from "react-bootstrap";
 import { ScrollTopButton } from "../../common/scrollTop";
-import spinner from "../../../img/spinner.gif";
+import spInner from "../../../img/spInner.gif";
 import { getGroups } from "../../services/apiCalls";
 import { GroupsCard } from "../../common/GroupsCard/GroupsCard";
 
@@ -32,7 +32,7 @@ export const Groups = () => {
             <Row className="rowFavStyle">
             <Col>
               <p>
-                <img src={spinner} alt="Loading..." className="" />
+                <img src={spInner} alt="Loading..." className="" />
               </p>
             </Col>
           </Row>

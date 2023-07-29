@@ -5,7 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { GenConcertCard } from "../../common/GenConcertCard/GenConcertCard";
 import { ConcertSearch } from "../../common/ConcertSearch/ConcertSearch";
 import { ScrollTopButton } from "../../common/scrollTop";
-import spinner from "../../../img/spinner.gif";
+import spInner from "../../../img/spInner.gif";
 
 export const Concerts = () => {
   const [concerts, setConcerts] = useState([]);
@@ -38,7 +38,7 @@ export const Concerts = () => {
           <Row className="rowFavStyle">
             <Col>
               <p>
-                <img src={spinner} alt="Loading..." className="" />
+                <img src={spInner} alt="Loading..." className="" />
               </p>
             </Col>
           </Row>
