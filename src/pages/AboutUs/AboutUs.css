@@ -4,7 +4,6 @@
   backdrop-filter: blur(0.5em);
   border: 1.5px solid rgba(209, 213, 219, 0.3);
   border-radius: 1em;
-  /* color: rgb(242, 192, 152); */
   font-family: "Courier New", Courier, monospace;
   color: rgb(248, 200, 77);
 }
