@@ -1,3 +1,4 @@
+/* main style */
 .registerMainStyle {
   height: auto;
   background-color: rgb(17, 17, 17);
@@ -17,6 +18,7 @@
   border: 1.5px solid rgba(209, 213, 219, 0.3);
 }
 
+/* form style */
 .formRegisterStyle {
   display: flex;
   justify-content: center;
@@ -38,6 +40,7 @@
   font-size: small;
 }
 
+/* input style */
 .customInput {
   height: 2em;
   width: 20em;
@@ -61,6 +64,7 @@
     border-radius: 2em;
 }
 
+/* success poUp Style */
 .successPopUp {
   position: fixed;
   width: 15em;
@@ -88,17 +92,17 @@
   animation: slideRight 2s forwards;
 }
 
-/* mobile version */
 @keyframes slideRight {
-    0% {
-        left: 100%;
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(10%);
-      }
+  0% {
+    left: 100%;
+    transform: translateX(100%);
   }
+  100% {
+    transform: translateX(10%);
+  }
+}
 
+/* mobile view */
   @media (max-width: 768px) {
     .registerMainStyle {
       overflow-x: hidden;
@@ -156,7 +160,7 @@
   
   }
 
-  /* tablet version */
+  /* tablet view */
 @media (min-width: 768px) and (max-width: 1024px) {
   .registerMainStyle {
     height: auto;
@@ -210,7 +214,6 @@
   }
 
   .successPopUp {
-    /* success popUp style */
     position: fixed;
     width: 15em;
     text-align: center;

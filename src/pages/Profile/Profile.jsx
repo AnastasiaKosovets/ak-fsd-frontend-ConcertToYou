@@ -29,7 +29,6 @@ export const Profile = () => {
   const [infoUser, setInfoUser] = useState([]);
   const [showUserInfo, setShowUSerInfo] = useState(false);
 
-
   useEffect(() => {
     if (showUserInfo) {
       getUsers(token)
@@ -41,7 +40,6 @@ export const Profile = () => {
         });
     }
   }, [showUserInfo, token]);
-
 
   const handleShowUsers = () => {
     setShowUSerInfo((prevShowUserInfo) => !prevShowUserInfo);
@@ -65,8 +63,7 @@ export const Profile = () => {
         address={`Dirección: ${user.address}`}
         phoneNumber={`Teléfono: ${user.phoneNumber}`}
         document={`DNI / NIE: ${user.document}`}
-        dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}
-      />
+        dateOfBirth={`Fecha de nacimiento: ${user.dateOfBirth}`}/>
     );
   };
 

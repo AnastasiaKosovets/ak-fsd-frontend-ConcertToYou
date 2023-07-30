@@ -4,7 +4,6 @@ import { getMyTickets } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { Card } from "react-bootstrap";
-// import spInner from "/src/img/spInner.gif";
 
 export const MyTickets = () => {
   const [bookings, setBookings] = useState([]);
@@ -16,7 +15,7 @@ export const MyTickets = () => {
     const fetchBookings = async () => {
       try {
         const bookingsData = await getMyTickets(token);
-        // Verificamos si bookingsData.data es un array antes de actualizar el estado
+        // check if bookingsData.data is an array before to update th state
         if (Array.isArray(bookingsData.data)) {
           setBookings(bookingsData.data);
         } else {
@@ -37,7 +36,7 @@ export const MyTickets = () => {
     <h1>Mis Entradas</h1>
     {loading ? (
       <p>
-        {/* <img src={spInner} alt="Loading..." className="" /> */}
+        Cargando...
       </p>
     ) : (
       <div className="cardStyleTicket">

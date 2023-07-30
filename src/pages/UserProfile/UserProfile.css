@@ -51,7 +51,7 @@
     transition: 1s;
 }
 
-/* mobile version */
+/* mobile view */
 @media (max-width: 768px) {
     .mainUserProfileSt {
         flex-direction: column;

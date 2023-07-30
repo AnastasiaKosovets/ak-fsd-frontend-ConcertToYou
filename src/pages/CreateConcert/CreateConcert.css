@@ -1,9 +1,11 @@
+/* main style */
 .registerMainStyle {
   height: auto;
   min-height: 100vh;
   background-color: rgb(17, 17, 17);
 }
 
+/* register row atyle */
 .registerRowStyle {
   display: flex;
   justify-content: center;
@@ -23,6 +25,7 @@
   padding: 0;
 }
 
+/* text style(general) */
 .registerTxt {
   padding-top: 1.3em;
   font-size: 7vh;
@@ -38,6 +41,7 @@
   font-size: small;
 }
 
+/* input style */
 .customInput {
   height: 2em;
   width: 20em;
@@ -56,6 +60,7 @@
   border-radius: 2em;
 }
 
+/* succes popUp style */
 .successPopUp {
   position: fixed;
   width: 15em;
@@ -85,6 +90,7 @@
   padding-top: 15em;
 }
 
+/* mobile view */
 @media (max-width: 768px) {
   .registerMainStyle {
     overflow-x: hidden;

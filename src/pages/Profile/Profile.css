@@ -1,3 +1,4 @@
+/* general view style */
 .adminPageStyle {
   height: auto;
   min-height: 100vh;
@@ -15,12 +16,15 @@
   padding-top: 3em;
 }
 
+/* row style */
 .fRowA {
   height: 25em;
   width: 8em;
   display: flex;
   flex-direction: column;
 }
+
+/* info style */
 .modInfo {
   text-decoration: none;
   color: white;
@@ -37,6 +41,7 @@
   background-color: rgb(62, 61, 58);
 }
 
+/* central info style */
 .centralInfo {
   display: flex;
   flex-direction: column;
@@ -58,13 +63,14 @@
   flex-direction: column;
   width: 30em;
 }
-
+/* input style */
 .inputTxtAdminChange {
   border-radius: 1em;
   border: none;
   height: 2.5em;
 }
 
+/* buttons style */
 .btnAdminClickA {
   margin-top: 2em;
   margin-bottom: 2em;
@@ -86,6 +92,7 @@
   background-color: rgb(149, 148, 147);
 }
 
+/* card style */
 .thisCard {
   color: white;
 }
@@ -120,6 +127,7 @@
   transition: 1s;
 }
 
+/* mobil view */
 @media (max-width: 768px) {
   .adminCont {
     display: flex;

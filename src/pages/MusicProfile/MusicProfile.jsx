@@ -131,16 +131,14 @@ export const MusicProfile = () => {
     updateMyConcert(
       editedConcert.id,
       { description: newConcertDescription },
-      token
-    )
+      token )
       .then((res) => {
         setConcerts((prevConcerts) =>
           prevConcerts.map((concert) =>
             concert.id === editedConcert.id
               ? { ...concert, description: newConcertDescription }
               : concert
-          )
-        );
+          ));
         setEditConcertDescription(false);
         setEditedConcert({});
       })

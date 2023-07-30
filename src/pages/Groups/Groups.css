@@ -1,3 +1,4 @@
+/* general style of the page */
 .divGRs {
     height: auto;
     width: auto;
@@ -10,6 +11,7 @@
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+/* groups view style */
 .generalGroupsView {
     display: flex;
     flex-direction: column;

@@ -1,3 +1,4 @@
+/* general page style */
 .genContactsView {
   height: 100vh;
   background-image: url("../../../img/contacts.jpg");
@@ -8,6 +9,7 @@
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
+/* row style */
 .contactsRow {
     display: flex;
     justify-content: center;
@@ -15,6 +17,7 @@
     font-size: 2em;
 }
 
+/* container style */
 .firstPartCont {
     display: flex;
     padding-top: 3em;
@@ -22,6 +25,7 @@
     font-size: 2rem;
 }
 
+/* first row style */
 .firstRow {
     height: 10em;
     color: goldenrod;
@@ -34,6 +38,7 @@
     border: 1.5px solid rgba(209, 213, 219, 0.3);
 }
 
+/* text style(general) */
 .txtBold {
     color: rgb(255, 220, 187);
     border-radius: 1.3em;
@@ -43,6 +48,7 @@
     font-size: 1.2em;
 }
 
+/* links style */
 .linkTo {
     padding-top: 2em;
     transition: 1s;
@@ -66,6 +72,7 @@
     }
   }
 
+  /* mobile view */
   @media screen and (max-width: 768px) {
     .firstRow {
         font-size: x-large;
@@ -73,6 +80,7 @@
     }
   }
 
+  /* tablet view */
   @media screen and (min-width: 768px) and (max-width: 1024px) {
     .firstRow {
         font-size: x-large;

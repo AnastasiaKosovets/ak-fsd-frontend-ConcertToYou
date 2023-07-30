@@ -58,6 +58,7 @@ export const CreateConcert = () => {
     });
   };
 
+  // condition to date
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -101,8 +102,7 @@ export const CreateConcert = () => {
                 placeholder="Nombre del grupo"
                 value={modifiedData.groupName}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.groupNameError && (
                   <span className="error">{errorData.groupNameError}</span>
@@ -119,8 +119,7 @@ export const CreateConcert = () => {
                 placeholder="Título del concierto"
                 value={modifiedData.title}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.titleError && (
                   <span className="error">{errorData.titleError}</span>
@@ -138,8 +137,7 @@ export const CreateConcert = () => {
                 timeIntervals={15}
                 dateFormat="yyyy-MM-dd HH:mm"
                 minDate={today}
-                placeholderText="Fecha y Hora"
-              />
+                placeholderText="Fecha y Hora" />
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Descripción</Col>
@@ -151,8 +149,7 @@ export const CreateConcert = () => {
                 placeholder="Descripción"
                 value={modifiedData.description}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.descriptionError && (
                   <span className="error">{errorData.descriptionError}</span>
@@ -169,8 +166,7 @@ export const CreateConcert = () => {
                 placeholder="Programa"
                 value={modifiedData.programm}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur} />
               <div className="errorTxtReg">
                 {errorData.programmError && (
                   <span className="error">{errorData.programmError}</span>
@@ -187,8 +183,7 @@ export const CreateConcert = () => {
                 placeholder="URL de la imágen"
                 value={modifiedData.image}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.imageError && (
                   <span className="error">{errorData.imageError}</span>

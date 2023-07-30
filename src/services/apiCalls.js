@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// const root = "http://localhost:8000/api";
 const root = "https://ak-fsd-backend-concert-to-you-njjo.vercel.app/api";
 
 // LOGIN

@@ -81,8 +81,7 @@ export const Register = () => {
                 value={userData.firstName}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={30}
-              />
+                maxLength={30} />
               <div className="errorTxtReg">
                 {errorData.firstNameError && (
                   <span className="error">{errorData.firstNameError}</span>
@@ -100,8 +99,7 @@ export const Register = () => {
                 value={userData.lastName}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={30}
-              />
+                maxLength={30}/>
               <div className="errorTxtReg">
                 {errorData.lastNameError && (
                   <span className="error">{errorData.lastNameError}</span>
@@ -119,8 +117,7 @@ export const Register = () => {
                 value={userData.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={30}
-              />
+                maxLength={30}/>
               <div className="errorTxtReg">
                 {errorData.emailError && (
                   <span className="error">{errorData.emailError}</span>
@@ -137,8 +134,7 @@ export const Register = () => {
                 value={userData.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={30}
-              />
+                maxLength={30}/>
               <div className="errorTxtReg">
                 {errorData.passwordError && (
                   <span className="error">{errorData.passwordError}</span>
@@ -156,8 +152,7 @@ export const Register = () => {
                 value={userData.address}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={50}
-              />
+                maxLength={50}/>
               <div className="errorTxtReg">
                 {errorData.addressError && (
                   <span className="error">{errorData.addressError}</span>
@@ -175,8 +170,7 @@ export const Register = () => {
                 value={userData.document}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={9}
-              />
+                maxLength={9}/>
               <div className="errorTxtReg">
                 {errorData.documentError && (
                   <span className="error">{errorData.documentError}</span>
@@ -194,8 +188,7 @@ export const Register = () => {
                 value={userData.dateOfBirth}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={10}
-              />
+                maxLength={10}/>
               <div className="errorTxtReg">
                 {errorData.dateOfBirthError && (
                   <span className="error">{errorData.dateOfBirthError}</span>
@@ -213,8 +206,7 @@ export const Register = () => {
                 value={userData.phoneNumber}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                maxLength={9}
-              />
+                maxLength={9}/>
               <div className="errorTxtReg">
                 {errorData.phoneNumberError && (
                   <span className="error">{errorData.phoneNumberError}</span>

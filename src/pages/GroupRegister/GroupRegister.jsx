@@ -81,8 +81,7 @@ export const GroupRegister = () => {
                 placeholder="Nombre del grupo"
                 value={userData.groupName}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.groupNameError && (
                   <span className="error">{errorData.groupNameError}</span>
@@ -99,8 +98,7 @@ export const GroupRegister = () => {
                 placeholder="Género"
                 value={userData.genre}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.genreError && (
                   <span className="error">{errorData.genreError}</span>
@@ -117,8 +115,7 @@ export const GroupRegister = () => {
                 placeholder="Descripción"
                 value={userData.description}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.descriptionError && (
                   <span className="error">{errorData.descriptionError}</span>
@@ -135,8 +132,7 @@ export const GroupRegister = () => {
                 placeholder="Ej. 2"
                 value={userData.musicsNumber}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.musicsNumberError && (
                   <span className="error">{errorData.musicsNumberError}</span>
@@ -153,15 +149,13 @@ export const GroupRegister = () => {
                 placeholder="URL de la imágen"
                 value={userData.image}
                 onChange={handleChange}
-                onBlur={handleBlur}
-              />
+                onBlur={handleBlur}/>
               <div className="errorTxtReg">
                 {errorData.imageError && (
                   <span className="error">{errorData.imageError}</span>
                 )}
               </div>
             </Col>
-            {/*  */}
             <Col xs={10} md={6}>
               <Button type="submit" name={"Registrar"}></Button>
             </Col>

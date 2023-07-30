@@ -1,3 +1,4 @@
+/* main style of register part */
 .registerMainStyle {
     height: auto;
     background-color: rgb(17, 17, 17);
@@ -20,9 +21,6 @@
   .formRegisterStyle {
     margin: 0;
     padding: 0;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
   }
   
   .registerTxt {
@@ -40,6 +38,7 @@
     font-size: small;
   }
   
+  /* input style */
   .customInput {
     height: 2em;
     width: 20em;
@@ -53,16 +52,12 @@
   .txtReg {
     font-size: x-large;
   }
-  
-  /* .imgCont {
-    position: relative;
-    width: 8em;
-  } */
-  
+
   .registerImg {
       border-radius: 2em;
   }
   
+  /* success popUp style */
   .successPopUp {
     position: fixed;
     width: 15em;
@@ -88,6 +83,7 @@
     margin-top: -8em;
   }
   
+  /* mobile view */
     @media (max-width: 768px) {
       .registerMainStyle {
         overflow-x: hidden;

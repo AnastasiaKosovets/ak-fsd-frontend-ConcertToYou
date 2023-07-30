@@ -1,3 +1,4 @@
+/* general page style */
 .ticketsGenStyle {
   height: auto;
   min-height: 100vh;
@@ -10,6 +11,7 @@
   align-items: center;
 }
 
+/* card style */
 .cardStyleTicket {
   display: flex;
   flex-wrap: wrap;
@@ -38,6 +40,7 @@
   font-size: 6em;
 }
 
+/* mobile view */
 @media (max-width: 768px) {
   .noTickets {
     font-size: 2em;

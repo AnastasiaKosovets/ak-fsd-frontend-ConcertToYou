@@ -1,3 +1,4 @@
+/* general page style */
 .homeStyle {
   height: auto;
   min-height: 100vh;
@@ -10,6 +11,7 @@
   justify-content: center;
 }
 
+/* text style */
 .text1 {
   color: rgb(255, 220, 187);
   font-size: 1em;
@@ -23,6 +25,7 @@
   animation: slide-in 2s forwards;
 }
 
+/* style of the images */
 .img1Home {
   height: 7em;
   width: 5em;
@@ -83,6 +86,7 @@
   }
 }
 
+/* buttons style */
 .scrollButton {
   position: fixed;
   bottom: 2em;
@@ -101,6 +105,7 @@
   transition: 1s;
 }
 
+/* mobile view */
 @media (max-width: 768px) {
   .row {
     margin: 0;
