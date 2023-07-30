@@ -32,12 +32,13 @@ export const ProductCard = ({
     setOnConfirmText("Eliminar");
     setShowModal(true);
   };
+
   const handleRestoreUser = () => {
     setModalTitle("Restaurar Usuario");
     setOnConfirmText("Restaurar");
     setShowModal(true);
   };
-  
+// this part check what function is in action and make changes of delete/restore user with it´s modal form
   const handleConfirmAction = async () => {
     if (onConfirmText === "Eliminar") {
       try {
@@ -88,8 +89,7 @@ export const ProductCard = ({
           <button
             onClick={handleDeleteUser}
             className="btnAdmin"
-            disabled={isDeleting}
-          >
+            disabled={isDeleting}>
             Eliminar Perfil
           </button>
           <button onClick={handleRestoreUser} className="btnAdmin">
@@ -103,8 +103,7 @@ export const ProductCard = ({
         onConfirm={handleConfirmAction}
         title={modalTitle}
         onConfirmText={onConfirmText}
-        isProcessing={isDeleting} 
-      />
+        isProcessing={isDeleting} />
     </div>
   );
 };

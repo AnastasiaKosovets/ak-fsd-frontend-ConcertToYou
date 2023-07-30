@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./GenConcertCard.css";
 import { Card, Col, Container, Modal, Nav, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { Button } from "../Button/Button";
 import { confirmTicket, toFavorite } from "../../services/apiCalls";
 import { userData } from "../../pages/userSlice";
 import { Link } from "react-router-dom";
@@ -20,6 +19,7 @@ export const GenConcertCard = ({ concert }) => {
   const [showDetail, setShowDetail] = useState(false);
   const [showFavoriteModal, setShowFavoriteModal] = useState(false);
 
+  // this part of code check if the book function is in action and open succesModal
   const handleBookTicket = () => {
     if (token) {
       confirmTicket(concert.id, token)
@@ -37,6 +37,7 @@ export const GenConcertCard = ({ concert }) => {
     }
   };
 
+  // this part active function of put in favorites with it´s modal
   const handleFavorite = () => {
     if (token) {
       toFavorite(concert.id, token)
@@ -66,8 +67,7 @@ export const GenConcertCard = ({ concert }) => {
   return (
     <div
       className="concertCardContainer my-5"
-      style={{ fontFamily: "Great Vibes" }}
-    >
+      style={{ fontFamily: "Great Vibes" }}>
       <Card className="cardCP">
         <Card.Body>
           <Row className="">
@@ -76,8 +76,7 @@ export const GenConcertCard = ({ concert }) => {
                 <img
                   src={isFavorite ? favorito : favoritoGrayScale}
                   alt="añadir a favoritos"
-                  className="favImg"
-                />
+                  className="favImg"/>
               </button>
             </Col>
           </Row>
@@ -86,8 +85,7 @@ export const GenConcertCard = ({ concert }) => {
               <img
                 src={concert.image}
                 alt={concert.groupName}
-                className="imgConcerts"
-              />
+                className="imgConcerts"/>
             </Col>
             <Col xs={10} md={7}>
               <Card.Text className="cardTxt">{concert.title}</Card.Text>
@@ -103,8 +101,7 @@ export const GenConcertCard = ({ concert }) => {
               <Modal
                 className="genModalStyleConcert"
                 show={showTokenModal}
-                onHide={() => setShowTokenModal(false)}
-              >
+                onHide={() => setShowTokenModal(false)} >
                 <Modal.Header className="genModalStyleConcert">
                   <Modal.Title className="modalConcertStyleTitle">
                     Atención
@@ -122,8 +119,7 @@ export const GenConcertCard = ({ concert }) => {
                   <button
                     className="modalConcertBook"
                     variant="secondary"
-                    onClick={() => setShowTokenModal(false)}
-                  >
+                    onClick={() => setShowTokenModal(false)}>
                     Cerrar
                   </button>
                 </Modal.Footer>
@@ -141,8 +137,7 @@ export const GenConcertCard = ({ concert }) => {
           <Modal
             className="showDetailModal"
             show={showDetail}
-            onHide={handleCloseDetail}
-          >
+            onHide={handleCloseDetail}>
             <Modal.Header className="bodyDetail">
               <Modal.Title>Detalles del concierto</Modal.Title>
             </Modal.Header>
@@ -157,8 +152,7 @@ export const GenConcertCard = ({ concert }) => {
               <button
                 className="modalConcertBook"
                 variant="secondary"
-                onClick={handleCloseDetail}
-              >
+                onClick={handleCloseDetail}>
                 Cerrar
               </button>
             </Modal.Footer>
@@ -166,8 +160,7 @@ export const GenConcertCard = ({ concert }) => {
           <Modal
             className="favoriteModal"
             show={showFavoriteModal}
-            onHide={handleCloseAlert}
-          >
+            onHide={handleCloseAlert}>
             <Modal.Header closeButton className="favoriteHeaderModal">
               <Modal.Title className="textFavorite">¡Concierto ya en tus favoritos!</Modal.Title>
             </Modal.Header>
@@ -178,8 +171,7 @@ export const GenConcertCard = ({ concert }) => {
             <button
                 className="modalConcertBook"
                 variant="secondary"
-                onClick={handleCloseAlert}
-              >
+                onClick={handleCloseAlert}>
                 Cerrar
               </button>
             </Modal.Footer>

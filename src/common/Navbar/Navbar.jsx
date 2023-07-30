@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Nav, Offcanvas } from "react-bootstrap";
+import { Nav, Offcanvas } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,16 +49,14 @@ export const Header = () => {
       className={`navbar ${isSticky ? "sticky" : ""} ${
         show ? "offcanvas-visible" : ""
       }`}
-      style={{ opacity: scrollOpacity }}
-    >
+      style={{ opacity: scrollOpacity }}>
       <nav className="navbar-expand-lg navStyleb">
         <div className="container d-flex align-items-center">
           <Nav.Link
             as={Link}
             to="#"
             onClick={handleShow}
-            className="headerText"
-          >
+            className="headerText">
             Descubrenos
           </Nav.Link>
           <Nav.Link as={Link} to="/concerts" className="headerText d-none d-sm-block">
@@ -74,8 +72,7 @@ export const Header = () => {
               as={Link}
               to="/home"
               className="canvasTextTitle"
-              onClick={handleClose}
-            >
+              onClick={handleClose}>
               ConcertToYou
               <hr className="canvasLine" />
             </Nav.Link>
@@ -85,32 +82,28 @@ export const Header = () => {
               as={Link}
               to="/concerts"
               className="headerText mb-3"
-              onClick={handleClose}
-            >
+              onClick={handleClose}>
               Conciertos
             </Nav.Link>
             <Nav.Link
               as={Link}
               to="groups"
               className="headerText mb-3"
-              onClick={handleClose}
-            >
+              onClick={handleClose} >
               MusicToYou
             </Nav.Link>
             <Nav.Link
               as={Link}
               to="#"
               className="headerText mb-3"
-              onClick={handleClose}
-            >
+              onClick={handleClose}>
               Sobre Nosotros
             </Nav.Link>
             <Nav.Link
               as={Link}
               to="/contacts"
               className="headerText mb-3"
-              onClick={handleClose}
-            >
+              onClick={handleClose}>
               Contacto
             </Nav.Link>
             {role === 1 ? (
@@ -119,16 +112,14 @@ export const Header = () => {
                   as={Link}
                   to="/userProfile"
                   className="headerText mb-3"
-                  onClick={handleClose}
-                >
+                  onClick={handleClose}>
                   Mi Perfil
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/login"
                   className="headerText"
-                  onClick={handleLogOutAndClose}
-                >
+                  onClick={handleLogOutAndClose}>
                   Logout
                 </Nav.Link>
               </>
@@ -138,16 +129,14 @@ export const Header = () => {
                   as={Link}
                   to="/profile"
                   className="headerText mb-3"
-                  onClick={handleClose}
-                >
+                  onClick={handleClose}>
                   Admin Access
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/login"
                   className="headerText"
-                  onClick={handleLogOutAndClose}
-                >
+                  onClick={handleLogOutAndClose}>
                   Logout
                 </Nav.Link>
               </>
@@ -157,16 +146,14 @@ export const Header = () => {
                   as={Link}
                   to="/musicProfile"
                   className="headerText mb-3"
-                  onClick={handleClose}
-                >
+                  onClick={handleClose}>
                   Mi Perfil
                 </Nav.Link>
                 <Nav.Link
                   as={Link}
                   to="/login"
                   className="headerText"
-                  onClick={handleLogOutAndClose}
-                >
+                  onClick={handleLogOutAndClose}>
                   Logout
                 </Nav.Link>
               </>
@@ -175,8 +162,7 @@ export const Header = () => {
                 as={Link}
                 to="/login"
                 className="headerText"
-                onClick={handleClose}
-              >
+                onClick={handleClose}>
                 Login
               </Nav.Link>
             )}

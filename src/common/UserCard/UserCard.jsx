@@ -74,8 +74,7 @@ export const UserCard = ({
           <button
             onClick={handleDeleteProfile}
             className="btnAdmin"
-            disabled={isDeleting}
-          >
+            disabled={isDeleting}>
             Eliminar Cuenta
           </button>
         </div>
@@ -86,8 +85,7 @@ export const UserCard = ({
         onConfirm={handleConfirmAction}
         title={modalTitle}
         onConfirmText={onConfirmText}
-        isProcessing={isDeleting}
-      />
+        isProcessing={isDeleting}/>
     </div>
   );
 };

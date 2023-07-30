@@ -34,8 +34,7 @@ export const UserSearch = () => {
             maxLength={20}
             className="inputSearchUser"
             value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
+            onChange={(e) => setFirstName(e.target.value)}/>
         </label>
         <label>
           Last Name:
@@ -43,8 +42,7 @@ export const UserSearch = () => {
             type="text"
             maxLength={20}
             value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
+            onChange={(e) => setLastName(e.target.value)}/>
         </label>
         <button onClick={handleSearch} className="btnSearch">
           Search
@@ -64,8 +62,7 @@ export const UserSearch = () => {
             phoneNumber={`Teléfono: ${userData.phoneNumber}`}
             document={`DNI / NIE: ${userData.document}`}
             dateOfBirth={`Fecha de nacimiento: ${userData.dateOfBirth}`}
-            token={token}
-          />
+            token={token}/>
         </div>
       )}
     </div>

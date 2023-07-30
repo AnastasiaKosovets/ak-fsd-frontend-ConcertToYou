@@ -44,7 +44,6 @@ export const GroupCard = ({ group }) => {
         const res = await restoreGroup(token, group.id);
         setIsDeleting(false);
         setShowModal(false);
-        // handleDataChanged();
       } catch (error) {
         console.error("Error restaurando grupo:", error);
         setIsDeleting(false);
@@ -62,7 +61,6 @@ export const GroupCard = ({ group }) => {
       const updatedGroupData = {
         description: newDescription,
       };
-
       const groupId = group.id;
       const updatedGroup = await updateGroupByAdmin(
         token,
@@ -84,8 +82,7 @@ export const GroupCard = ({ group }) => {
             <img
               src={group.image}
               alt={group.groupName}
-              className="imgGeneralStyle"
-            />
+              className="imgGeneralStyle"/>
           </Card.Text>
           <Card.Text className="cardText">Nombre: {group.groupName}</Card.Text>
           <Card.Text className="cardText">Género: {group.genre}</Card.Text>
@@ -103,20 +100,17 @@ export const GroupCard = ({ group }) => {
                 value={newDescription}
                 placeholder="Descripción..."
                 onChange={handleInputChange}
-                className="cardText"
-              />
+                className="cardText"/>
               <button
                 onClick={handleUpdateGroup}
                 disabled={isDeleting}
-                className="btnAdmin"
-              >
+                className="btnAdmin">
                 Guardar
               </button>
               <button
                 onClick={() => setIsEditing(false)}
                 disabled={isDeleting}
-                className="btnAdmin"
-              >
+                className="btnAdmin">
                 Cancelar
               </button>
             </div>
@@ -130,15 +124,13 @@ export const GroupCard = ({ group }) => {
           <button
             onClick={handleDeleteGroup}
             disabled={isDeleting}
-            className="btnAdmin"
-          >
+            className="btnAdmin" >
             Eliminar Perfil
           </button>
           <button
             onClick={handleRestoreGroup}
             disabled={isDeleting}
-            className="btnAdmin"
-          >
+            className="btnAdmin">
             Restaurar
           </button>
         </div>
@@ -149,8 +141,7 @@ export const GroupCard = ({ group }) => {
         onConfirm={handleConfirmA}
         title={modalTitle}
         onConfirmText={onConfirmText}
-        isProcessing={isDeleting}
-      />
+        isProcessing={isDeleting}/>
     </div>
   );
 };

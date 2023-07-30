@@ -29,6 +29,7 @@ export const ConcertCard = ({ concert }) => {
     setShowModal(true);
   };
 
+  // this part confirm functions action and check delete/restore with it´s modal
   const handleConfirm = async () => {
     if (onConfirmText === "Eliminar") {
       try {
@@ -55,10 +56,12 @@ export const ConcertCard = ({ concert }) => {
     }
   };
 
+  // update state of editing
   const handleEditConcertByAdmin = () => {
     setIsEditing(true);
   };
 
+  // call update(save) function and close editing mode
   const handleSaveConcertAdmin = async () => {
     try {
       const updatedData = {
@@ -75,6 +78,7 @@ export const ConcertCard = ({ concert }) => {
     }
   };
 
+  // this function permits to canccel edition mode
   const handleCancelEdit = () => {
     setIsEditing(false);
     setNewDescriptionByAdmin(concert.description);
@@ -89,11 +93,12 @@ export const ConcertCard = ({ concert }) => {
             <img
               src={concert.image}
               alt={concert.groupName}
-              className="imgGeneralStyle"
-            />
+              className="imgGeneralStyle"/>
           </Card.Text>
           <Card.Text className="cardText">Título: {concert.title}</Card.Text>
-          <Card.Text className="cardText">Fecha: {humanDate(concert.date)}</Card.Text>
+          <Card.Text className="cardText">
+            Fecha: {humanDate(concert.date)}
+          </Card.Text>
           <Card.Text className="cardText">
             Nombre del grupo: {concert.groupName}
           </Card.Text>
@@ -110,8 +115,7 @@ export const ConcertCard = ({ concert }) => {
                 maxLength={300}
                 value={newDescriptionByAdmin}
                 onChange={(e) => setNewDescriptionByAdmin(e.target.value)}
-                className="cardText"
-              />
+                className="cardText"/>
               <button onClick={handleSaveConcertAdmin} className="btnAdmin">
                 Guardar
               </button>
@@ -129,15 +133,13 @@ export const ConcertCard = ({ concert }) => {
           <button
             onClick={handleDeleteConcert}
             disabled={isDeleting}
-            className="btnAdmin"
-          >
+            className="btnAdmin" >
             Eliminar Concierto
           </button>
           <button
             onClick={handleRestoreConcert}
             disabled={isDeleting}
-            className="btnAdmin"
-          >
+            className="btnAdmin">
             Restaurar
           </button>
         </Col>
@@ -147,8 +149,7 @@ export const ConcertCard = ({ concert }) => {
         onClose={() => setShowModal(false)}
         onConfirm={handleConfirm}
         title="Eliminar Concierto"
-        onConfirmText={onConfirmText}
-      />
+        onConfirmText={onConfirmText}/>
     </div>
   );
 };

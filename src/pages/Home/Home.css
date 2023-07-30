@@ -34,8 +34,8 @@
 }
 
 .img2H {
-  height: 5em;
-  width: 8em;
+  height: 6em;
+  width: 4.5em;
   position: relative;
   border-radius: 1em;
   animation: fade-in 3s forwards;
@@ -114,8 +114,8 @@
   .text1 {
     font-size: 1.5rem;
     align-items: center;
-    top: 200%;
-    left: 27%;
+    top: 300%;
+    left: 30%;
   }
 
   .img1Home {
@@ -125,15 +125,16 @@
   }
 
   .img2H {
-    height: 2em;
-    width: 4em;
-    margin-left: 2rem;
+    height: 4em;
+    width: 3em;
+    margin-left: 3rem;
   }
 
   .text2 {
     font-size: 2.5rem;
     width: 6em;
-    margin-left: 2em;
+    margin-left: 3em;
+    margin-bottom: 3em;
   }
 }
 

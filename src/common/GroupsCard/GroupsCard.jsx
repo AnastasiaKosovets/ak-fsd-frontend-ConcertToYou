@@ -11,8 +11,7 @@ export const GroupsCard = ({ group }) => {
   return (
     <div
       className="concertCardContainer my-5"
-      style={{ fontFamily: "Great Vibes" }}
-    >
+      style={{ fontFamily: "Great Vibes" }}>
       <Card className="cardCP">
         <Card.Body>
           <Row className="cardBody">
