@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to my ConcertTiYou app</h1>
+<h1 align="center">Welcome to my ConcertToYou app</h1>
 
 <h1 align="center">Final project in Geekshubs Academy FSD 04-2023</h1>
 
@@ -76,7 +76,7 @@ Now is time for frontend project:
  Start server with:
    ``` $ npm run dev ```
 Last step download the dataBase:
-[Data base Git-Hub](https://github.com/AnastasiaKosovets/ak-fsd-backend-dentalClinic)
+[Data base Git-Hub](https://github.com/AnastasiaKosovets/ak-fsd-backend-ConcertToYou)
 
 ## Development 
 
