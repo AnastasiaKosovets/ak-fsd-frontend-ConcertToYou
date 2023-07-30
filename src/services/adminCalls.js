@@ -106,16 +106,13 @@ export const restoreConcert = async (token, concert_id) => {
 }
 
 // UPDATE GROUP
-export const updateGroupByAdmin = async (token, group_id, description) => {
+export const updateGroupByAdmin = async (id, data, token) => {
     let access = {
         headers: {
             Authorization: `Bearer ${token}`,
         },
     };
-    let requestData = {
-        description: description
-    };
-    let res = await axios.put(`${root}/api/groups/admin/${group_id}`, requestData, access);
+    let res = await axios.put(`${root}/api/groups/admin/${id}`, data, access);
     return res.data;
 }
 

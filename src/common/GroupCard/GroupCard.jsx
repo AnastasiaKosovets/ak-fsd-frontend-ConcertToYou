@@ -11,7 +11,7 @@ export const GroupCard = ({ group }) => {
   const [modalTitle, setModalTitle] = useState("");
   const [onConfirmText, setOnConfirmText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [newDescription, setNewDescription] = useState("");
+  const [newDescription, setNewDescription] = useState(group.description);
   const [isEditing, setIsEditing] = useState(false);
 
   const handleDeleteGroup = () => {
@@ -52,21 +52,21 @@ export const GroupCard = ({ group }) => {
     }
   };
 
-  const handleInputChange = (event) => {
-    setNewDescription(event.target.value);
-  };
+  const handleEditGroupByAdmin = () => {
+    setIsEditing(true);
+  }
 
   const handleUpdateGroup = async () => {
     try {
       const updatedGroupData = {
         description: newDescription,
       };
-      const groupId = group.id;
       const updatedGroup = await updateGroupByAdmin(
-        token,
-        groupId,
-        updatedGroupData
+        group.id,
+        updatedGroupData,
+        token
       );
+      group.description = newDescription;
       setIsEditing(false);
     } catch (error) {
       console.log("Error al actualizar el grupo:", error);
@@ -98,12 +98,10 @@ export const GroupCard = ({ group }) => {
                 type="text"
                 maxLength={300}
                 value={newDescription}
-                placeholder="Descripción..."
-                onChange={handleInputChange}
+                onChange={(e) => setNewDescription(e.target.value)}
                 className="cardText"/>
               <button
                 onClick={handleUpdateGroup}
-                disabled={isDeleting}
                 className="btnAdmin">
                 Guardar
               </button>
@@ -115,7 +113,7 @@ export const GroupCard = ({ group }) => {
               </button>
             </div>
           ) : (
-            <button onClick={() => setIsEditing(true)} className="btnAdmin">
+            <button onClick={handleEditGroupByAdmin} className="btnAdmin">
               Modificar
             </button>
           )}
