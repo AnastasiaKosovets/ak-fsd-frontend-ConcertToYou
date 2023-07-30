@@ -14,6 +14,7 @@ import { CreateConcert } from "../CreateConcert/CreateConcert";
 import { FavoriteCard } from "../../common/FavoritesCard/FavoritesCard";
 import { Groups } from "../Groups/Groups";
 import { Contacts } from "../Contacts/Contacts";
+import { AboutUs } from "../AboutUs/AboutUs";
 
 export const Body = () => {
   return (
@@ -34,6 +35,7 @@ export const Body = () => {
         <Route path="/groups" element={<Groups />} />
         <Route path="/createConcert" element={<CreateConcert />} />
         <Route path="/contacts" element={<Contacts />} />
+        <Route path="/about" element={<AboutUs />} />
       </Routes>
     </>
   );
