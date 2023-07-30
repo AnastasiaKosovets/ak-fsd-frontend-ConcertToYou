@@ -62,7 +62,7 @@ export const Header = () => {
           <Nav.Link as={Link} to="/concerts" className="headerText d-none d-sm-block">
             Disfruta de la música
           </Nav.Link>
-          <Nav.Link as={Link} to="#" className="headerText d-none d-sm-block">
+          <Nav.Link as={Link} to="/aboutUs" className="headerText d-none d-sm-block">
             Sobre Nosotros
           </Nav.Link>
         </div>
