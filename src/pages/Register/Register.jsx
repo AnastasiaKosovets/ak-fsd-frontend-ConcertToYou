@@ -83,7 +83,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={30}
               />
-              <div className="errorTxtReg">{errorData.firstNameError && <span className="error">{errorData.firstNameError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.firstNameError && (
+                  <span className="error">{errorData.firstNameError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Apellido</Col>
@@ -98,7 +102,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={30}
               />
-              <div className="errorTxtReg">{errorData.lastNameError && <span className="error">{errorData.lastNameError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.lastNameError && (
+                  <span className="error">{errorData.lastNameError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Email</Col>
@@ -113,7 +121,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={30}
               />
-              <div className="errorTxtReg">{errorData.emailError && <span className="error">{errorData.emailError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.emailError && (
+                  <span className="error">{errorData.emailError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Contraseña</Col>
@@ -127,7 +139,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={30}
               />
-              <div className="errorTxtReg">{errorData.passwordError && <span className="error">{errorData.passwordError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.passwordError && (
+                  <span className="error">{errorData.passwordError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Dirección</Col>
@@ -142,7 +158,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={50}
               />
-              <div className="errorTxtReg">{errorData.addressError && <span className="error">{errorData.addressError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.addressError && (
+                  <span className="error">{errorData.addressError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">DNI / NIE</Col>
@@ -157,7 +177,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={9}
               />
-              <div className="errorTxtReg">{errorData.documentError && <span className="error">{errorData.documentError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.documentError && (
+                  <span className="error">{errorData.documentError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Fecha de nacimiento</Col>
@@ -172,7 +196,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={10}
               />
-              <div className="errorTxtReg">{errorData.dateOfBirthError && <span className="error">{errorData.dateOfBirthError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.dateOfBirthError && (
+                  <span className="error">{errorData.dateOfBirthError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={8}>
               <Col className="txtReg">Teléfono</Col>
@@ -187,7 +215,11 @@ export const Register = () => {
                 onBlur={handleBlur}
                 maxLength={9}
               />
-              <div className="errorTxtReg">{errorData.phoneNumberError && <span className="error">{errorData.phoneNumberError}</span>}</div>
+              <div className="errorTxtReg">
+                {errorData.phoneNumberError && (
+                  <span className="error">{errorData.phoneNumberError}</span>
+                )}
+              </div>
             </Col>
             <Col xs={10} md={6}>
               <Button type="submit" name={"Registrate"}></Button>
@@ -197,28 +229,25 @@ export const Register = () => {
               <Link to="/login" className="registerLink">
                 Inicia tu sesión!
               </Link>
-          </Col>
+            </Col>
           </Row>
           <Row>
             <Col xs={10} sm={6} md={5} lg={2}>
-              <div class="imgCont">
-                <div class="textRegTitle">
+              <div className="imgCont">
+                <div className="textRegTitle">
                   Vive la experiencia de los mejores conciertos en nuestra
                   plataforma
                 </div>
               </div>
             </Col>
-            <Col xs={8} sm={6} md={6} lg={6}>
+            <Col xs={8} sm={6} md={6} lg={6} className="mb-5">
               <img src={img9} alt="musics" className="registerImg" />
             </Col>
-            
           </Row>
         </Container>
       </form>
       {successPopup && (
-        <div className="successPopUp">
-          ¡Gracias por registrarte!
-        </div>
+        <div className="successPopUp">¡Gracias por registrarte!</div>
       )}
     </div>
   );
