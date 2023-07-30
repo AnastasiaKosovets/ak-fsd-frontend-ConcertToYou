@@ -94,7 +94,7 @@ export const Header = () => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/about"
+              to="/aboutUs"
               className="headerText mb-3"
               onClick={handleClose}>
               Sobre Nosotros
