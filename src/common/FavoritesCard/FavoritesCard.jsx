@@ -40,7 +40,7 @@ export const FavoriteCard = () => {
           <Row className="rowFavStyle">
             <Col>
               <p>
-                {/* <img src={spInner} alt="Loading..." className="" /> */}
+                Cargando...
               </p>
             </Col>
           </Row>
