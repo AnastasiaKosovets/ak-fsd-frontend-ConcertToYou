@@ -11,3 +11,13 @@
   .txtFooter {
     font-size: 1.7em;
   }
+
+  .iconFooter {
+    height: 2em;
+  }
+
+  @media (max-width: 768px){
+    .txtFooter {
+      font-size: 1em;
+    }
+  }
