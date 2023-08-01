@@ -4,6 +4,7 @@ import { getMyTickets } from "../../services/apiCalls";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import { Card } from "react-bootstrap";
+import { humanDate } from "../../services/useful";
 
 export const MyTickets = () => {
   const [bookings, setBookings] = useState([]);
@@ -50,7 +51,7 @@ export const MyTickets = () => {
                   Título: {booking.concert.title}
                 </Card.Text>
                 <Card.Text className="cardText">
-                  Fecha: {booking.concert.date}
+                  Fecha: {humanDate(booking.concert.date)}
                 </Card.Text>
                 <Card.Text className="cardText">
                   Grupo: {booking.concert.groupName}
